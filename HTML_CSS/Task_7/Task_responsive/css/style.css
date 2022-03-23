@@ -1,0 +1,325 @@
+/* Fonts & Icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #E9E9E9;
+}
+
+
+.clearfix:before, .clearfix:after {
+    width: 100%;
+    display: table;
+    content: '';
+}
+
+.container {
+    max-width: 1920px;
+}
+
+.align-center-custom {
+    float: none;
+    margin: auto;
+}
+
+/* top section */
+
+
+.top_section {
+    background-color: #002554;
+    padding-top: 40px;
+    padding-bottom: 180px;
+}
+
+.card-body{
+    padding-top: 56px;
+}
+
+
+
+.btn-outline-dark {
+    border: 1px solid #FFFFFF;
+    border-radius: 6px;
+    opacity: 1;
+    text-align: center;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0.22px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+
+
+.header_h1 h1 {
+    letter-spacing: 0.36px;
+    color: #FFFFFF;
+    opacity: 1;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0px;
+    padding-top: 36px;
+}
+
+.card_section {
+    text-align: left;
+    letter-spacing: 0.75px;
+    color: #010101;
+    opacity: 1;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.card-header{
+    background-color: #FFFFFF !important;
+}
+
+.card_section h2 {
+    text-align: left;
+    letter-spacing: 1.94px;
+    color: #002554;
+    opacity: 1;
+    font-size: 62px;
+    font-weight: bold;
+}
+
+.card-header {
+    border: 0px solid;
+}
+
+.card {
+    border-radius: 6px;
+    height: 100%;
+}
+
+.card_section {
+    margin-top: -150px;
+}
+
+.card_po{
+    padding-top: 30px;
+}
+
+.table_header p {
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0.22px;
+}
+
+.table_header .select {
+    width: 100%;
+}
+
+.table_header {
+    background-color: #FFFFFF;
+    padding: 30px 30px 20px 30px;
+    border-radius: 6px;
+}
+
+.table_section {
+    padding-top: 30px;
+}
+
+.table_body input {
+    width: 100%;
+}
+
+.table_body {
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    padding: 30px;
+}
+
+.table_padding {
+    padding-top: 30px;
+}
+
+.table_bottom_button button {
+    border-radius: 50%;
+    height: 34px;
+    width: 34px;
+    background-color: #FFFFFF;
+    border-color: #002554;
+    color: #002554;
+
+}
+
+.table_bottom_button p {
+    font-size: 12px;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+
+.table_bottom_button button:hover {
+    background-color: #002554;
+    border-color: #002554;
+    color: #FFFFFF;
+
+}
+
+.table_main {
+    padding-top: 22px;
+}
+
+.table_right {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 30px 30px 25px 30px;
+}
+
+.table_right ul {
+    list-style: none;
+}
+
+
+.table_right li {
+    list-style-type: none;
+    position: relative;
+}
+
+.table_right li::before {
+    content: '•';
+    position: absolute;
+    left: -35px;
+    top: -51px;
+    font-size: 75px;
+}
+
+.table_right .blu li::before {
+    color: #4D6687;
+}
+
+.table_right .blue li::before {
+    color: #1A3B65;
+}
+
+.table_right .blue li::before {
+    color: #002554;
+}
+
+
+.table_right .aqu li::before {
+    color: #6DDBCD;
+}
+
+
+.table_right .aqua li::before {
+    color: #43D1BF;
+}
+
+.table_right .aquaa li::before {
+    color: #17665C;
+}
+
+.table_right h2 {
+    text-align: left;
+    letter-spacing: 0.36px;
+    color: #2ECCB8;
+    opacity: 1;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.table_right_top {
+    padding-top: 30px;
+}
+
+
+.table_right_top_image {
+    padding-top: 26px;
+}
+
+.one, .two, .three, .four, .five, .six, .seven {
+    margin-bottom: 10px;
+}
+
+
+.border-primary {
+    border-color: #FFFFFF !important;
+    border-radius: 6px;
+}
+
+.table-d {
+    background-color: #E5E9F2;
+}
+
+thead {
+    background-color: #FFFFFF;
+}
+
+.table>:not(:first-child) {
+    border-top: 2px solid #FFFFFF;
+}
+
+.table_body .one p {
+    letter-spacing: 0.29px;
+    color: #2ECCB8;
+    opacity: 1;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.table_body .three input {
+    background-color: #002554;
+    color: #FFFFFF;
+}
+
+.table_body .five input {
+    background-color: #FFFFFF;
+    border: 2px solid #002554;
+    border-radius: 6px;
+}
+
+.table_body .six button {
+    background: #002554 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    opacity: 1;
+    color: #FFFFFF !important;
+    border-color: #002554 !important;
+}
+
+.table_top_3{
+    padding-top: 25px;
+}
+
+.table_section .two select {
+    background: #E5E9F2 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    opacity: 1;
+}
+
+.table_section .three select {
+    background: #E5E9F2 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    opacity: 1;
+}
+
+.table_section .four input {
+    background: #E5E9F2 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    opacity: 1;
+}
+
+.table_section .five button {
+    background: #002554 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    opacity: 1;
+}
+
+.table_section .six button{
+    border-radius: 6px;
+    opacity: 1;
+    border: 2px solid #2ECCB8;
+    color: #2ECCB8;
+}
+
+
+.table_section .seven button{
+    border-radius: 6px;
+    opacity: 1;
+    border: 2px solid #2ECCB8;
+    color: #2ECCB8;
+}

@@ -1,0 +1,74 @@
+/* Fonts & Icons */
+@import url('https://fonts.googleapis.com/css2?family=Kreon:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+
+
+.align-center-custom {
+  float: none;
+  margin: auto;
+}
+
+.about_section .about-6 {
+  background-image: url('../assets/images/dark_bg.png');
+}
+
+.about_section h5 {
+  font-size: 18px;
+  letter-spacing: 4px;
+  line-height: 9px;
+  color: #fefefe;
+  font-weight: 700;
+  font-family: "Montserrat";
+  padding-top: 185px;
+}
+
+.about_section h3 {
+  font-size: 26px;
+  letter-spacing: -3px;
+  line-height: 9px;
+  color: #fefefe;
+  font-weight: 700;
+  font-family: "Montserrat";
+  padding-top: 23px;
+}
+
+.about_section p {
+  font-size: 18px;
+  line-height: 32px;
+  color: #fefefe;
+  font-family: "Helvetica";
+  text-align: center;
+  padding-top: 32px;
+}
+
+.about_section .container{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.about_section .col-md-6 .col-md-6 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.about_section .col-md-6 .col-md-12 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.about_section .col-md-6 .col-md-12 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+
+.about_section .btn-primary {
+  width: 236px;
+  height: 61px;
+  border-radius: 4px;
+  background-color: #ff8758;
+  border: #ff8758;
+}
+
+.about_section .img-fluid{
+  width: 100%;
+}

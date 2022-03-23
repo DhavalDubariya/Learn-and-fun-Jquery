@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
+
+.header-section {
+    padding-top: 27px;
+}
+
+.header-section .py-3 {
+    padding: 0 80px;
+}
+
+.nav-link {
+    color: white;
+}
+
+a:hover {
+    color: #d9b148;
+}
+
+a {
+    color: #ffffff;
+}
+
+.about-section {
+    padding-top: 138px;
+    padding-bottom: 102px;
+}
+
+.about-section h1 {
+    font-size: 24px;
+    letter-spacing: 1px;
+    color: #010101;
+    font-weight: 600;
+    font-family: "Poppins";
+    padding-top: 105px;
+}
+
+.about-section hr {
+    width: 105px;
+    height: 5px;
+    border-radius: 2px;
+    background-color: #c88500;
+}
+
+.about-section .form-control {
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #353535;
+    border-radius: 0px;
+    width: 73.5%;
+}
+
+.btn_btn {
+    color: #ffffff;
+    cursor: pointer;
+
+    width: 140px;
+    height: 46px;
+    border-radius: 23px;
+    background-color: #000000;
+
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 39px;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Poppins";
+}
+
+.contact-section {
+    padding: 108px 0 68px 0;
+}
+
+.contact-section h2 {
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+    font-weight: 500;
+    font-family: "Poppins";
+}
+
+.contact-section p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #353535;
+    font-weight: 500;
+    font-family: "Poppins";
+    padding-top: 52px;
+}
+
+.list-group-flush>.list-group-item {
+    border-width: 0 0 0;
+}
+
+.list-group-item {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.contact-section .form-control input {
+    width: 365px;
+}
+
+.dha {
+    display: inline-block;
+}
+
+.pos {
+    position: relative;
+    left: -5px;
+
+    background-image: url(../assrts/images/);
+}
+
+.custom_form {
+    position: relative;
+}
+
+.custom_form img {
+    position: absolute;
+    top: -2px;
+    left: 89.27%;
+    padding: 2px;
+}
+
+.form-control {
+    padding: 12px 20px;
+}
+
+.btn_padding{
+    padding-top: 30px;
+}

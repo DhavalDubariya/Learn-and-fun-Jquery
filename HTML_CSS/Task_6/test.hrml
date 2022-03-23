@@ -1,0 +1,75 @@
+ <section class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h2>
+            FIXS is a full service digital agency that specializes in design,
+            creativity, strategy and technical services. Fixs has offices in
+            lorem, ipsum, dolor sit and Amet.
+          </h2>
+        </div>
+        <div
+          class="col-md-4 bg_fixs"
+          style="background-image: url('../assets/images/Video.png')"
+        >
+          skshj
+        </div>
+      </div>
+    </section>
+
+    <!-- project-section -->
+
+    <section class="container mt-5">
+      <div class="row">
+        <div class="col-md-12" >
+          <h2>Project</h2>
+        </div>
+        <div class="col-md-6 project-padding text-center">
+          <h6>BRAND</h6>
+          <h3>PROJECT NAME</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Pellentesque vel odio vel felis placerat pharetra ut vitae felis.
+          </p>
+          <button type="button" class="btn btn-primary btn-lg">
+            case study
+          </button>
+        </div>
+
+        <div class="col-md-6">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <img class="img-fluid" src="./assets/images/Video.png" alt="" />
+              </div>
+              <div class="col-md-6">
+                <img class="img-fluid" src="./assets/images/Video.png" alt="" />
+              </div>
+              <div class="col-md-12">
+                <img class="img-fluid" src="./assets/images/Video.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <img class="img-fluid" src="./assets/images/Video.png" alt="" />
+        </div>
+        <div class="col-md-6">
+          <img class="img-fluid" src="./assets/images/Video.png" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="row">
+        <div class="col-md-12" >
+          <h2>Whats new</h2>
+        </div>
+        <div class="col-md-4">
+          <img class="img-fluid" src="./assets/images/Video.png" alt="" />
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+      </div>
+    </section>

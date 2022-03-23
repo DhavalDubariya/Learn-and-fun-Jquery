@@ -1,0 +1,12 @@
+Person3:
+Name :- Dhaval Dubariya
+Backend:
+Why did you choose this field (at least 100 chars)?
+Answer : figured I would throw in here why I ended up choosing the backend in hopes that it might inform others when making their decision. I was seeking job satisfaction when I made the career switch to being a dev and decided to start out working across the entire stack. I worked as a full-stack dev for 3 years before I started to really shift towards the backend. What drew me to the backend was the cleanliness of Ruby. Javascript and frontend languages have always felt less organized to me. I also thrive on optimizing code performance. I love trying to find ways to make things run better and faster. The backend seemed to give me more opportunities to do that.
+
+Finally, I am not a very visual or artistic person. Some people can look at a webpage and figure out how to lay it out and where everything should go. I never was good at that so the backend felt more natural and comfortable for me.
+
+If you want more insight into other's opinions, check out this CodeNewbie Chat which discusses Frontend vs Backend web development. You can also check out the dev.to thread I started Tuesday asking people what part of the stack they choose to work in and why.
+Where do you want to yourself in 5 years?
+Answer:As Owner of Compney
+

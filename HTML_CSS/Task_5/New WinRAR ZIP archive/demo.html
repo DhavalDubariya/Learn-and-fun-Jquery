@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Tags & Form Tags</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .register_form {
+    max-width:600px;
+    margin: 0 auto;
+}
+.register_form .fieldset {
+    float:left;
+    width:100%;
+}
+.register_form .fieldset .field {
+    float:left;
+    width:100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.register_form .fieldset .field.half {
+    width:50%;
+}
+.register_form .fieldset .field label {
+    display:block;
+}
+.register_form .fieldset .field input,
+.register_form .fieldset .field select,
+.register_form .fieldset .field textarea {
+    width:100%;
+    background:#ddd;
+    border:1px solid #aaa;
+    padding:5px 15px;
+    font-size:14px;
+    line-height:18px;
+    box-sizing: border-box;
+}
+
+.register_form .fieldset .field input[type="checkbox"] {
+    display:none;
+}
+.register_form .fieldset .field input[type="checkbox"] + label {
+    display:inline-block;
+}
+
+.register_form .fieldset .field input[type="checkbox"] + label:before {
+    content:'+';
+    width:20px;
+    height:20px;
+    display:inline-block;
+    border:2px solid #000;
+    vertical-align:middle;
+    margin-right:10px;
+    text-align:center;
+    line-height:20px;
+    font-size:18px;
+    color:#fff;
+    border-radius:50%;
+}
+
+.register_form .fieldset .field input[type="checkbox"]:checked + label:before {
+    background-color:#000;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+table td, table th {
+    border: 1px solid #999;
+    padding: 5px 15px;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <div class="parent_div">
+        <div class="child_div">
+
+        </div>
+    </div>
+    <div class="form_se">
+
+    
+    <form action="#" method="get" class="register_form clearfix">
+        <div class="fieldset">
+            <div class="field half">
+                <label for="firstname">First Name</label>
+                <input type="text" name="firstname" id="firstname">
+            </div>
+       
+            <div class="field half">
+                <label for="lastname">Last Name</label>
+                <input type="text" name="lastname" id="lastname">
+            </div>
+        </div>
+        <div class="fieldset">
+            <div class="field">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+        </div>
+        <div class="fieldset">
+            <div class="field">
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="oter">Other</option>
+                </select>
+            </div>
+        </div>
+        <div class="fieldset">
+            <div class="field">
+                <label for="message">Gender</label>
+                <textarea name="message" id="message" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+
+
+        <div class="fieldset">
+            <div class="field">
+                <ul>
+                    <li>
+                        <input type="checkbox" value="Ahmedabad" name="city" id="city-1">
+                        <label for="city-1">Ahmedabad</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" value="Surat" name="city" id="city-2">
+                        <label for="city-2">Surat</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" value="Rajkot" name="city" id="city-3">
+                        <label for="city-3">Rajkot</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" value="Mehsana" name="city" id="city-4">
+                        <label for="city-4">Mehsana</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </form>
+</div>
+    <!-- https://www.w3schools.com/tags/tag_input.asp
+         https://www.w3schools.com/tags/tag_form.asp    
+    -->
+
+
+<table >
+    <thead>
+        <tr>
+            <th colspan="2">Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Developer</td>
+            <td>Test</td>
+            <td rowspan="2">developer@weboccult.com</td>
+            <td>Male</td>
+        </tr>
+        <tr>
+            <td>Developerni</td>
+            <td>Test</td>
+            <td>Female</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+</body>
+</html>
