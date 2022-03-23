@@ -98,12 +98,62 @@
 
     $str = crc32("Hello World!");
     printf("%u\n", $str);
+    echo "<br>";
+
+    $str = crc32("Hello world.");
+    echo 'Without %u: ' . $str . "<br>";
+    echo 'With %u: ';
+    printf("%u", $str);
 
     echo "<hr>";
-    echo "<h4>echo()</h4>";
-    echo "<h4>crypt()	</h4>";
-    echo "<h4>addcslashe</h4>";
-    echo "<h4>addcslashe</h4>";
+    echo "<h4>echo():-function outputs one or more strings.
+
+    </h4>";
+
+    echo "echo() fubction outputs one or more strings";
+    echo "<hr>";
+    echo "<h4>crypt():-	</h4>";
+
+    echo "Error !!!!";
+
+
+    echo "<hr>";
+    echo "<h4>explode():-Break a string into an array.</h4>";
+    $str = "Hello world. It's a beautiful day.";
+    print_r(explode(" ", $str));
+    echo "<br>";
+    $str = 'one,two,three,four';
+    print_r(explode(',', $str, -2));
+
+    echo "<hr>";
+
+    echo "<h4>addcslashe():-</h4>";
+
+    $num1 = 123456789;
+    $num2 = -123456789;
+    $char = 50; // The ASCII Character 50 is 2
+
+    // Note: The format value "%%" returns a percent sign
+    printf("%%b = %b :Binary number <br>", $num1); // 
+    printf("%%c = %c :The ASCII Character<br>", $char); // 
+    printf("%%d = %d :Signed decimal number<br>", $num1); // 
+    printf("%%d = %d :Signed decimal number<br>", $num2); // 
+    printf("%%e = %e :Scientific notation (lowercase)<br>", $num1); // 
+    printf("%%E = %E : Scientific notation (uppercase)<br>", $num1); //
+    printf("%%u = %u :Unsigned decimal number (positive)<br>", $num1); // 
+    printf("%%u = %u :Unsigned decimal number (negative)<br>", $num2); // 
+    printf("%%f = %f :Floating-point number (local settings aware)<br>", $num1);
+    printf("%%F = %F :Floating-point number (not local sett aware)<br>", $num1); // 
+    printf("%%g = %g :Shorter of %e and %f<br>", $num1); // 
+    printf("%%G = %G :Shorter of %E and %f<br>", $num1); // 
+    printf("%%o = %o :Octal number<br>", $num1); // 
+    printf("%%s = %s :String<br>", $num1); // 
+    printf("%%x = %x :Hexadecimal number (lowercase)<br>", $num1); // 
+    printf("%%X = %X :Hexadecimal number (uppercase)<br>", $num1); // 
+    printf("%%+d = %+d :Sign specifier (positive)<br>", $num1); // 
+    printf("%%+d = %+d :Sign specifier (negative)<br>", $num2); // 
+    echo "<hr>";
+
     echo "<h4>addcslashe</h4>";
     echo "<h4>addcslashe</h4>";
     echo "<h4>addcslashe</h4>";
