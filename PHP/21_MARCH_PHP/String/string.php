@@ -511,8 +511,8 @@
 
     echo "<h4>strcmp():- Compare strings. if strings are same return 0.</h4>";
     
-    echo strcmp("Hello world!","Hello world!");
-    
+    echo strcmp("Hello world!","Hello   world!");
+        
     ?>
 
 
