@@ -499,20 +499,20 @@
     echo "<h4>strcasecmp():-function Compare two strings (case-insensitive).</h4>";
 
     echo strcasecmp("Hello world!", "hello WORLD!"), "<br>";
-    echo strcasecmp("Hello world!", "helloWORLD!"), "<br>"; 
+    echo strcasecmp("Hello world!", "helloWORLD!"), "<br>";
     echo strcasecmp("Hello world!", "hello"), "<br>";
     echo "<hr>";
 
     echo "<h4>strchr():- Find the first occurrence of world inside string and return the rest of the string.</h4>";
 
-    echo strchr("Dhaval Dubariya Dhaval","Dubariya");
+    echo strchr("Dhaval Dubariya Dhaval", "Dubariya");
 
     echo "<hr>";
 
     echo "<h4>strcmp():- Compare strings. if strings are same return 0.</h4>";
-    
-    echo strcmp("Hello world!","Hello world!");
-    
+
+    echo strcmp("Hello world!", "Hello world!");
+
     ?>
 
 
