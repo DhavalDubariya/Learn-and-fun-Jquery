@@ -227,8 +227,9 @@
         echo "<h4>date_timestamp_set():-Set the date and time based on a Unix timestamp:
 
     </h4>";
-        $date = date_create();
-        date_timestamp_set($date, 1371803321);
+        $date = date_create("23-03-2022");
+        print_r($date);
+        date_timestamp_set($date, 1648425600);
         echo date_format($date, "U = Y-m-d H:i:s");
 
         echo "<hr>";
@@ -236,9 +237,9 @@
         echo "<h4>date_timezone_get():-Return the timezone of the given DateTime object:
 
     </h4>";
-        // $date = date_create(null, timezone_open("Europe/Paris"));
-        // $tz = date_timezone_get($date);
-        // echo timezone_name_get($tz);
+        $date = date_create(28-03-2022, timezone_open("Europe/Paris"));
+        $tz = date_timezone_get($date);
+        echo timezone_name_get($tz);
 
         echo "<hr>";
 
