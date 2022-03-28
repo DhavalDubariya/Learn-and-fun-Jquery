@@ -1,3 +1,22 @@
+<?php
+
+namespace Html;
+
+class Table
+{
+    public $title = "";
+    public $numRows = 0;
+    public function message()
+    {
+        echo "<p>Table '{$this->title}' has {$this->numRows} rows.</p>";
+    }
+}
+$table = new Table();
+$table->title = "My table";
+$table->numRows = 5;
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -454,7 +473,8 @@
         public function hello();
     }
 
-    class child_1 implements parents_class_1{
+    class child_1 implements parents_class_1
+    {
         public function hello()
         {
             echo "Hello From Child 1 <br>";
@@ -462,7 +482,8 @@
     }
 
 
-    class child_2 implements parents_class_1{
+    class child_2 implements parents_class_1
+    {
         public function hello()
         {
             echo "Hello From Child 2  <br>";
@@ -470,7 +491,8 @@
     }
 
 
-    class child_3 implements parents_class_1{
+    class child_3 implements parents_class_1
+    {
         public function hello()
         {
             echo "Hello From Child 3  <br>";
@@ -481,30 +503,33 @@
     $child_2 = new child_2();
     $child_3 = new child_3();
 
-    $new_array = array($child_1,$child_2,$child_3);
+    $new_array = array($child_1, $child_2, $child_3);
 
-    foreach($new_array as $x){
+    foreach ($new_array as $x) {
         $x->hello();
     }
 
     echo "<h4>Traits:-Traits are used to declare methods that can be used in multiple classes.</h4>";
 
-    trait message_first{
+    trait message_first
+    {
         public function msg1()
         {
             echo "Message 1";
         }
     }
 
-    trait message_sec{
+    trait message_sec
+    {
         public function msg2()
         {
             echo "Message 2";
         }
     }
-     
-    class welcome{
-        use message_first,message_sec;
+
+    class welcome
+    {
+        use message_first, message_sec;
     }
 
     $obj = new welcome();
@@ -513,9 +538,64 @@
     $obj1 = new welcome();
     $obj1->msg2();
 
-    echo "Static Methods:-Static methods can be called directly - without creating an instance of the class first.";
+    echo "<h4>Static Methods:-Static methods can be called directly - without creating an instance of the class first.</h4>";
+    echo "Outside Function:-";
 
-    
+    class greeting
+    {
+        public static function welcome()
+        {
+            echo "Hello World!<br>";
+        }
+    }
+
+    // Call static method
+    greeting::welcome();
+
+    echo "Inside Function:-";
+
+    class greetings
+    {
+        public static function welcome()
+        {
+            echo "Hello World! Using self Function";
+        }
+
+        public function __construct()
+        {
+            self::welcome();
+        }
+    }
+
+    new greetings();
+
+    echo "<h4>Static Properties:-Static properties can be called directly - without creating an instance of a class.
+
+    </h4>";
+
+    class pi
+    {
+        public static $value = 3.14;
+    }
+
+    echo pi::$value;
+
+    echo "<h4>namespace:-</h4>";
+    $table->message();
+
+    echo "<h4>iterable:-An iterable is any value which can be looped through with a foreach() loop.
+    </h4>";
+    function printIterable(iterable $myIterable)
+    {
+        foreach ($myIterable as $item) {
+            echo $item;
+        }
+    }
+
+    $arr = ["a", "b", "c"];
+    printIterable($arr);
+
+
 
     ?>
 
