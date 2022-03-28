@@ -155,8 +155,8 @@
 
         echo "Error !!!";
 
-        $date = "6.1.2009";
-        print_r(date_parse_from_format("j.n.Y", $date));
+        $date = "18.06.2009";
+        print_r(date_parse_from_format("mmddyyyy", $date));
 
 
         print_r(date_parse_from_format("mmddyyyy", "06182000"));
@@ -215,7 +215,7 @@
 
         echo "UNIX:- Returns the current time measured in the number of seconds since the Unix Epoch (January 1 1970 00:00:00 GMT).";
 
-        echo "<h4>date_timestamp_get():-Return the Unix timestamp for today's date and time:
+        echo "<h4>date_timestamp_get():-Return the Unix timestamp for today's date and time.
 
         </h4>";
         $date = date_create("2000-06-01");
@@ -242,7 +242,7 @@
 
         echo "<hr>";
 
-        echo "<h4>date_timezone_set():-Set the timezone for the DateTime object:
+        echo "<h4>date_timezone_set():-Set the timezone for the DateTime object.
 
         </h4>";
         $date = date_create("2000-06-26", timezone_open("Indian/Kerguelen"));
@@ -267,22 +267,20 @@
 
         echo "<hr>";
 
-        echo "<h4>gmdate():-Format a GMT/UTC date and time and return the formatted date strings:
-
+        echo "<h4>gmdate():-Format a GMT/UTC date and time and return the formatted date strings.
         </h4>";
         echo gmdate("l") . "<br>";
         echo gmdate("l jS \of F Y h:i:s A");
 
         echo "<hr>";
 
-        echo "<h4>gmmktime():-Return the Unix timestamp for a GMT date. Then use it to find the day of that date:
-
+        echo "<h4>gmmktime():-Return the Unix timestamp for a GMT date. Then use it to find the day of that date.
         </h4>";
         echo "Oct 3, 1976 was on a " . date("l", gmmktime(0, 0, 0, 10, 3, 1976));
 
         echo "<hr>";
 
-        echo "<h4>gmstrftime():-Format GMT/UTC date and time according to locale settings:
+        echo "<h4>gmstrftime():-Format GMT/UTC date and time according to locale settings.
 
     </h4>";
         echo (gmstrftime("%B %d %Y, %X %Z", mktime(20, 0, 0, 12, 31, 98)) . "<br>");
@@ -292,8 +290,7 @@
         echo "<hr>";
 
 
-        echo "<h4>idate():-Format a local time/date as integer. Test all the different formats:
-
+        echo "<h4>idate():-Format a local time/date as integer. Test all the different formats.
         </h4>";
         echo idate("B") . "<br>";
         echo idate("d") . "<br>";
@@ -316,8 +313,7 @@
         echo "<hr>";
 
 
-        echo "<h4>localtime():-Print local time as an indexed and as an associative array:
-
+        echo "<h4>localtime():-Print local time as an indexed and as an associative array.
     </h4>";
         print_r(localtime());
         echo "<br><br>";
@@ -326,24 +322,21 @@
         echo "<hr>";
 
 
-        echo "<h4>microtime():-Return the current Unix timestamp with microseconds:
-
+        echo "<h4>microtime():-Return the current Unix timestamp with microseconds.
     </h4>";
         echo (microtime());
 
         echo "<hr>";
 
 
-        echo "<h4>mktime():-Return the Unix timestamp for a date. Then use it to find the day of that date:
-
+        echo "<h4>mktime():-Return the Unix timestamp for a date. Then use it to find the day of that date.
         </h4>";
         echo "Oct 3, 1976 was on a " . date("l", mktime(0, 0, 0, 10, 3, 1976));
 
         echo "<hr>";
 
 
-        echo "<h4>strftime():-Format local date and time according to locale settings:
-
+        echo "<h4>strftime():-Format local date and time according to locale settings.
     </h4>";
         echo (strftime("%B %d %Y, %X %Z", mktime(20, 0, 0, 12, 31, 98)) . "<br>");
         setlocale(LC_ALL, "hu_HU.UTF8");
@@ -352,9 +345,7 @@
         echo "<hr>";
 
 
-        echo "<h4>strptime():-Parse a time/date generated with strftime():
-
-    </h4>";
+        echo "<h4>strptime():-Parse a time/date generated with strftime().</h4>";
         $format = "%d/%m/%Y %H:%M:%S";
         $strf = strftime($format);
         echo ("$strf");
@@ -363,8 +354,7 @@
         echo "<hr>";
 
 
-        echo "<h4>strtotime():-Parse English textual datetimes into Unix timestamps:
-
+        echo "<h4>strtotime():-Parse English textual datetimes into Unix timestamps.
     </h4>";
         echo (strtotime("now") . "<br>");
         echo (strtotime("3 October 2006") . "<br>");
@@ -383,14 +373,13 @@
 
         echo "<hr>";
 
-        echo "<h4>timezone_abbreviations_list():-Print dst, offset, and timezone name for the timezone:
-
+        echo "<h4>timezone_abbreviations_list():-Print dst, offset, and timezone name for the timezone.
 </h4>";
         $tzlist = DateTimeZone::listAbbreviations();
         print_r($tzlist["acst"]);
         echo "<hr>";
 
-        echo "<h4>timezone_identifiers_list():-Print all timezones in Africa:
+        echo "<h4>timezone_identifiers_list():-Print all timezones in Africa.
 
     </h4>";
         print_r(timezone_identifiers_list(1));
@@ -398,7 +387,7 @@
         echo "<hr>";
 
 
-        echo "<h4>timezone_location_get():-Return location information for the given timezone:
+        echo "<h4>timezone_location_get():-Return location information for the given timezone.
 
         </h4>";
         $tz = timezone_open("Asia/Taipei");
@@ -407,7 +396,7 @@
         echo "<hr>";
 
 
-        echo "<h4>timezone_name_from_abbr():-Return the timezone name from abbreviation:
+        echo "<h4>timezone_name_from_abbr():-Return the timezone name from abbreviation.
 
     </h4>";
         echo timezone_name_from_abbr("EST") . "<br>";
@@ -424,7 +413,7 @@
 
         echo "<hr>";
 
-        echo "<h4>timezone_offset_get():-Return the timezone offset from GMT:
+        echo "<h4>timezone_offset_get():-Return the timezone offset from GMT.
 
     </h4>";
         $tz = timezone_open("Asia/Taipei");
@@ -433,16 +422,14 @@
 
         echo "<hr>";
 
-        echo "<h4>timezone_open():-Create a new DateTimeZone object, then return the name of the timezone:
-
+        echo "<h4>timezone_open():-Create a new DateTimeZone object, then return the name of the timezone.
     </h4>";
         $tz = timezone_open("Europe/Paris");
         echo timezone_name_get($tz);
 
         echo "<hr>";
 
-        echo "<h4>timezone_transitions_get():-Return a transition for a timezone:
-
+        echo "<h4>timezone_transitions_get():-Return a transition for a timezone.
         </h4>";
         $timezone = new DateTimeZone("Europe/Paris");
         print_r(reset(timezone_transitions_get($timezone)));
