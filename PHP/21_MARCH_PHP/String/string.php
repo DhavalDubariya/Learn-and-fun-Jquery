@@ -89,7 +89,6 @@
     // echo count_chars($str, 4);
 
     echo "<h4>count_chars(\$str,mode1)return an array with the ASCII value as key and how many times it occurred as value:
-
     </h4>";
     $str = "Hello World!";
     print_r(count_chars($str, 1));
@@ -107,7 +106,6 @@
 
     echo "<hr>";
     echo "<h4>echo():-function outputs one or more strings.
-
     </h4>";
 
     echo "echo() fubction outputs one or more strings";
@@ -191,7 +189,6 @@
     echo "<hr>";
 
     echo "<h4>htmlspecialchars():- Convert the predefined characters  (less than) and (greater than) to HTML entities:
-
     </h4>";
 
     $str = "This is some <b>bold</b> text.";
@@ -217,7 +214,6 @@
     echo join("-", $arr) . "<br>";
     echo join("X", $arr);
     echo "<hr>";
-
 
     echo "<h4>ucfirst():-converts the first character of a string to uppercase. </h4>";
 
@@ -278,7 +274,6 @@
     // echo "<hr>";
 
     echo "<h4>metaphone():-A metaphone key represents how a string sounds if said by an English speaking person.
-
     </h4>";
 
 
@@ -498,8 +493,8 @@
 
     echo "<h4>strcasecmp():-function Compare two strings (case-insensitive).</h4>";
 
-    echo strcasecmp("Hello world!", "hello WORLD!"), "<br>";
-    echo strcasecmp("Hello world!", "helloWORLD!"), "<br>";
+    echo strcasecmp("abcd", "abcd"), "<br>";
+    echo strcasecmp("Hello world!", "Hello WORLD!"), "<br>";
     echo strcasecmp("Hello world!", "hello"), "<br>";
     echo "<hr>";
 
@@ -509,13 +504,168 @@
 
     echo "<hr>";
 
-    echo "<h4>strcmp():- Compare strings. if strings are same return 0.</h4>";
+    echo "<h4>strrchr():- Find the first occurrence of world inside string and return the end of the string.</h4>";
 
-    echo strcmp("Hello world!", "Hello world! ");
+    echo strrchr("Dhaval Dubariya Dhaval", "Dubariya");
+
+    echo "<hr>";
+
+
+    echo "<h4>strcmp():- Compare strings. if strings are same return 0.(case-sensitive)</h4>";
+
+    echo strcmp("Hello world!", "Hello   world!");
+
+    echo "<h4>strcspn():-Count Number of Characters Before Given Characters.</h4>";
+
+    echo strcspn("Hello world!", "o"), "<br>";
+    echo strcspn("Dhaval", "aval");
+
+    echo "<hr>";
+
+    echo "<h4>strip_tages():-Remove HTML Tages, Only allows <\b> teg.</h4>";
+
+    echo strip_tags("Hello <b><i>world! How are you</i></b>", "<b>");
+
+    echo "<hr>";
+
+    echo "<h4>strpos():-Find the position of the first occurrence of inside the string.(case-sensitive)
+    </h4>";
+
+    echo strpos("I love php", "hp");
+
+    echo "<hr>";
+
+
+    echo "<h4>stripos():-Find the position of the last occurrence of inside the string.(case-insensitive)
+    </h4>";
+
+    echo stripos("I love php", "Php");
+
+    echo "<hr>";
+
+
+    echo "<h4>strrpos():-Find the position of the last occurrence of inside the string.(case-sensitive)
+    </h4>";
+
+    echo strrpos("I love php love", "ve");
+
+    echo "<hr>";
+
+    echo "<h4>strlen():-Return Length Of String.</h4>";
+
+    echo strlen("Dhaval ............................                             ");
+
+    echo "<hr>";
+
+    echo "<h4>strnatcasecmp():-Compare two strings using a natural algorithm (case-insensitive).</h4>";
+
+    echo strnatcasecmp("2Hello world!", "10Hello WORLD!");
+    echo "<br>";
+    echo strnatcasecmp("10Hello world!", "2Hello WORLD!");
+    echo "<br>";
+    echo strnatcasecmp("Hello world!", "Hello WORLD!");
+
+    echo "<hr>";
+
+    echo "<h4>strnatcmp():-Compare two strings using a natural algorithm (case-sensitive).</h4>";
+
+    echo strnatcmp("2Hello world!", "10Hello world!");
+    echo "<br>";
+    echo strnatcmp("10Hello world!", "2Hello world!");
+
+    echo "<hr>";
+
+    echo "<h4>strncasecmp():-Compare two strings until given value (case-insensitive).</h4>";
+    echo strncasecmp("Hello aorld!", "hello aarth!", 8);
+    echo "<hr>";
+
+
+    echo "<h4>strncmp():-Compare two strings until given value (case-sensitive).</h4>";
+
+
+    echo strncmp("Hello world!", "Hello earth!", 7);
+    echo "<hr>";
+
+    echo "<h4>strpbrk():-Search a string for the characters and return the rest of the string from where it found the first occurrence of the specified characters.</h4>";
+    echo strpbrk("Dhaval Dubariya", "U");
+    echo "<br>";
+    echo strpbrk("Dhaval Dubariya", "D");
+    echo "<hr>";
+
+    echo "<h4>strrev():-Reverse the string</h4>";
+    echo strrev("Hello World!"), "<br>";
+    echo strrev("Dhaval      ");
+    echo "<hr>";
+
+    echo "<h4>strspn():-Return the number of characters found in the string  that contains the given characters.</h4>";
+    echo "Error !!!<br>";
+    echo strspn("Hello world!", "Hlleo"), "<br>";
+    echo strspn("Dhaval Dubariya", "haadvldubriy");
+    echo "<hr>";
+
+    echo "<h4>The strstr():-function searches for the first occurrence of a string inside another string.</h4>";
+    echo strstr("Hello world!", "llo");
+    echo "<hr>";
+
+    echo "<h4>strtok():-</h4>";
+
+    echo "<hr>";
+    echo "<h4>strpos():-Find the position of the first occurrence of inside the string.</h4>";
+
+    echo strpos("I love php, I love php too!", "hp") . "<br>";
+    echo strpos("Dhaval Dubariya", "ba");
+    echo "<hr>";
+
+    echo "<h4>strrpos():-Find the position of the first occurrence of inside the string.</h4>";
+    echo strrpos("I love php, I love php too!", "php") . "<br>";
+    echo strpos("Dhaval Dubariya", "ba");
+    echo "<hr>";
+
+    echo "<h4>strspn():-Return the number of characters found in the string that contains the characters.</h4>";
+    echo strspn("Hello world!", "kHlleo");
+
+    echo "<h4>subsrt_compare():-function compares two strings from a specified start position</h4>";
+
+    echo substr_compare("Dhaval Dubariya", "Dhaval Dubariya", 0) . "<br>";
+    echo substr_compare("Dhaval Dubariya", "Dhaval", 0) . "<br>";
+    echo substr_compare("Dhaval Dubariya", "Dhaval Dubariya Dhaval", 0) . "<br>";
+
+    echo "<h4>substr_replace():-Replace words</h4>";
+
+    echo substr_replace("Hello", "world", 0), "<br>";
+    echo substr_replace("Hello world", "earth", 6), "<br>";
+    echo substr_replace("Hello world", "earth", -5), "<br>";
+
+
+    echo "<hr>";
+
+    echo "<h4>vfprintf():-Write some text to a text file named.</h4>";
+
+    $number = 9;
+    $str = "Beijing";
+    $file = fopen("test.txt", "w");
+    echo vfprintf($file, "There  are %u million bicycles  in %s.", array($number, $str));
+
+    echo "<hr>";
+
+    echo "<h4>vprintf():-Output a formatted string.</h4>";
+
+    $number = 9;
+    $str = "Beijing";
+    vprintf("There are %u million bicycles in %s.", array($number, $str));
+
+    echo "<hr>";
+
+    echo "<h4>vsprintf():-Write a formatted string to a variable.</h4>";
+
+    $number = 9;
+    $str = "Beijing";
+    $txt = vsprintf("There are %u million bicycles in %s.", array($number, $str));
+    echo $txt;
+
+    echo "<hr>";
+    echo "<h4></h4>";
+    $str = "Lorem Ipsum is simply dummy text of the printing and typesett.";
+    echo wordwrap($str, 15, "<br>\n");
 
     ?>
-
-
-</body>
-
-</html>
