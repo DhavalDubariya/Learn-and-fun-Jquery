@@ -161,26 +161,24 @@ $table->numRows = 5;
 
     echo "<h4>__destruct():-A destructor is called when the object is destructed or the script is stopped or exited.</h4>";
 
-    // class Fruites
-    // {
-    //     // Properties
-    //     var $name;
-    //     var $color;
+    class Fruites
+    {
+        var $name;
+        var $color;
 
-    //     // Methods
-    //     function __construct($name, $color)
-    //     {
-    //         $this->name = $name;
-    //         $this->color = $color;
-    //     }
-    //     function __destruct()
-    //     {
-    //         echo "The fruit is {$this->name} and the color is {$this->color}.";
-    //     }
-    // }
+        function __construct($name, $color)
+        {
+            $this->name = $name;
+            $this->color = $color;
+        }
+        function __destruct()
+        {
+            echo "The fruit is {$this->name} and the color is {$this->color}.";
+        }
+    }
 
-    // $apple = new Fruites("Apple", "red");
-    // 
+    $apple = new Fruites("Apple", "red");
+    
     ?>
 
 
@@ -548,8 +546,6 @@ $table->numRows = 5;
             echo "Hello World!<br>";
         }
     }
-
-    // Call static method
     greeting::welcome();
 
     echo "Inside Function:-";
