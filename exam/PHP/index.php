@@ -67,35 +67,24 @@
     for ($i = 0; $i < $n4; $i++) {
         for ($j = -$n4 + 1; $j < $n4; $j++) {
 
-            for($k=0;$k<=$n;$k++)
-            {
-                if($i-abs($j)==$k)
-                {
+            for ($k = 0; $k < $n4; $k++) {
+                if ($i - abs($j) == $k) {
                     echo "&nbsp;";
-                    echo $i+$k+1;
-                    // echo "&nbsp;";
-                } 
+                    echo $i + $k + 1;
+                }
             }
 
-            if($i+$j<0)
-            {
+            if ($i + $j < 0) {
                 echo "&nbsp;&nbsp;&nbsp;";
             }
-            // if($j==0)
-            // {   
-            //     echo  " ".$num, " ";
-            //     $num = $num + 2;
-            // }
+
 
             // if ($j == 0) {
-            //     echo  " ".$num, " ";
+            //     echo  $num, " ";
             //     $num = $num + 2;
             // } 
             // else if ($i == abs($j)) {
             //     echo abs($j) + 1, " ";
-            // }
-            // else {
-            //     echo "&nbsp;&nbsp;&nbsp;";
             // }
             // else if($i-abs($j)==1)
             // {   
@@ -111,9 +100,13 @@
             // {   
             //     echo $i + 4, " ";
             // }
-            
 
-             
+            // else {
+            //     echo "&nbsp;&nbsp;&nbsp;";
+            // }
+
+
+
         }
         echo "<br>";
     }
