@@ -39,28 +39,7 @@
     }
 
 
-    echo "<h4>Pattern_4:-</h4>";
-    $n4 = 10;
-    $num = 1;
-    $count = 1;
-    $nbsp = "&nbsp;";
-
-    $k = 0;
-    for ($i = 0; $i < $n4; $i++) {
-        for ($j = -$n4 + 1; $j < $n4; $j++) {
-
-
-            if ($k < $n4) {
-                echo $k, "<br>";
-            }
-            $k++;
-
-            // if ($i + $j < 0) {
-            //     echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-            // }
-        }
-        echo "<br>";
-    }
+    
 
 
 
