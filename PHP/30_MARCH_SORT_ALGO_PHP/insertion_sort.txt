@@ -1,0 +1,11 @@
+Insertion sort:-
+
+(1) In Insertion sort consider index 0 as sorted list and index 1 to end as unsorted list.
+
+(2) Now store index 1 into temp value.
+
+(3) check the temp value is greater or less than with sorted list from right to left.
+
+(4) if values of sorted list are greater than temp value then sift the value one index right and 
+    continue to check the values are greater than temp if there are than sift
+    otherwise, insert temp value to the palace.  

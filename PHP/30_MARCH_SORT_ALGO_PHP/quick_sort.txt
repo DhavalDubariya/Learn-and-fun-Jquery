@@ -1,0 +1,22 @@
+Quick Sort:-
+
+
+(1) Select first element as pivot element from array.
+
+(2) Now we have to find a plase for pivot element 
+    so the all smaller element are left side of pivot and 
+    larger values are right side of pivot element in array.
+
+(3) For that create a loop which is starting from pivot which find elements which are larger than pivot.
+
+(4) create another loop which starting from end of the array and find elements which are smaller than pivot.
+
+(5) New Increment first loop until you find an element with is greater than pivot.
+
+(6) Now Decrement second loop until you find an element which is small than picot.
+
+(7) Swap the place of this element.
+
+(8) if first loop and second loop across the swap the place of second element as pivot.
+
+(9) That is the plase of pivot element
