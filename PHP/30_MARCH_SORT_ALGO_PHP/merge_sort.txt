@@ -1,7 +1,7 @@
 Merge Sort:-
 
 
-(1) Find a middle element of array and divide an array into two arrays.
+(1) Find a middle element of array and divide an array into two diffrent arrays.
 
 (2) Now Continue the first process "(1)" for array until array size is one.
 

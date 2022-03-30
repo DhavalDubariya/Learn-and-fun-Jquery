@@ -4,8 +4,8 @@ Selection Sort:-
 
 (2) In starting sorted part was empty and unsorted part contained the whole array.
 
-(3) Now select the lowest element in unsorted array.
+(3) Now select the minimum element in unsorted array.
 
-(4) Place the lowest element to the first position of sorted part of the array.
+(4) Place the lowest element to the sorted part of the array.
 
 (5) Continue the process for the unsorted part till the unsorted part is empty.

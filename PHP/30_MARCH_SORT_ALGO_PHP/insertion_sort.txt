@@ -8,4 +8,5 @@ Insertion sort:-
 
 (4) if values of sorted list are greater than temp value then sift the value one index right and 
     continue to check the values are greater than temp if there are than sift
-    otherwise, insert temp value to the palace.  
+    
+(5) insert temp value to empty palace.
