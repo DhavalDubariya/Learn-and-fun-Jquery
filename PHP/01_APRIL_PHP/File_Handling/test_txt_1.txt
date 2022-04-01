@@ -1,0 +1,10 @@
+Hello World. Dhaval Testing!<br>m is very similar in principle to the previous hexadecimal numbering system except that in Octal, 
+a binary number is divided up into groups of only 3 bits, with each group or set of bits h
+aving a distinct value of between 000 (0) and 111 ( 4+2+1 = 7 ).
+
+Octal numbers therefore have a range of just “8” digits, (0, 1, 2, 3, 4, 5, 6, 7) 
+making them a Base-8 numbering system and therefore, q is equal to “8”.
+
+Then the main characteristics of an Octal Numbering System is that th
+ere are only 8 distinct counting digits from 0 to 7 with each digit having a weight or va
+lue of just 8 starting from the least significant bit (LSB). In the earlier days of computing, octal numbers and the octal numbering system was very popular for counting inputs and outputs because as it works in counts of eight, inputs and outputs were in counts of eight, a byte at -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
