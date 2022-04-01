@@ -12,8 +12,7 @@
     <h1 style="text-align: center;">Selection Sort</h1>
 
     <?php
-
-
+    
     echo "Unsorted Array:- ";
     $array = array(50, 0, 1.2, 60, 70, 80, 55, 2);
     foreach ($array as $x) {

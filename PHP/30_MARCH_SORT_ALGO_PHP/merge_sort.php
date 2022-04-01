@@ -17,7 +17,7 @@
 <?php
 
 
-$test_array = array(50, 0, 1.2, 60, 70, 80, 55, 2);
+$test_array = array(10, 12, 15, 6, 3);
 echo "Original Array : ";
 foreach ($test_array as $x)
 {
@@ -46,30 +46,25 @@ function merge_sort($array)
 }
 function merge($left, $right)
 {
-    $one_arr = array();
+    $res = array();
     while (count($left) > 0 && count($right) > 0) {
-        if ($left[0] > $right[0]) 
-        {
-            $one_arr[] = $right[0];
+        if ($left[0] > $right[0]) {
+            $res[] = $right[0];
             $right = array_slice($right, 1);
-        } 
-        else 
-        {
-            $one_arr[] = $left[0];
+        } else {
+            $res[] = $left[0];
             $left = array_slice($left, 1);
         }
     }
-    while (count($left) > 0) 
-    {
-        $one_arr[] = $left[0];
+    while (count($left) > 0) {
+        $res[] = $left[0];
         $left = array_slice($left, 1);
     }
-    while (count($right) > 0)
-    {
-        $one_arr[] = $right[0];
+    while (count($right) > 0) {
+        $res[] = $right[0];
         $right = array_slice($right, 1);
     }
-    return $one_arr;
+    return $res;
 }
 echo "<br>Sorted Array :";
 $marge_sort = merge_sort($test_array);

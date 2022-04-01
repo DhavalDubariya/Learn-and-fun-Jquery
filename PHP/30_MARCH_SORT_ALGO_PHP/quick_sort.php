@@ -15,7 +15,7 @@
 
     function divide(&$array, $left, $right)
     {
-        $pivot = $array[($left + $right) / 2];
+        $pivot = $array[($left + $right) /   2];
 
         while ($left<=$right)
         {

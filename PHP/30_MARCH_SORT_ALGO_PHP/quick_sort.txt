@@ -1,7 +1,5 @@
 Quick Sort:-https://drive.google.com/file/d/1HUu2TwnYYrTrCDmVCzWh3Z1ZEsFjsYxd/view?usp=sharing
 
-
-
 (1) Select middle  element as pivot element from array.
 
 (2) Now we have to find a plase for pivot element 
