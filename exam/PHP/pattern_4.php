@@ -12,34 +12,33 @@
     <?php
     echo "<h4>Pattern_4:-</h4>";
 
-    $n4 = 70;
+    $n4 = 50;
     $num = 1;
     $count = 1;
+
+    echo "<table style='text-align:center' >";
+
     for ($i = 0; $i < $n4; $i++) {
+        echo "<tr>";
         for ($j = -$n4 + 1; $j < $n4; $j++) {
-
-            for ($k = 0; $k < $n4; $k++) {
-
-                if ($i - abs($j) == $k) {
-                    $number = $i + $k + 1;
-                    if (strlen($number) == 1) {
-                        echo "&nbsp;&nbsp;&nbsp;" . sprintf("%2d", $number), "&nbsp;";
-                    } else if (strlen($number) == 2) {
-                        echo "&nbsp;&nbsp;" . sprintf("%2d", $number), "&nbsp;";
-                    } else if (strlen($number) == 3) {
-                        echo sprintf("%2d", $number), "&nbsp;";
-                    }
-                }
+            echo "<td>";
+            if ($j == 0) {
+                echo (2 * $i) + 1;
+            } else if ($i == abs($j)) {
+                echo abs($j) + 1;
+            } else if ($i > abs($j)) {
+                echo (2 * $i) + 1 - abs($j);
             }
-            if ($i + $j < 0) {
-                echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-            }
+
+            echo "</td>";
         }
-        echo "<br>";
+        echo "</tr>";
     }
+    echo "</table>";
 
 
-    
+
+
 
 
 
