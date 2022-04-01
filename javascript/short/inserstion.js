@@ -17,17 +17,3 @@ let array = [3,'A','y', 5,'d', 4, 1];
       
     }
 console.log(array)
-
-
-
-let array=[5,4,3,0,8,6,5,4]
-for(i=1;i<array.length;i++){
-    current=array[i]
-    for(j=i-1;j>=0;j--){
-        if(current<array[j]){
-            array[j+1] = array[j]
-        }
-    }
-    array[j+1] = current;
-}
-console.log(array);
