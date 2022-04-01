@@ -13,7 +13,7 @@
 
 
     <?php
-    echo "<h4>readfile():-It is useful if all you want to do is open up a file and read its contents.
+    echo "<h4>readfile():  -It is useful if all you want to do is open up a file and read its contents.
         </h4>";
 
     echo readfile('test_txt_1.txt');
