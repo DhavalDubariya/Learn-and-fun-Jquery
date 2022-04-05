@@ -1,6 +1,6 @@
 
 
-Exceptions:-
+#Exceptions:-
 
 => An exception is an object that describes an error or unexpected behaviour of a PHP script.
 
