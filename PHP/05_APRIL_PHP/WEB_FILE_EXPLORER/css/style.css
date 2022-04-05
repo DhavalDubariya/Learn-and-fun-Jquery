@@ -1,0 +1,37 @@
+/* header_section */
+
+.header_section .button_padding {
+    margin-top: 15px;
+}
+
+/* left_section */
+
+.left_section {
+    padding-top: 15px;
+}
+
+.left_section ul{
+    list-style: none;
+}
+
+
+/* main_body */
+
+.main_body {
+    padding-top: 30px;
+}
+
+.main_body .main_body_element_size {
+    font-size: 75px;
+}
+
+.main_body .main_padding {
+    margin: 15px;
+}
+
+.main_body .main_padding ul {
+    list-style: none;
+    text-align: center;
+    padding-left: 0px;
+    margin: 0px;
+}
