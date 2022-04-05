@@ -10,7 +10,7 @@
 
 <body>
 
-    <h1 style="text-align: center;">EXCEPTIONS</h1>
+    <h1 style="text-align: center;">EXCEPTION</h1>
 
     <?php
     echo "<h4>throw :- statement allows a user defined function or method to throw an exception.</h4>";
