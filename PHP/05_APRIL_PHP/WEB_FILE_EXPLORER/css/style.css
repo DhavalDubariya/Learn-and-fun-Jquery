@@ -1,3 +1,8 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
 /* header_section */
 
 .header_section .button_padding {
@@ -12,6 +17,15 @@
 
 .left_section ul{
     list-style: none;
+}
+
+.left_section .file{
+    color: #dc3545;
+}
+
+
+.left_section .folder{
+    color: #ffc107;
 }
 
 
@@ -34,4 +48,13 @@
     text-align: center;
     padding-left: 0px;
     margin: 0px;
+}
+
+.main_body .main_padding .folder {
+    color: #ffc107;
+}
+
+
+.main_body .main_padding .file {
+    color: #dc3545;
 }

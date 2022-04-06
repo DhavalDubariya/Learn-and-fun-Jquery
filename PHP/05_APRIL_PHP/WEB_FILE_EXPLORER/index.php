@@ -1,6 +1,9 @@
 <?php
-$file = glob("FILE/*");
+$link = $_GET['index'];
+
+$file = glob("$link/*");
 $index = $_SERVER["PHP_SELF"];
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,18 +25,14 @@ $index = $_SERVER["PHP_SELF"];
 </head>
 
 <body>
-    <?php
-    if (isset($_POST["create_dir"])) {
-        $new = $_POST["create_dir"];
-        mkdir("FILE/$new");
-    }
-    ?>
+
     <section class="container-fluid">
         <div class="row">
 
             <div class="col-xl-12">
                 <h1 style="text-align:center;">FILE EXPLORER</h1>
                 <hr>
+
             </div>
 
             <!-- left_section -->
@@ -43,15 +42,20 @@ $index = $_SERVER["PHP_SELF"];
                 <ul>
                     <?php
 
+
                     foreach ($file as $value) {
+                        $new_value = basename($value);
                         if (is_file($value)) {
                             echo "<li>
-                            <i class='fa-solid fa-file'></i> $value
+                            <i class='fa-solid fa-file file'></i> $new_value
                             </li>";
                         } else {
+                            $directory = $value;
+                            $files1 = scandir($directory);
+                            $num_files = count($files1) - 2;
                             echo "
-                            <li><i class='fa-solid fa-folder'></i> $value
-                            </li>";
+                            <li><a href='index.php?index=$value' ><i class='fa-solid fa-folder folder'></i> $new_value
+                            </li></a>";
                         }
                     }
 
@@ -67,27 +71,75 @@ $index = $_SERVER["PHP_SELF"];
                 <!-- header_section -->
 
                 <div class="row header_section">
+
                     <div class="col-auto button_padding">
-                        <button class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-house-chimney"></i> HOME </button>
+                        <a href="index.php?index=<?php echo pathinfo($link)["dirname"]; ?>" class="btn btn-outline-warning btn-sm"><i class="fa-solid fa-circle-arrow-left"></i> BACK</a>
                     </div>
 
                     <div class="col-auto button_padding">
-                        <a href="<?php echo $_SERVER["PHP_SELF"]; ?>?create=true" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-folder-plus"></i> CREATE</a>
+                        <a href="index.php?index=/home/woc/Dhaval/traning/PHP/05_APRIL_PHP/WEB_FILE_EXPLORER" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-house-chimney"></i> HOME </a>
                     </div>
-                    
+
+                    <div class="col-auto button_padding">
+                        <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-folder-plus"></i> CREATE</button>
+                    </div>
+
+                    <!-- Model For Create Folder -->
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Create Folder</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="create_folder.php" method="post">
+                                    <div class="modal-body">
+                                        <input class="form-control form-control-sm" type="text" name="create_dir" placeholder="Enter Folder Name" aria-label=".form-control-sm example">
+                                        <input type="hidden" name="link" value="<?php echo $link ?>">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Create</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-auto button_padding">
+                        <button data-bs-toggle="modal" data-bs-target="#model_create_file" class="btn btn-outline-success btn-sm"><i class="fa-solid fa-circle-plus"></i> ADD FILE</button>
+                    </div>
+
+                    <!-- Model For Create File -->
                     <!-- create -->
-
-                    <div class="col-auto button_padding">
-                        <button class="btn btn-outline-success btn-sm"><i class="fa-solid fa-circle-plus"></i> ADD FILE</button>
+                    <div class="modal fade" id="model_create_file" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Create File</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="create_file.php" method="post">
+                                    <div class="modal-body">
+                                        <input class="form-control form-control-sm" type="text" name="create_file" placeholder="Enter File Name" aria-label=".form-control-sm example">
+                                        <input type="hidden" name="link" value="<?php echo $link ?>">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Create</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col-auto button_padding">
                         <button class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash-can"></i> DELETE</button>
                     </div>
 
-                    <div class="col-auto button_padding">
-                        <button class="btn btn-outline-warning btn-sm"><i class="fa-solid fa-circle-arrow-left"></i> BACK</button>
-                    </div>
+
 
 
                     <div class="col-auto button_padding">
@@ -109,27 +161,6 @@ $index = $_SERVER["PHP_SELF"];
                         <button class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-pen-to-square"></i> RENAME</button>
                     </div>
 
-
-                    <?php
-
-                    if ($_GET["create"] == true) {
-
-                    echo '
-                        <form method="post" action="index.php" >
-                        <div class="row" style="padding-top:15px;" >
-                            <div class="col-8">
-                                <input class="form-control form-control-sm" name="create_dir" type="text" placeholder="Enter Folder Name">
-                            </div>
-                            <div class="col-4">
-                                <input type="submit" class="btn btn-outline-secondary btn-sm">
-                            </div>
-                        </div>
-                        </form>
-                    ';
-                    }
-                    ?>
-
-                    
                 </div>
 
                 <!-- main_body -->
@@ -139,22 +170,27 @@ $index = $_SERVER["PHP_SELF"];
                     <?php
 
                     foreach ($file as $value) {
-
+                        $new_value = basename($value);
                         if (is_file($value)) {
                             echo "<div class='col-2 main_padding'>
+                            <a href='index.php?index=$value'>
                             <ul>
-                            <li><i class='fa-solid fa-file main_body_element_size'></i></li>
-                            <li>$value</li>
-                        </ul>   
-                        </div>
+                            <li><i class='fa-solid fa-file main_body_element_size file'></i></li>
+                            <li>$new_value</li>
+                            </ul>   
+                            </a>
+                            </div>
                             ";
                         } else {
-                            echo "<div class='col-2 main_padding'>
-                            <ul>
-                            <li><i class='fa-solid fa-folder main_body_element_size'></i></li>
-                            <li>$value</li>
-                        </ul>   
-                        </div>
+                            echo "
+                                <div class='col-2 main_padding' >
+                                <a href='index.php?index=$value'>
+                                    <ul>
+                                        <li><i class='fa-solid fa-folder main_body_element_size folder'></i></li>
+                                        <li>$new_value</li>
+                                    </ul>   
+                                </a>
+                                </div>
                             ";
                         }
                     }
@@ -162,6 +198,7 @@ $index = $_SERVER["PHP_SELF"];
 
 
                     ?>
+
 
                 </div>
 
