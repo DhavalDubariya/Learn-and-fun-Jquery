@@ -20,7 +20,7 @@ function folder($folder_name)
 }
 
 $new_folder = "$link/$check_folder_exists";
-
+mkdir($new_folder);
 foreach (glob("$link/*") as $key => $value) {
     // echo $key . ":-" . $value, "<br>";
     if ($value == $new_folder) {
@@ -30,5 +30,6 @@ foreach (glob("$link/*") as $key => $value) {
         mkdir($value);
     }
 }
+
 
 header("Location:index.php?index=$link");

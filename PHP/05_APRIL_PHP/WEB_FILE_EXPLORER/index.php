@@ -4,15 +4,13 @@ $link = $_GET['index'];
 $file = glob("$link/*");
 $index = $_SERVER["PHP_SELF"];
 session_start();
-
+$root = $_SERVER["DOCUMENT_ROOT"];
 if (isset($_GET['coppy_file'])) {
 
     echo $_GET['coppy_file'];
     $_SESSION['coppy_file_session'] = $_GET['coppy_file'];
     $_SESSION['link'] = $_GET['index'];
     header("Location:copy_file.php");
-} else {
-    echo "coppy not sat";
 }
 if ($_GET['paste'] == true) {
     $_SESSION['paste'] = $_GET['paste'];
@@ -25,6 +23,12 @@ if (isset($_GET['delete_file'])) {
     $_SESSION['link'] = $_GET['index'];
     $_SESSION['all_data'] = $file;
     header("Location:delete_file.php");
+}
+if (isset($_GET['cut_file'])) {
+    echo $_GET['coppy_file'];
+    $_SESSION['coppy_file_session'] = $_GET['coppy_file'];
+    $_SESSION['link'] = $_GET['index'];
+    header("Location:copy_file.php");
 }
 
 ?>
@@ -100,7 +104,7 @@ if (isset($_GET['delete_file'])) {
                     </div>
 
                     <div class="col-auto button_padding">
-                        <a href="index.php?index=/home/woc/Dhaval/traning/PHP/05_APRIL_PHP/WEB_FILE_EXPLORER/FILE/" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-house-chimney"></i> HOME </a>
+                        <a href="index.php?index=<?php echo $root; ?>" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-house-chimney"></i> HOME </a>
                     </div>
 
                     <div class="col-auto button_padding">
@@ -177,7 +181,7 @@ if (isset($_GET['delete_file'])) {
 
 
                     <div class="col-auto button_padding">
-                        <button class="btn btn-outline-info btn-sm"><i class="fa-solid fa-scissors"></i> CUT</button>
+                        <a onclick="file_cut('true')" class="btn btn-outline-info btn-sm"><i class="fa-solid fa-scissors"></i> CUT</a>
                     </div>
 
                     <div class="col-auto button_padding">
@@ -197,29 +201,24 @@ if (isset($_GET['delete_file'])) {
 
                 <!-- main_body -->
                 <div class="row main_body">
-
-
                     <?php
 
                     foreach ($file as $value) {
                         $new_value = basename($value);
                         if (is_file($value)) {
                     ?>
-                            <div class='col-2 main_padding'>
+                            <div class='col-2 main_padding' id="p2">
                                 <a onclick="file_click('<?php echo $value; ?>')" ondblclick="file_double_click('<?php echo $value; ?>')">
                                     <ul>
                                         <li><i class='fa-solid fa-file main_body_element_size file'></i></li>
                                         <li><?php echo $new_value; ?></li>
-                                        <li id="demo"></li>
                                     </ul>
                                 </a>
                             </div>
-
-
                         <?php
                         } else {
                         ?>
-                            <div class='col-2 main_padding'>
+                            <div class='col-2 main_padding' id="p2" >
                                 <a onclick="file_click('<?php echo $value; ?>')" ondblclick="myfunction_folder('<?php echo $value; ?>')">
                                     <ul>
                                         <li><i class='fa-solid fa-folder main_body_element_size folder'></i></li>
@@ -257,7 +256,9 @@ if (isset($_GET['delete_file'])) {
         function file_click(click_operators) {
             // window.location.href = "index.php?index="+click_operators;
             operators = "index.php?index=" + click_operators;
-            document.getElementById("demo").innerHTML = operators;
+            document.getElementById("p2").style.color = "blue";
+
+            // document.getElementById("demo").innerHTML = operators;
             return operators;
         }
 
@@ -276,6 +277,10 @@ if (isset($_GET['delete_file'])) {
 
 
 
+        }
+
+        function file_cut(cut_file) {
+            window.location.href = operators + "&cut_file" + cut_file;
         }
     </script>
 

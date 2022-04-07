@@ -25,9 +25,9 @@ echo "Root : - ".$_SERVER["DOCUMENT_ROOT"] . "<br><br>";
 
 copy("index.php","css/index.php");
 
-if(!copy($from,$to))
+if(!copy($_SERVER["DOCUMENT_ROOT"].'/FILE/Dhaval/Hello12/01.php',$to))
 {
-    echo "Error  !!! faild to copy from : - $from<br> to : - $to";
+    echo "Error  !!! faild to copy<br><br> from : - $from<br> to : - $to";
 }
 
 

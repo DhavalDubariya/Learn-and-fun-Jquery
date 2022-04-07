@@ -5,15 +5,13 @@ $from = $_SESSION['link'];
 
 echo $from, "<br>";
 
-$fp = fopen('data.txt', 'a');
+$fp = fopen('data_cut.txt', 'a');
 fwrite($fp, $from . "\n");
 fclose($fp);
 
 $filePath = "data.txt";
 $lines = count(file($filePath));
 echo $lines;
-
-
 
 // $empty = fopen('data.txt','w');
 // fwrite($empty,"");
@@ -24,4 +22,4 @@ echo $lines;
 // echo $to;
 // echo copy("$from", "$to");
 
-// header("Location:index.php?index=$from");
+header("Location:index.php?index=$from");
