@@ -161,7 +161,5 @@
 
 <?php
 
-// Set the current working directory
-
-
+echo copy("test.php", "test_1.php");
 ?>

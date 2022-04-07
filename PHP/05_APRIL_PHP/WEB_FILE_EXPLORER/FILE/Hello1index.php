@@ -14,17 +14,11 @@ if (isset($_GET['coppy_file'])) {
 } else {
     echo "coppy not sat";
 }
-if ($_GET['paste'] == true) {
+if ($_GET['paste'] == true)
+{
     $_SESSION['paste'] = $_GET['paste'];
     $_SESSION['link'] = $_GET['index'];
     header("Location:paste_file.php");
-}
-
-if (isset($_GET['delete_file'])) {
-    $_SESSION['delete_file_session'] = $_GET['delete_file'];
-    $_SESSION['link'] = $_GET['index'];
-    $_SESSION['all_data'] = $file;
-    header("Location:delete_file.php");
 }
 
 ?>
@@ -66,21 +60,21 @@ if (isset($_GET['delete_file'])) {
                     <?php
 
 
-                    foreach ($file as $value) {
-                        $new_value = basename($value);
-                        if (is_file($value)) {
-                            echo "<li>
+                foreach ($file as $value) {
+                    $new_value = basename($value);
+                    if (is_file($value)) {
+                        echo "<li>
                             <i class='fa-solid fa-file file'></i> $new_value
                             </li>";
-                        } else {
-                            $directory = $value;
-                            $files1 = scandir($directory);
-                            $num_files = count($files1) - 2;
-                            echo "
+                    } else {
+                        $directory = $value;
+                        $files1 = scandir($directory);
+                        $num_files = count($files1) - 2;
+                        echo "
                             <li><a href='index.php?index=$value' ><i class='fa-solid fa-folder folder'></i> $new_value
                             </li></a>";
-                        }
                     }
+                }
 
                     ?>
                 </ul>
@@ -100,7 +94,7 @@ if (isset($_GET['delete_file'])) {
                     </div>
 
                     <div class="col-auto button_padding">
-                        <a href="index.php?index=/home/woc/Dhaval/traning/PHP/05_APRIL_PHP/WEB_FILE_EXPLORER/FILE/" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-house-chimney"></i> HOME </a>
+                        <a href="index.php?index=/home/woc/Dhaval/traning/PHP/05_APRIL_PHP/WEB_FILE_EXPLORER" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-house-chimney"></i> HOME </a>
                     </div>
 
                     <div class="col-auto button_padding">
@@ -170,7 +164,7 @@ if (isset($_GET['delete_file'])) {
                     </div>
 
                     <div class="col-auto button_padding">
-                        <a onclick="delete_file('true')" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash-can"></i> DELETE</a>
+                        <button class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash-can"></i> DELETE</button>
                     </div>
 
 
@@ -214,13 +208,29 @@ if (isset($_GET['delete_file'])) {
                                     </ul>
                                 </a>
                             </div>
+                            <script>
+                                // function file_double_click(path_value_file) {
+                                //     document.getElementById("demo").innerHTML = path_value_file;
+                                // }
+                                var operators;
 
+                                function file_click(click_operators) {
+                                    // window.location.href = "index.php?index="+click_operators;
+                                    operators = "index.php?index=" + click_operators + "&coppy_file=";
+                                    document.getElementById("demo").innerHTML = operators;
+                                    return operators;
+                                }
+
+                                function file_coppy(dhaval) {
+                                    window.location.href = operators + dhaval;
+                                }
+                            </script>
 
                         <?php
                         } else {
                         ?>
                             <div class='col-2 main_padding'>
-                                <a onclick="file_click('<?php echo $value; ?>')" ondblclick="myfunction_folder('<?php echo $value; ?>')">
+                                <a ondblclick="myfunction_folder('<?php echo $value; ?>')">
                                     <ul>
                                         <li><i class='fa-solid fa-folder main_body_element_size folder'></i></li>
                                         <li><?php echo $new_value; ?></li>
@@ -247,37 +257,6 @@ if (isset($_GET['delete_file'])) {
         </div>
         </div>
     </section>
-
-    <script>
-        // function file_double_click(path_value_file) {
-        //     document.getElementById("demo").innerHTML = path_value_file;
-        // }
-        var operators;
-
-        function file_click(click_operators) {
-            // window.location.href = "index.php?index="+click_operators;
-            operators = "index.php?index=" + click_operators;
-            document.getElementById("demo").innerHTML = operators;
-            return operators;
-        }
-
-        function file_coppy(dhaval) {
-            window.location.href = operators + "&coppy_file=" + dhaval;
-        }
-
-        function delete_file(delete_file_folder) {
-
-            var answer = confirm("Are you sure you want to delete")
-            if (answer) {
-                window.location.href = operators + "&delete_file=" + delete_file_folder;
-            } else {
-                alert("Thanks for sticking around!")
-            }
-
-
-
-        }
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
