@@ -14,7 +14,6 @@ $lines = count(file($filePath));
 echo $lines;
 
 
-
 // $empty = fopen('data.txt','w');
 // fwrite($empty,"");
 // fclose($empty);

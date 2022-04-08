@@ -3,6 +3,8 @@ $link = $_GET['index'];
 
 $file = glob("$link/*");
 $index = $_SERVER["PHP_SELF"];
+$back = pathinfo($link)["dirname"];
+
 session_start();
 $root = $_SERVER["DOCUMENT_ROOT"];
 if (isset($_GET['coppy_file'])) {
@@ -73,16 +75,15 @@ if (isset($_GET['cut_file'])) {
                     foreach ($file as $value) {
                         $new_value = basename($value);
                         if (is_file($value)) {
-                            echo "<li>
+                            echo "<ul>
                             <i class='fa-solid fa-file file'></i> $new_value
-                            </li>";
+                            </ul>";
                         } else {
-                            $directory = $value;
-                            $files1 = scandir($directory);
-                            $num_files = count($files1) - 2;
+                           
                             echo "
-                            <li><a href='index.php?index=$value' ><i class='fa-solid fa-folder folder'></i> $new_value
-                            </li></a>";
+                            <ul>
+                            <a href='index.php?index=$value' ><i class='fa-solid fa-folder folder'></i> $new_value
+                            </ul></a>";
                         }
                     }
 
@@ -100,11 +101,11 @@ if (isset($_GET['cut_file'])) {
                 <div class="row header_section">
 
                     <div class="col-auto button_padding">
-                        <a href="index.php?index=<?php echo pathinfo($link)["dirname"]; ?>" class="btn btn-outline-warning btn-sm"><i class="fa-solid fa-circle-arrow-left"></i> BACK</a>
+                        <a  href="index.php?index=<?php echo $back; ?>" class="btn btn-outline-warning btn-sm"><i class="fa-solid fa-circle-arrow-left"></i> BACK</a>
                     </div>
 
                     <div class="col-auto button_padding">
-                        <a href="index.php?index=<?php echo $root; ?>" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-house-chimney"></i> HOME </a>
+                        <a href="index.php?index=<?php echo $root; ?>/FILE" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-house-chimney"></i> HOME </a>
                     </div>
 
                     <div class="col-auto button_padding">
@@ -218,7 +219,7 @@ if (isset($_GET['cut_file'])) {
                         <?php
                         } else {
                         ?>
-                            <div class='col-2 main_padding' id="p2" >
+                            <div class='col-2 main_padding' id="p2">
                                 <a onclick="file_click('<?php echo $value; ?>')" ondblclick="myfunction_folder('<?php echo $value; ?>')">
                                     <ul>
                                         <li><i class='fa-solid fa-folder main_body_element_size folder'></i></li>
@@ -256,9 +257,9 @@ if (isset($_GET['cut_file'])) {
         function file_click(click_operators) {
             // window.location.href = "index.php?index="+click_operators;
             operators = "index.php?index=" + click_operators;
-            document.getElementById("p2").style.color = "blue";
+            // document.getElementById("p2").style.color = "blue";
 
-            // document.getElementById("demo").innerHTML = operators;
+            document.getElementById("demo").innerHTML = operators;
             return operators;
         }
 
@@ -274,16 +275,26 @@ if (isset($_GET['cut_file'])) {
             } else {
                 alert("Thanks for sticking around!")
             }
-
-
-
         }
 
         function file_cut(cut_file) {
-            window.location.href = operators + "&cut_file" + cut_file;
+            window.location.href = operators + "&cut_file=" + cut_file;
         }
-    </script>
 
+
+        ///
+        
+    </script>
+    <?php
+    if(isset($_GET['Error_empty']))
+    {
+        echo'<script>alert("Enter File/Folder Name")</script>';
+    }
+    if(isset($_GET['Error_valid']))
+    {
+        echo'<script>alert("Enter Valid Name")</script>';
+    }
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>

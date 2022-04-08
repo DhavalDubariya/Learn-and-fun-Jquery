@@ -4,7 +4,7 @@ $link = $_GET['index'];
 $file = glob("$link/*");
 $index = $_SERVER["PHP_SELF"];
 session_start();
-
+$root = $_SERVER["DOCUMENT_ROOT"];
 if (isset($_GET['coppy_file'])) {
 
     echo $_GET['coppy_file'];
@@ -104,7 +104,7 @@ if (isset($_GET['cut_file'])) {
                     </div>
 
                     <div class="col-auto button_padding">
-                        <a href="index.php?index=/home/woc/Dhaval/traning/PHP/05_APRIL_PHP/WEB_FILE_EXPLORER/FILE/" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-house-chimney"></i> HOME </a>
+                        <a href="index.php?index=<?php echo $root; ?>/FILE" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-house-chimney"></i> HOME </a>
                     </div>
 
                     <div class="col-auto button_padding">
@@ -218,7 +218,7 @@ if (isset($_GET['cut_file'])) {
                         <?php
                         } else {
                         ?>
-                            <div class='col-2 main_padding' id="p2" >
+                            <div class='col-2 main_padding' id="p2">
                                 <a onclick="file_click('<?php echo $value; ?>')" ondblclick="myfunction_folder('<?php echo $value; ?>')">
                                     <ul>
                                         <li><i class='fa-solid fa-folder main_body_element_size folder'></i></li>
@@ -256,9 +256,9 @@ if (isset($_GET['cut_file'])) {
         function file_click(click_operators) {
             // window.location.href = "index.php?index="+click_operators;
             operators = "index.php?index=" + click_operators;
-            document.getElementById("p2").style.color = "blue";
+            // document.getElementById("p2").style.color = "blue";
 
-            // document.getElementById("demo").innerHTML = operators;
+            document.getElementById("demo").innerHTML = operators;
             return operators;
         }
 
@@ -274,16 +274,24 @@ if (isset($_GET['cut_file'])) {
             } else {
                 alert("Thanks for sticking around!")
             }
-
-
-
         }
 
         function file_cut(cut_file) {
-            window.location.href = operators + "&cut_file" + cut_file;
+            window.location.href = operators + "&cut_file=" + cut_file;
         }
+        ///
+        
     </script>
-
+    <?php
+    if(isset($_GET['Error_empty']))
+    {
+        echo'<script>alert("Enter File/Folder Name")</script>';
+    }
+    if(isset($_GET['Error_valid']))
+    {
+        echo'<script>alert("Enter Valid Name")</script>';
+    }
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
