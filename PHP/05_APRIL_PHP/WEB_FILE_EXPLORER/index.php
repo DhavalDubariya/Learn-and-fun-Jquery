@@ -49,7 +49,64 @@ if (isset($_GET['cut_file'])) {
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
     <title>WEB FILE EXPLORER</title>
+
+    <!-- <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#container').html('<ul class="filetree start"><li class="wait">' + 'Generating Tree...' + '<li></ul>');
+
+            getfilelist($('#container'), 'FILE');
+
+            function getfilelist(cont, root) {
+
+                $(cont).addClass('wait');
+
+                $.post('Foldertree.php', {
+                    dir: root
+                }, function(data) {
+
+                    $(cont).find('.start').html('');
+                    $(cont).removeClass('wait').append(data);
+                    if ('FILE' == root)
+                        $(cont).find('UL:hidden').show();
+                    else
+                        $(cont).find('UL:hidden').slideDown({
+                            duration: 500,
+                            easing: null
+                        });
+
+                });
+            }
+
+            $('#container').on('click', 'LI A', function() {
+                var entry = $(this).parent();
+
+                if (entry.hasClass('folder')) {
+                    if (entry.hasClass('collapsed')) {
+
+                        entry.find('UL').remove();
+                        getfilelist(entry, escape($(this).attr('rel')));
+                        entry.removeClass('collapsed').addClass('expanded');
+                    } else {
+
+                        entry.find('UL').slideUp({
+                            duration: 500,
+                            easing: null
+                        });
+                        entry.removeClass('expanded').addClass('collapsed');
+                    }
+                } else {
+                    $('#selected_file').text("File:  " + $(this).attr('rel'));
+                }
+                return false;
+            });
+
+        });
+    </script> -->
+
 
 </head>
 
@@ -79,7 +136,7 @@ if (isset($_GET['cut_file'])) {
                             <i class='fa-solid fa-file file'></i> $new_value
                             </ul>";
                         } else {
-                           
+
                             echo "
                             <ul>
                             <a href='index.php?index=$value' ><i class='fa-solid fa-folder folder'></i> $new_value
@@ -89,6 +146,9 @@ if (isset($_GET['cut_file'])) {
 
                     ?>
                 </ul>
+<!-- 
+                <div id="container"> </div>
+                <div id="selected_file"></div> -->
 
             </div>
 
@@ -101,7 +161,7 @@ if (isset($_GET['cut_file'])) {
                 <div class="row header_section">
 
                     <div class="col-auto button_padding">
-                        <a  href="index.php?index=<?php echo $back; ?>" class="btn btn-outline-warning btn-sm"><i class="fa-solid fa-circle-arrow-left"></i> BACK</a>
+                        <a href="index.php?index=<?php echo $back; ?>" class="btn btn-outline-warning btn-sm"><i class="fa-solid fa-circle-arrow-left"></i> BACK</a>
                     </div>
 
                     <div class="col-auto button_padding">
@@ -248,53 +308,17 @@ if (isset($_GET['cut_file'])) {
         </div>
     </section>
 
-    <script>
-        // function file_double_click(path_value_file) {
-        //     document.getElementById("demo").innerHTML = path_value_file;
-        // }
-        var operators;
+    <p id="count_data"></p>
 
-        function file_click(click_operators) {
-            // window.location.href = "index.php?index="+click_operators;
-            operators = "index.php?index=" + click_operators;
-            // document.getElementById("p2").style.color = "blue";
-
-            document.getElementById("demo").innerHTML = operators;
-            return operators;
-        }
-
-        function file_coppy(dhaval) {
-            window.location.href = operators + "&coppy_file=" + dhaval;
-        }
-
-        function delete_file(delete_file_folder) {
-
-            var answer = confirm("Are you sure you want to delete")
-            if (answer) {
-                window.location.href = operators + "&delete_file=" + delete_file_folder;
-            } else {
-                alert("Thanks for sticking around!")
-            }
-        }
-
-        function file_cut(cut_file) {
-            window.location.href = operators + "&cut_file=" + cut_file;
-        }
-
-
-        ///
-        
-    </script>
     <?php
-    if(isset($_GET['Error_empty']))
-    {
-        echo'<script>alert("Enter File/Folder Name")</script>';
+    if (isset($_GET['Error_empty'])) {
+        echo '<script>alert("Enter File/Folder Name")</script>';
     }
-    if(isset($_GET['Error_valid']))
-    {
-        echo'<script>alert("Enter Valid Name")</script>';
+    if (isset($_GET['Error_valid'])) {
+        echo '<script>alert("Enter Valid Name")</script>';
     }
     ?>
+    <script src="./js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
