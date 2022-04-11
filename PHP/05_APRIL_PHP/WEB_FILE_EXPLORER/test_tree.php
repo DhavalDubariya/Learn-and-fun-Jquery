@@ -74,7 +74,8 @@ function tree_list($tree, $nested)
     foreach ($tree as $key => $value) {
         $new_value = basename($value);
 
-        echo ($nested == true) ? "<ul class='nested' >" : "<ul id='myUL' >";
+        // echo ($nested == true) ? "<ul class='nested' >" : "<ul id='myUL' >";
+        echo "<ul>";
         if (is_file($value)) {
 ?>
             <li><?php echo  $key . " : - " .  $new_value; ?>
@@ -140,7 +141,7 @@ function tree_list($tree, $nested)
     }
 </script> -->
 
-<script>
+<!-- <script>
     var toggler = document.getElementsByClassName("caret");
     var i;
 
@@ -150,4 +151,4 @@ function tree_list($tree, $nested)
             this.classList.toggle("caret-down");
         });
     }
-</script>
+</script> -->

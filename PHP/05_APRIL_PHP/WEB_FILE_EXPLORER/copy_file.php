@@ -13,14 +13,6 @@ $filePath = "data.txt";
 $lines = count(file($filePath));
 echo $lines;
 
+$dirname = dirname($from);
 
-// $empty = fopen('data.txt','w');
-// fwrite($empty,"");
-// fclose($empty);
-
-// echo basename($from);
-// $to = "/home/woc/Dhaval/traning/PHP/05_APRIL_PHP/WEB_FILE_EXPLORER/FILE/Hello12/".basename($from);
-// echo $to;
-// echo copy("$from", "$to");
-
-// header("Location:index.php?index=$from");
+header("Location:index.php?index=$dirname");

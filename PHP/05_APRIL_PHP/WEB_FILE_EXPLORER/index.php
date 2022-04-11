@@ -30,7 +30,7 @@ if (isset($_GET['cut_file'])) {
     echo $_GET['coppy_file'];
     $_SESSION['coppy_file_session'] = $_GET['coppy_file'];
     $_SESSION['link'] = $_GET['index'];
-    header("Location:copy_file.php");
+    header("Location:cut_file.php");
 }
 
 ?>

@@ -13,22 +13,32 @@ $from = fgets($myfile);
 
 fclose($myfile);
 
-$to = $_SESSION['link'] ."/". basename($from);
+$trim = trim($from);
+
+$to = $_SESSION['link'] . "/" . basename($from);
 
 echo "from  : - " . $from . "<br><br>";
 
 echo "basename : - " . basename($from) . "<br><br>";
 
-echo "to : - ".$to . "<br><br>";
+echo "to : - " . $to . "<br><br>";
 
-echo "Root : - ".$_SERVER["DOCUMENT_ROOT"] . "<br><br>";
+echo "Root : - " . $_SERVER["DOCUMENT_ROOT"] . "<br><br>";
 
-copy("index.php","css/index.php");
+$substr = (string)substr($from, 59);
 
-if(!copy($_SERVER["DOCUMENT_ROOT"].'/FILE/Dhaval/Hello12/01.php',$to))
-{
+$copy = (string)$_SERVER["DOCUMENT_ROOT"] . $substr . "<br>";
+// copy("index.php","css/index.php");
+
+if (!copy($trim, $to)) {
     echo "Error  !!! faild to copy<br><br> from : - $from<br> to : - $to";
 }
+
+header("Location:index.php?index=$link");
+
+$myfile = fopen("data.txt", "w") or die("Unable to open file!");
+fread($myfile, filesize("data.txt"));
+fclose($myfile);
 
 
 
@@ -44,5 +54,3 @@ if(!copy($_SERVER["DOCUMENT_ROOT"].'/FILE/Dhaval/Hello12/01.php',$to))
 // if (!copy($_SERVER["DOCUMENT_ROOT"].'/test.php', $to)) {
 //     echo "failed to copy $from...\n";
 // }
-
-// header("Location:index.php?index=$link");

@@ -30,5 +30,5 @@ function file_cut(cut_file) {
 }
 
 function tree_list(hello) {
-    window.location.href = operators + "&test=" + hello;
+  window.location.href = operators + "&test=" + hello;
 }

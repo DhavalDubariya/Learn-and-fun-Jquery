@@ -28,11 +28,11 @@
     echo "<br><br>File Size:- " . filesize("test_txt_1.txt");
     echo "<hr>";
 
-    echo "<h4>fwrite():-Writes to an open file (binary-safe).</h4>";
-    $myfile = fopen("test_txt_1.txt", "a") or die("Unable to open file!");
-    fwrite($myfile, "-");
-    fclose($file);
-    echo "<hr>";
+    // echo "<h4>fwrite():-Writes to an open file (binary-safe).</h4>";
+    // $myfile = fopen("test_txt_1.txt", "a") or die("Unable to open file!");
+    // fwrite($myfile, "-");
+    // fclose($file);
+    // echo "<hr>";
 
     echo "<h4>fgets():- It is used to read a single line from a file.</h4>";
 
@@ -77,7 +77,7 @@
     echo "<hr>";
 
     echo "<h4>Copy():-Copy file</h4>";
-    echo copy("test_txt_1.txt", "test.txt");
+    echo copy("test_txt_1.txt", "test_folder/dhaval_10_1.txt");
 
     echo "<hr>";
 
