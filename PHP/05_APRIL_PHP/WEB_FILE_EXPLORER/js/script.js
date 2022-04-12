@@ -12,6 +12,11 @@ function file_click(click_operators) {
   return operators;
 }
 
+function file_click_sidebar(sidebar_link)
+{
+  window.location.href = "index.php?index=" + sidebar_link;
+}
+
 function file_coppy(dhaval) {
   window.location.href = operators + "&coppy_file=" + dhaval;
 }
@@ -32,3 +37,23 @@ function file_cut(cut_file) {
 function tree_list(hello) {
   window.location.href = operators + "&test=" + hello;
 }
+
+
+// Tree
+
+$(document).ready(function() {
+  $(".toggle").click(function() {
+    $(".myUL").toggle();
+  });
+});
+
+//One Click Select :-
+
+$(document).ready(function() {
+  $(document).ready(function() {
+      $(".back_color").click(function() {
+          $(".back_color").filter(this).css({"background-color":"#98bf21"});
+          $(".back_color").not(this).css("background-color", "");
+      })
+  });
+});

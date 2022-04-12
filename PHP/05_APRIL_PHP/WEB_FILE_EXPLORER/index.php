@@ -26,11 +26,13 @@ if (isset($_GET['delete_file'])) {
     $_SESSION['all_data'] = $file;
     header("Location:delete_file.php");
 }
-if (isset($_GET['cut_file'])) {
-    echo $_GET['coppy_file'];
-    $_SESSION['coppy_file_session'] = $_GET['coppy_file'];
-    $_SESSION['link'] = $_GET['index'];
-    header("Location:cut_file.php");
+if (strlen($link) < 65) {
+
+    echo '<script>var answer = confirm("This Is Main Directory");
+    if (answer) {
+      window.location.href = "index.php?index=/home/woc/Dhaval/training/PHP/05_APRIL_PHP/WEB_FILE_EXPLORER/FILE";
+    } </script>';
+    // header("Location:index.php?index=/home/woc/Dhaval/training/PHP/05_APRIL_PHP/WEB_FILE_EXPLORER/FILE");
 }
 
 ?>
@@ -49,63 +51,16 @@ if (isset($_GET['cut_file'])) {
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <title>WEB FILE EXPLORER</title>
 
-    <!-- <script type="text/javascript">
-        $(document).ready(function() {
+    <style>
+        .myUL {
+            display: none;
+        }
+    </style>
 
-            $('#container').html('<ul class="filetree start"><li class="wait">' + 'Generating Tree...' + '<li></ul>');
-
-            getfilelist($('#container'), 'FILE');
-
-            function getfilelist(cont, root) {
-
-                $(cont).addClass('wait');
-
-                $.post('Foldertree.php', {
-                    dir: root
-                }, function(data) {
-
-                    $(cont).find('.start').html('');
-                    $(cont).removeClass('wait').append(data);
-                    if ('FILE' == root)
-                        $(cont).find('UL:hidden').show();
-                    else
-                        $(cont).find('UL:hidden').slideDown({
-                            duration: 500,
-                            easing: null
-                        });
-
-                });
-            }
-
-            $('#container').on('click', 'LI A', function() {
-                var entry = $(this).parent();
-
-                if (entry.hasClass('folder')) {
-                    if (entry.hasClass('collapsed')) {
-
-                        entry.find('UL').remove();
-                        getfilelist(entry, escape($(this).attr('rel')));
-                        entry.removeClass('collapsed').addClass('expanded');
-                    } else {
-
-                        entry.find('UL').slideUp({
-                            duration: 500,
-                            easing: null
-                        });
-                        entry.removeClass('expanded').addClass('collapsed');
-                    }
-                } else {
-                    $('#selected_file').text("File:  " + $(this).attr('rel'));
-                }
-                return false;
-            });
-
-        });
-    </script> -->
 
 
 </head>
@@ -124,32 +79,58 @@ if (isset($_GET['cut_file'])) {
             <!-- left_section -->
 
             <div class="col-xl-3 left_section" style="border: solid 1px;border-radius:15px">
-                <h4 class="text-center">SIDE</h4>
-                <ul>
-                    <?php
+                <h4 class="text-center">Directories</h4>
+                <?php
 
+                session_start();
 
-                    foreach ($file as $value) {
-                        $new_value = basename($value);
-                        if (is_file($value)) {
-                            echo "<ul>
-                            <i class='fa-solid fa-file file'></i> $new_value
-                            </ul>";
+                $path = "/home/woc/Dhaval/training/PHP/05_APRIL_PHP/WEB_FILE_EXPLORER/FILE";
+
+                $glob = glob("$path/*");
+
+                $nested = false;
+
+                tree_list($glob, $nested);
+
+                function tree_list($tree, $nested)
+                {
+                    if ($nested == true) {
+                ?>
+                        <ul class="myUL">
+                            <?php
                         } else {
-
-                            echo "
-                            <ul>
-                            <a href='index.php?index=$value' ><i class='fa-solid fa-folder folder'></i> $new_value
-                            </ul></a>";
+                            echo "<ul id='myUP'>";
                         }
+                        foreach ($tree as $key => $value) {
+                            $new_value = basename($value);
+
+
+                            if (is_file($value)) {
+                            ?>
+                                <li><i class='fa-solid fa-file file'></i> <?php echo $new_value; ?> </li>
+                                <?php
+                            } else {
+                                $count = count(glob("$value/*"));
+                                if ($count > 0) {
+                                ?>
+
+                                    <li class="toggle" style="color:red"><i class='fa-solid fa-folder folder'></i> <?php echo $new_value; ?></li>
+
+                                <?php
+                                } else { ?>
+                                    <li><i class='fa-solid fa-folder folder'></i> <?php echo $new_value; ?> </li>
+                    <?php
+                                }
+                            }
+                            $list = glob("$value/*");
+                            if (empty(glob("$value/*")) == 0) {
+                                $nested = true;
+                                tree_list($list, $nested);
+                            }
+                        }
+                        echo "</ul>";
                     }
-
                     ?>
-                </ul>
-<!-- 
-                <div id="container"> </div>
-                <div id="selected_file"></div> -->
-
             </div>
 
             <!-- right_section -->
@@ -241,9 +222,9 @@ if (isset($_GET['cut_file'])) {
 
 
 
-                    <div class="col-auto button_padding">
+                    <!-- <div class="col-auto button_padding">
                         <a onclick="file_cut('true')" class="btn btn-outline-info btn-sm"><i class="fa-solid fa-scissors"></i> CUT</a>
-                    </div>
+                    </div> -->
 
                     <div class="col-auto button_padding">
                         <a onclick="file_coppy('true')" class="btn btn-outline-dark btn-sm"><i class="fa-solid fa-copy"></i> COPY</a>
@@ -254,9 +235,9 @@ if (isset($_GET['cut_file'])) {
                     </div>
 
 
-                    <div class="col-auto button_padding">
+                    <!-- <div class="col-auto button_padding">
                         <button class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-pen-to-square"></i> RENAME</button>
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -268,8 +249,8 @@ if (isset($_GET['cut_file'])) {
                         $new_value = basename($value);
                         if (is_file($value)) {
                     ?>
-                            <div class='col-2 main_padding' id="p2">
-                                <a onclick="file_click('<?php echo $value; ?>')" ondblclick="file_double_click('<?php echo $value; ?>')">
+                            <div class='col-2 main_padding back_color' id="p2">
+                                <a class="click_file" onclick="file_click('<?php echo $value; ?>')">
                                     <ul>
                                         <li><i class='fa-solid fa-file main_body_element_size file'></i></li>
                                         <li><?php echo $new_value; ?></li>
@@ -279,7 +260,7 @@ if (isset($_GET['cut_file'])) {
                         <?php
                         } else {
                         ?>
-                            <div class='col-2 main_padding' id="p2">
+                            <div class='col-2 main_padding back_color' id="p2">
                                 <a onclick="file_click('<?php echo $value; ?>')" ondblclick="myfunction_folder('<?php echo $value; ?>')">
                                     <ul>
                                         <li><i class='fa-solid fa-folder main_body_element_size folder'></i></li>
@@ -318,6 +299,8 @@ if (isset($_GET['cut_file'])) {
         echo '<script>alert("Enter Valid Name")</script>';
     }
     ?>
+
+   
     <script src="./js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
