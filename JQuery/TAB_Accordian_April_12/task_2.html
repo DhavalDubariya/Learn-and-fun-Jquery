@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/index.js"></script>
+    <title>14_April</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      .panel,
+      .flip {
+        padding: 5px;
+        text-align: center;
+        background-color: #e5eecc;
+        border: solid 1px #c3c3c3;
+        width: 100%;
+      }
+      div:nth-of-type(1){
+        display: block;
+      }
+
+      .panel {
+        padding: 40px 0;
+        display: none;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="flip">
+      <i class="fa-solid fa-circle-down"></i> Section 1
+    </button>
+    <br />
+    <div class="panel">Hello world! 1</div>
+
+    <button class="flip"><i class="fa-solid fa-circle-right"></i>Section 2</button>
+    <br />
+    <div class="panel">Hello world! 2</div>
+
+    <button class="flip"><i class="fa-solid fa-circle-right"></i>Section 3</button>
+    <br />
+    <div class="panel">Hello world! 3</div>
+
+    <button class="flip"><i class="fa-solid fa-circle-right"></i>Section 4</button>
+    <br />
+    <div class="panel">Hello world! 4</div>
+
+    <button class="flip"><i class="fa-solid fa-circle-right"></i>Section 5</button>
+    <br />
+    <div class="panel">Hello world! 5</div>
+
+    <script>
+      $(document).ready(function () {
+        $(".flip").click(function () {
+          var index = $("button").index(this);
+          
+          $(".panel").filter(":eq(" + index + ")").slideToggle();
+          $(".panel").not(":eq(" + index + ")").slideUp();
+
+          $(".fa-solid").filter(":eq(" + index + ")").toggleClass("fa-circle-right").addClass("fa-circle-arrow-down");
+          $(".fa-solid").not(":eq(" + index + ")").addClass("fa-circle-right").removeClass("fa-circle-arrow-down");
+
+        });
+      });
+    </script>
+  </body>
+</html>
