@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/script.js"></script>
+
+    <title>COUNTDOWN</title>
+
+    <style>
+      .bottom {
+        padding: 15px;
+        border: 1px solid;
+      }
+      .button {
+        padding: 10px;
+        margin: 0 20px;
+        background-color: white;
+        border: 1px solid;
+      }
+      .input_f {
+        padding: 10px;
+        background-color: white;
+        border: 1px solid;
+        width: 70%;
+      }
+      .time {
+        font-size: 30px;
+      }
+      .table {
+        text-align: center;
+        width: 70%;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body style="text-align: center">
+    <h1>COUNTDOWN</h1>
+    <hr />
+
+    <table class="table">
+      <tr>
+        <th>
+          <span class="time" id="hours">00</span>
+        </th>
+        <th>
+          <span class="time" id="minute">00</span>
+        </th>
+        <th>
+          <span class="time" id="seconds">00</span>
+        </th>
+        <th>
+          <span class="time" id="c_seconds">00</span>
+        </th>
+      </tr>
+      <br />
+      <tr>
+        <th>
+          <span class="time">HOURS</span>
+        </th>
+        <th>
+          <span class="time">MINUITES</span>
+        </th>
+        <th>
+          <span class="time">SECONDS</span>
+        </th>
+        <th>
+          <span class="time">C-SECONDS</span>
+        </th>
+      </tr>
+    </table>
+
+    <br />
+
+    <input
+      type="number"
+      name="seconds"
+      placeholder="Enter Time In Seconds"
+      value=""
+      id="input"
+      class="input_f"
+      required
+    />
+    <br /><br />
+
+    <button class="button" id="start">START</button>
+    <!-- <button id="restart">RESTART</button> -->
+    <button class="button" id="resume">RESUME</button>
+    <button class="button" id="pause">PAUSE</button>
+    <button class="button" id="stop">STOP</button>
+    <button class="button" id="reset">RESET</button>
+
+    <p class="bottom" id="status">Enter Time And Hit Start</p>
+
+    <script>
+      $(document).ready(function () {
+        var timer;
+        $("#resume").hide();
+        $("#restart").hide();
+
+        function time(h, m, s, c) {
+            timer = setInterval(function () {
+            if (c > 0) {
+              c--;
+            } 
+            else 
+            {
+              c = 99;
+              if (s > 0) {
+                s--;
+              } else 
+              {
+                s = 59;
+                if (m > 0)
+                {
+                  m--;
+                } 
+                else
+                {
+                  m = 59;
+                  if (h > 0) 
+                  {
+                    h--;
+                  } 
+                  else 
+                  {
+                    h, m, s, (c = 0);
+                    clearInterval(timer);
+                  }
+                }
+              }
+            }
+            $("#hours").text(h);
+            $("#minute").text(m);
+            $("#seconds").text(s);
+            $("#c_seconds").text(c);
+          }, 10);
+          console.log(inputValue, h, m, s, c);
+        }
+
+        $("#pause").click(function () {
+          h = $("#hours").text();
+          m = $("#minute").text();
+          s = $("#seconds").text();
+
+          $("#status").html(
+            '<p style="color:blue">PAUSE AT   ' +
+              h +
+              "   :HH, " +
+              m +
+              "  :MM," +
+              s +
+              "  :SS<p>"
+          );
+          $("#start").hide();
+          $("#resume").show();
+          clearInterval(timer);
+        });
+
+        $("#resume").click(function () {
+          $("#resume").hide();
+          $("#start").show();
+          $("#start").attr("disabled", true);
+          $("#status").html("<p style='color:green' > RESUME <p>");
+
+          h = $("#hours").text();
+          m = $("#minute").text();
+          s = $("#seconds").text();
+          c = $("#c_seconds").text();
+
+          time(h, m, s, c);
+        });
+
+        $("#stop").click(function () {
+          $("#start").attr("disabled", false);
+          $("#resume").hide();
+          $("#start").show();
+          clearInterval(timer);
+          $("#status").html("<p style='color:red' >STOP<p>");
+          $("#start").text("RESTART");
+        });
+
+        $("#reset").click(function () {
+          $("#resume").hide();
+          $("#start").text("START");
+          $("#start").show();
+
+          $("#start").attr("disabled", false);
+
+          var h = 0,
+            m = 0,
+            s = 0,
+            c = 0;
+          clearInterval(timer);
+          $("#hours").text(0);
+          $("#minute").text(0);
+          $("#seconds").text(0);
+          $("#c_seconds").text(0);
+          $("#input").val("");
+          $("#status").html(
+            "<p style='color:red' >Enter Time And Hit Start<p>"
+          );
+        });
+
+        $("#start").click(function () {
+          $("#start").attr("disabled", true);
+          $("#status").html("<p style='color:green' >RUNNING<p>");
+          if ($("#start").text() == "RESTART") {
+            $("#start").text("START");
+          }
+          var inputValue = $("#input").val();
+          var h,
+            m,
+            s,
+            c = 0;
+          h = Math.floor(inputValue / 3600);
+          m = Math.floor((inputValue - h * 3600) / 60);
+          s = Math.floor(inputValue - h * 3600 - m * 60);
+          c = 0;
+
+          $("#hours").text(h);
+          $("#minute").text(m);
+          $("#seconds").text(s);
+          $("#c_seconds").text(c);
+
+          time(h, m, s, c);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -44,11 +44,11 @@
       $(document).ready(function () {
         $('.panel').hide().first().show();
         $('.flip').click(function(){
-          $('.panel').hide();
+          $('.panel').slideUp();
+                  
           $(this).find('i').removeClass('fa-circle-right').addClass('fa-circle-down');
           $(this).parent().siblings().find('.flip i').removeClass('fa-circle-right').removeClass('fa-circle-down').addClass('fa-circle-right');
           $(this).siblings('p').show();
-
         });
       });
     </script>

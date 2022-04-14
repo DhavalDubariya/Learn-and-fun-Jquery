@@ -1,0 +1,28 @@
+.bottom {
+    padding: 15px;
+    border: 1px solid;
+}
+
+.button {
+    padding: 10px;
+    margin: 0 20px;
+    background-color: white;
+    border: 1px solid;
+}
+
+.input_f {
+    padding: 10px;
+    background-color: white;
+    border: 1px solid;
+    width: 70%;
+}
+
+.time {
+    font-size: 30px;
+}
+
+.table {
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+}
