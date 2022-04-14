@@ -66,8 +66,8 @@
           $(".panel").filter(":eq(" + index + ")").slideToggle();
           $(".panel").not(":eq(" + index + ")").slideUp();
 
-          $(".fa-solid").filter(":eq(" + index + ")").toggleClass("fa-circle-right").addClass("fa-circle-arrow-down");
-          $(".fa-solid").not(":eq(" + index + ")").addClass("fa-circle-right").removeClass("fa-circle-arrow-down");
+          $(".fa-solid").filter().eq(index).toggleClass("fa-circle-right").addClass("fa-circle-arrow-down");
+          $(".fa-solid").not().addClass("fa-circle-right").removeClass("fa-circle-arrow-down");
 
         });
       });
