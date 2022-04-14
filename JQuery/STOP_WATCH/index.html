@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/script.js"></script>
+
+    <title>STOP WATCH</title>
+
+    <style>
+      .bottom {
+        padding: 15px;
+        border: 1px solid;
+      }
+      .button {
+        padding: 10px;
+        margin: 0 20px;
+        background-color: white;
+        border: 1px solid;
+      }
+      .input_f {
+        padding: 10px;
+        background-color: white;
+        border: 1px solid;
+        width: 70%;
+      }
+      .time {
+        font-size: 30px;
+      }
+      .table {
+        text-align: center;
+        width: 70%;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body style="text-align: center">
+    <h1>STOP WATCH</h1>
+    <hr />
+
+    <table class="table">
+      <tr>
+        <th>
+          <span class="time" id="hours">0</span>
+        </th>
+        <th>
+          <span class="time" id="minute">0</span>
+        </th>
+        <th>
+          <span class="time" id="seconds">0</span>
+        </th>
+        <th>
+          <span class="time" id="c_seconds">0</span>
+        </th>
+      </tr>
+      <br />
+      <tr>
+        <th>
+          <span class="time">HOURS</span>
+        </th>
+        <th>
+          <span class="time">MINUITES</span>
+        </th>
+        <th>
+          <span class="time">SECONDS</span>
+        </th>
+        <th>
+          <span class="time">C-SECONDS</span>
+        </th>
+      </tr>
+    </table>
+
+    <br /><br />
+
+    <button class="button" id="start">START</button>
+    <!-- <button id="restart">RESTART</button> -->
+    <button class="button" id="resume">RESUME</button>
+    <button class="button" id="pause">PAUSE</button>
+    <button class="button" id="stop">STOP</button>
+    <button class="button" id="reset">RESET</button>
+
+    <p class="bottom" id="status">Enter Time And Hit Start</p>
+    <p class="log" id="log"></p>
+
+    <script>
+      $(document).ready(function () {
+        var timer;
+        $("#resume").hide();
+        $("#restart").hide();
+
+        function time(h, m, s, c) {
+          timer = setInterval(function () {
+            if (c < 99) {
+              c++;
+            } else {
+              c = 0;
+              if (s < 59) {
+                s++;
+              } else {
+                s = 0;
+                if (m < 59) {
+                  m++;
+                } else {
+                  m = 0;
+                  if (h < 24) {
+                    h++;
+                  } else {
+                    c = 0;
+                    s = 0;
+                    m = 0;
+                    h = 0;
+                    clearInterval(timer);
+                  }
+                }
+              }
+              $("#seconds").text(s);
+            }
+
+            $("#c_seconds").text(c);
+            $("#minute").text(m);
+            $("#hours").text(h);
+            console.log(c, s, m, h);
+          }, 1);
+          console.log(inputValue, h, m, s, c);
+        }
+
+        $("#start").click(function () {
+          $("#start").attr("disabled", true);
+          $("#pause").attr("disabled", false);
+          $("#stop").attr("disabled", false);
+          $("#status").html("<p style='color:green' >RUNNING<p>");
+          if ($("#start").text() == "RESTART") {
+            $("#start").text("START");
+          }
+
+          
+          var c = 0;
+          var s = 0;
+          var m = 0;
+          var h = 0;
+
+          $("#hours").text(h);
+          $("#minute").text(m);
+          $("#seconds").text(s);
+          $("#c_seconds").text(c);
+
+          time(h, m, s, c);
+        });
+
+        $("#pause").click(function () {
+          h = $("#hours").text();
+          m = $("#minute").text();
+          s = $("#seconds").text();
+
+          $("#status").html(
+            '<p style="color:blue">PAUSE<p>'
+          );
+          $("#log").before(
+            '<p class="log" style="color:blue">PAUSE AT   ' +
+              h +
+              "   :HH , " +
+              m +
+              "  :MM ," +
+              s +
+              "  :SS<p>"
+          );
+          $("#start").hide();
+          $("#resume").show();
+          $("#pause").attr("disabled", true);
+          clearInterval(timer);
+        });
+
+        $("#resume").click(function () {
+          $("#resume").hide();
+          $("#start").show();
+          $("#stop").show();
+          $("#pause").attr("disabled", false);
+
+          $("#start").attr("disabled", true);
+          $("#status").html("<p style='color:green' > RESUME <p>");
+
+          h = $("#hours").text();
+          m = $("#minute").text();
+          s = $("#seconds").text();
+          c = $("#c_seconds").text();
+
+          time(h, m, s, c);
+        });
+
+        $("#stop").click(function () {
+          $("#start").attr("disabled", false);
+          $("#resume").hide();
+          $("#start").show();
+          $("#stop").attr("disabled", true);
+          $("#pause").attr("disabled", true);
+          h = $("#hours").text();
+          m = $("#minute").text();
+          s = $("#seconds").text();
+
+          $("#log").before(
+            '<p class="log" style="color:red">STOP AT   ' +
+              h +
+              "  :HH, " +
+              m +
+              "  :MM, " +
+              s +
+              "  :SS<p>"
+          );
+          clearInterval(timer);
+          $("#status").html("<p style='color:red' >STOP<p>");
+          $("#start").text("RESTART");
+        });
+
+        $("#reset").click(function () {
+          $("#resume").hide();
+          $("#start").text("START");
+          $("#start").show();
+          $("#pause").attr("disabled", false);
+          $("#stop").attr("disabled", false);
+          $(".log").empty();
+          $("#start").attr("disabled", false);
+
+          var h = 0,
+            m = 0,
+            s = 0,
+            c = 0;
+          clearInterval(timer);
+          $("#hours").text(0);
+          $("#minute").text(0);
+          $("#seconds").text(0);
+          $("#c_seconds").text(0);
+          $("#input").val("");
+          $("#status").html(
+            "<p style='color:red' >Enter Time And Hit Start<p>"
+          );
+        });
+
+       
+      });
+    </script>
+  </body>
+</html>
