@@ -10,7 +10,7 @@ td, th {
     padding: 8px;
 }
 
-.button , .submit ,.cancel{
+.button , .submit ,.cancel ,.update{
     padding: 10px;
     margin: 0 20px;
     background-color: white;
@@ -63,6 +63,6 @@ td, th {
     margin: 10px;
 }
 
-tr td {
+tr {
     width: 100%;
 }

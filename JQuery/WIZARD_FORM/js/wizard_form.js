@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  var count = 1;
-
   //tebs
 
   $(".teb").hide().first().show();
@@ -16,6 +14,8 @@ $(document).ready(function () {
       .show();
   });
 
+  $(".update").hide();
+
   //Previous Button
   $(".previous").click(function () {
     var index = $(".previous").index(this);
@@ -25,6 +25,14 @@ $(document).ready(function () {
   //cancel Button
   $(".cancel").hide();
   // Submit Button
+  $(".cancel").click(function () {
+    $("input[type=text],textarea").val("");
+    $("input[type='radio']:checked,input[type=checkbox]").prop(
+      "checked",
+      false
+    );
+  });
+
   $(".submit").click(function () {
     var f_name = $("#f_name").val();
     var l_name = $("#l_name").val();
@@ -35,19 +43,10 @@ $(document).ready(function () {
     var sport = $("#sport").val();
     var about = $("textarea#message").val();
     var terms = $("input[type='checkbox']:checked").val();
-    var index = count++;
-
-    if ($(".submit").text() == "UPDATE") {
-      index = parseInt($("#index").val());
-      //  alert($("#index").val());
-      $(".table_data")
-        .eq(parseInt(index - 1))
-        .remove();
-      $(".submit").text("SUBMIT");
-    }
+    var index = $("tr").length;
 
     $(".before").append(
-      `<tr class="table_data" ><th class="new_index" >${index}</th><th class="f_name" > ${f_name} </th><th class="l_name" >${l_name}</th><th class="gender">${gender}</th><th class="email">${email}</th><th class="contact_no" >${contact_no}</th><th class="dob" >${dob}</th><th class="sport" >${sport}</th><th class="about" >${about}</th><th class="terms">${terms}</th><th><button class="edit">Edit</button></th><th><button class="delete">Delete</button></th></tr>`
+      `<tr class="table_data" ><td class="new_index" >${index}</td><td class="f_name" > ${f_name} </td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td></tr>`
     );
 
     $("input[type=text],textarea").val("");
@@ -55,15 +54,52 @@ $(document).ready(function () {
       "checked",
       false
     );
-    $(".teb").hide().first().show();
+
+    // $(".teb").hide().first().show();
+  });
+
+  $(".update").click(function () {
+    var f_name = $("#f_name").val();
+    var l_name = $("#l_name").val();
+    var gender = $("input[type='radio']:checked").val();
+    var email = $("#email").val();
+    var contact_no = $("#contact_no").val();
+    var dob = $("#dob").val();
+    var sport = $("#sport").val();
+    var about = $("textarea#message").val();
+    var terms = $("input[type='checkbox']:checked").val();
+    var index = $("tr").length;
+
+    index = parseInt($("#index").val());
+    //  alert($("#index").val());
+    let html = `<td class="new_index" >${index}</td><td class="f_name" > ${f_name} </td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td>`;
+    console.log(html);
+    $(".table_data")
+      .eq(parseInt(index - 1))
+      .html(html);
+    $(".submit").text("SUBMIT");
+
+    $("input[type=text],textarea").val("");
+    $("input[type='radio']:checked,input[type=checkbox]").prop(
+      "checked",
+      false
+    );
+
+    $(".cancel").hide();
+    $(".update").hide();
+    $(".submit").show();
+  
+
+    // $(".teb").hide().first().show();
   });
 });
 
 $(document).on("click", ".delete", function () {
   var DeleteIndex = $(".delete").index(this);
   $(".table_data").eq(DeleteIndex).remove();
-  $('tr').each(function(i){
-    $($(this).find('th')[0]).html(i+1);
+
+  $(".before tr").each(function (i) {
+    $($(this).find("td")[0]).html(i);
   });
 });
 
@@ -89,8 +125,16 @@ $(document).on("click", ".edit", function () {
   $("#dob").val(dob);
   $("#sport").val(sport);
   $("textarea#message").val(about);
-  // $("#terms").val(terms);
-  $(".submit").text("UPDATE");
+  gender != "undefined"
+    ? gender == "male"
+      ? $("#male").prop("checked", true)
+      : $("#female").prop("checked", true)
+    : $("input[type=radio]").prop("checked", false);
+
+  (terms  == "undefined") ?  $("input[type=checkbox]").prop("checked", false) : $("input[type=checkbox]").prop("checked", true);
+
+  $(".submit").hide();
   $(".cancel").show();
   $(".teb").hide().first().show();
+  $(".update").show();
 });
