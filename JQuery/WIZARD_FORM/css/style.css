@@ -1,0 +1,68 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.button , .submit ,.cancel{
+    padding: 10px;
+    margin: 0 20px;
+    background-color: white;
+    border: 1px solid;
+}
+
+.next {
+    padding: 10px;
+    margin: 10px 20px;
+    background-color: white;
+    border: 1px solid;
+}
+
+.previous {
+    padding: 10px;
+    margin: 10px 20px;
+    background-color: white;
+    border: 1px solid;
+}
+
+.form {
+    padding: 10px;
+    background-color: white;
+    border: 1px solid;
+    width: 20%;
+    margin: 10px;
+}
+
+.button_group {
+    text-align: center;
+}
+
+.wizard {
+   text-align: center;
+}
+
+.select {
+    padding: 10px;
+    background-color: white;
+    border: 1px solid;
+    width: 20%;
+    margin: 10px;
+}
+
+.textarea {
+    padding: 10px;
+    background-color: white;
+    border: 1px solid;
+    width: 20%;
+    margin: 10px;
+}
+
+tr td {
+    width: 100%;
+}

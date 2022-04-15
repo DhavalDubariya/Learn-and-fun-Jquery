@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/script.js"></script>
+    <script src="./js/wizard_form.js"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>WIZARD_FORM</title>
+  </head>
+  <body>
+    <h1 style="text-align: center">WIZARD FORM</h1>
+    <hr />
+
+    <div class="button_group">
+      <button class="button">STEP_1</button>
+      <button class="button">STEP_2</button>
+      <button class="button">STEP_3</button>
+    </div>
+
+    <hr />
+
+    <div class="wizard">
+      <!-- first STAP_1 -->
+      <div class="teb">
+        <div class="form_elements">
+          <label for="f_name">First Name:</label>
+          <input
+            type="text"
+            id="f_name"
+            class="form"
+            value=""
+            placeholder="Enter First Name"
+          />
+          <input type="hidden" id="index" class="index" value="" />
+        </div>
+
+        <div class="form_elements">
+          <label for="l_name">Last Name:</label>
+          <input
+            type="text"
+            id="l_name"
+            class="form"
+            value=""
+            placeholder="Enter Last Name"
+          />
+        </div>
+
+        <div class="form_elements">
+          <label for="gender">Gender :</label>
+          <input
+            type="radio"
+            class="genders"
+            id="female"
+            value="female"
+            name="gender"
+          />
+          <label for="female">female</label>
+          <input
+            type="radio"
+            class="genders"
+            id="male"
+            value="male"
+            name="gender"
+          />
+          <label for="male">male</label><br />
+        </div>
+
+        <button class="next">SAVE & NEXT</button>
+      </div>
+
+      <!-- second STAP_2 -->
+
+      <div class="teb">
+        <div class="form_elements">
+          <label for="email">Email ID:</label>
+          <input
+            type="text"
+            id="email"
+            class="form"
+            value=""
+            placeholder="Enter Email ID"
+          />
+        </div>
+
+        <div class="form_elements">
+          <label for="contact_no">Contact No :</label>
+          <input
+            type="text"
+            id="contact_no"
+            class="form"
+            value=""
+            placeholder="Enter Contact Number"
+          />
+        </div>
+
+        <div class="form_elements">
+          <label for="dob">Date Of Birth :</label>
+          <input
+            type="text"
+            class="form"
+            id="dob"
+            value=""
+            placeholder="Enter DOB"
+          />
+        </div>
+        <button class="previous">PREVIOUS</button>
+        <button class="next">SAVE & NEXT</button>
+      </div>
+
+      <!-- third STAP_3 -->
+      <div class="teb">
+        <div class="form_elements">
+          <label for="sport">Favorite Sport:</label>
+
+          <select class="select" name="sport" id="sport">
+            <option value="cricket">Cricket</option>
+            <option value="football">Football</option>
+            <option value="basketball">Basketball</option>
+          </select>
+        </div>
+
+        <div class="form_elements">
+          <label for="about">About Yourself :</label>
+          <textarea
+            class="textarea"
+            rows="0"
+            cols="20"
+            id="message"
+            name="message"
+          ></textarea>
+        </div>
+
+        <div class="form_elements">
+          <label for="terms"> I agree to terms and conditions</label>
+          <input type="checkbox" id="terms" name="terms" />
+        </div>
+
+        <button class="previous">PREVIOUS</button>
+        <button class="submit">SUBMIT</button>
+        <button class="cancel">CANCEL</button>
+      </div>
+    </div>
+    <hr />
+    <br />
+    <br />
+
+    <table class="table">
+      <tbody class="before">
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Email ID</th>
+          <th>Contact No</th>
+          <th>DOB</th>
+          <th>Sport</th>
+          <th>About you</th>
+          <th>T & C</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
