@@ -4,34 +4,41 @@ $(document).ready(function () {
 
   $(".teb").hide().first().show();
   $(".btn").not($(".btn").eq(4)).hide();
+  $(".button").eq(0).css("color", "red");
 
   // Tab Button Event
   $(".button").click(function () {
     index = $(this).index();
     $(".teb").not($(".teb").eq(index).show()).hide();
     $(".save").attr("disabled", false);
+    $(".button").eq(index).css("color", "red");
+    $(".button").not($(".button").eq(index)).css("color", "");
     savebutton();
     previousbutton();
     update_hide();
     return index;
   });
 
-  // Save Button 
+  // Save Button
   $(".save").click(function () {
     index = index == null ? 0 : index;
     nextIndex = index + 1;
     $(".teb").not($(".teb").eq(nextIndex).show()).hide();
     index++;
+    $(".button").eq(nextIndex).css("color", "red");
+    $(".button").not($(".button").eq(nextIndex)).css("color", "");
     savebutton();
     previousbutton();
     update_hide();
   });
 
-  // Previous Button 
+  // Previous Button
   $(".previous").click(function () {
     prevIndex = index - 1;
     $(".teb").not($(".teb").eq(prevIndex).show()).hide();
     index--;
+    $(".button").eq(prevIndex).css("color", "red");
+    $(".button").not($(".button").eq(prevIndex)).css("color", "");
     savebutton();
     previousbutton();
     update_hide();
@@ -55,11 +62,8 @@ $(document).ready(function () {
 
   //Empty Value Of Input's
   function EmptyVal() {
-    $("input[type=text],textarea").val("");
-    $("input[type='radio']:checked,input[type=checkbox]").prop(
-      "checked",
-      false
-    );
+    $("input[type=text],input[type=number],input[type=date],input[type=email],textarea").val("");
+    $("input[type='radio']:checked,input[type=checkbox]").prop("checked",false);
     $(".teb").hide().first().show();
   }
 
@@ -87,8 +91,10 @@ $(document).ready(function () {
     index = parseInt($("#index").val());
 
     let html = `<td class="new_index" >${index}</td><td class="f_name" > ${f_name} </td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td>`;
-    console.log(html);
-    $(".table_data").eq(parseInt(index - 1)).html(html);
+
+    $(".table_data")
+      .eq(parseInt(index - 1))
+      .html(html);
 
     EmptyVal();
     $(".btn").not($(".btn").eq(4).show()).hide();
@@ -114,6 +120,9 @@ $(document).ready(function () {
   //Cancle Button
   $(".cancel").click(function () {
     EmptyVal();
+    $(".btn").not($(".btn").eq(4).show()).hide();
+    bool = false;
+    return_index();
   });
 
   // Edit Button
@@ -149,7 +158,6 @@ $(document).ready(function () {
       ? $("input[type=checkbox]").prop("checked", false)
       : $("input[type=checkbox]").prop("checked", true);
     $(".btn").not($(".btn").eq(4).show()).hide();
-
     bool = true;
     return_index();
   });
@@ -162,14 +170,13 @@ $(document).ready(function () {
 
 // Delete Button
 $(document).on("click", ".delete", function () {
-  confirm("Click ok to Delete Data") ? ($(this).closest("tr").remove()) : die();
+  confirm("Click ok to Delete Data") ? $(this).closest("tr").remove() : die();
+  function die() {
+    alert("Thank you for sticking around");
+    return;
+  }
+
   $(".before tr").each(function (i) {
     $($(this).find("td")[0]).html(i);
   });
 });
-
-function die()
-{
-  alert("Thank you for sticking around");
-  return; 
-}
