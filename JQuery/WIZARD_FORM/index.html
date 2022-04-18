@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <title>WIZARD_FORM</title>
   </head>
-  <body>
+  <body style="text-align: center">
     <h1 style="text-align: center">WIZARD FORM</h1>
     <hr />
 
@@ -67,7 +67,7 @@
           <label for="male">male</label><br />
         </div>
 
-        <button class="next">SAVE & NEXT</button>
+        <!-- <button class="next">SAVE & NEXT</button> -->
       </div>
 
       <!-- second STAP_2 -->
@@ -76,7 +76,7 @@
         <div class="form_elements">
           <label for="email">Email ID:</label>
           <input
-            type="text"
+            type="email"
             id="email"
             class="form"
             value=""
@@ -87,7 +87,7 @@
         <div class="form_elements">
           <label for="contact_no">Contact No :</label>
           <input
-            type="text"
+            type="number"
             id="contact_no"
             class="form"
             value=""
@@ -98,15 +98,15 @@
         <div class="form_elements">
           <label for="dob">Date Of Birth :</label>
           <input
-            type="text"
+            type="date"
             class="form"
             id="dob"
             value=""
             placeholder="Enter DOB"
           />
         </div>
-        <button class="previous">PREVIOUS</button>
-        <button class="next">SAVE & NEXT</button>
+        <!-- <button class="previous">PREVIOUS</button>
+        <button class="next">SAVE & NEXT</button> -->
       </div>
 
       <!-- third STAP_3 -->
@@ -137,12 +137,20 @@
           <input type="checkbox" id="terms" name="terms" />
         </div>
 
-        <button class="previous">PREVIOUS</button>
+        <!-- <button class="previous">PREVIOUS</button>
         <button class="update">UPDATE</button>
         <button class="submit">SUBMIT</button>
-        <button class="cancel">CANCEL</button>
+        <button class="cancel">CANCEL</button> -->
       </div>
     </div>
+
+    <br />
+
+    <button class="previous btn">PREVIOUS</button>
+    <button class="submit btn">SUBMIT</button>
+    <button class="cancel btn">CANCEL</button>
+    <button class="update btn">UPDATE</button>
+    <button class="save btn">SAVE & NEXT</button>
 
     <hr />
     <br />

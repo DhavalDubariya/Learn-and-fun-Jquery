@@ -10,14 +10,14 @@ td, th {
     padding: 8px;
 }
 
-.button , .submit ,.cancel ,.update{
+.button , .submit ,.cancel ,.update,.save,.previous{
     padding: 10px;
     margin: 0 20px;
     background-color: white;
     border: 1px solid;
 }
 
-.next {
+.save {
     padding: 10px;
     margin: 10px 20px;
     background-color: white;

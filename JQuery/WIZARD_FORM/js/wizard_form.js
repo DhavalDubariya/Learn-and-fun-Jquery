@@ -1,23 +1,57 @@
 $(document).ready(function () {
-  $(".update,.cancel").hide();
+  var index;
+  var bool = false;
 
-  //tebs
   $(".teb").hide().first().show();
+  $(".btn").not($(".btn").eq(4)).hide();
+
+  // Tab Button Event
   $(".button").click(function () {
-    $(".teb").hide().eq($(this).index()).show();
+    index = $(this).index();
+    $(".teb").not($(".teb").eq(index).show()).hide();
+    $(".save").attr("disabled", false);
+    savebutton();
+    previousbutton();
+    update_hide();
+    return index;
   });
 
-  //Next Button
-  $(".next").click(function () {
-    var index = $(".next").index(this);
-    $(".teb").hide().eq(index + 1).show();
+  // Save and Next Button Event
+  $(".save").click(function () {
+    index = index == null ? 0 : index;
+    nextIndex = index + 1;
+    $(".teb").not($(".teb").eq(nextIndex).show()).hide();
+    index++;
+    savebutton();
+    previousbutton();
+    update_hide();
   });
 
-  //Previous Button
+  // Previous Button Event
   $(".previous").click(function () {
-    var index = $(".previous").index(this);
-    $(".teb").hide().eq(index).show();
+    prevIndex = index - 1;
+    $(".teb").not($(".teb").eq(prevIndex).show()).hide();
+    index--;
+    savebutton();
+    previousbutton();
+    update_hide();
   });
+
+  function savebutton() {
+    index < $(".teb").length - 1 ? $(".save").show() : $(".save").hide();
+  }
+
+  function previousbutton() {
+    index == 0 ? $(".previous").hide() : $(".previous").show();
+  }
+
+  function update_hide() {
+    index == $(".teb").length - 1
+      ? bool == true
+        ? $(".update, .cancel").show() | $(".submit").hide()
+        : $(".submit").show()
+      : $(".update, .cancel, .submit").hide();
+  }
 
   //Empty Value Of Input's
   function EmptyVal() {
@@ -29,17 +63,19 @@ $(document).ready(function () {
     $(".teb").hide().first().show();
   }
 
-
   // Submit Button
   $(".submit").click(function () {
     var index = $("tr").length;
     GetValues();
-    
+
     $(".before").append(
       `<tr class="table_data" ><td class="new_index" >${index}</td><td class="f_name" > ${f_name} </td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td></tr>`
     );
 
     EmptyVal();
+    $(".btn").hide();
+    $(".save").show();
+    return_index();
   });
 
   //Update Button
@@ -55,9 +91,9 @@ $(document).ready(function () {
     $(".table_data").eq(parseInt(index - 1)).html(html);
 
     EmptyVal();
-
-    $(".cancel,.update").hide();
-    $(".submit").show();
+    $(".btn").not($(".btn").eq(4).show()).hide();
+    bool = false;
+    return_index();
   });
 
   //Get Value Of Input's
@@ -72,7 +108,7 @@ $(document).ready(function () {
     about = $("textarea#message").val();
     terms = $("input[type='checkbox']:checked").val();
 
-    ($("#terms").is(":checked")) ? terms = "set" : terms = "off";
+    $("#terms").is(":checked") ? (terms = "set") : (terms = "off");
   }
 
   //Cancle Button
@@ -80,47 +116,60 @@ $(document).ready(function () {
     EmptyVal();
   });
 
-});
+  // Edit Button
+  $(document).on("click", ".edit", function () {
+    var EditIndex = $(".edit").index(this);
+    var new_index = $(".new_index").eq(EditIndex).text();
+    var f_name = $(".f_name").eq(EditIndex).text();
+    var l_name = $(".l_name").eq(EditIndex).text();
+    var gender = $(".gender").eq(EditIndex).text();
+    var email = $(".email").eq(EditIndex).text();
+    var contact_no = $(".contact_no").eq(EditIndex).text();
+    var dob = $(".dob").eq(EditIndex).text();
+    var sport = $(".sport").eq(EditIndex).text();
+    var about = $(".about").eq(EditIndex).text();
+    var terms = $(".terms").eq(EditIndex).text();
 
+    $("#index").val(new_index);
+    $("#f_name").val(f_name);
+    $("#l_name").val(l_name);
+    $("#email").val(email);
+    $("#contact_no").val(contact_no);
+    $("#dob").val(dob);
+    $("#sport").val(sport);
+    $("textarea#message").val(about);
+
+    gender != "undefined"
+      ? gender == "male"
+        ? $("#male").prop("checked", true)
+        : $("#female").prop("checked", true)
+      : $("input[type=radio]").prop("checked", false);
+
+    terms == "off"
+      ? $("input[type=checkbox]").prop("checked", false)
+      : $("input[type=checkbox]").prop("checked", true);
+    $(".btn").not($(".btn").eq(4).show()).hide();
+
+    bool = true;
+    return_index();
+  });
+
+  function return_index() {
+    index = 0;
+    return index;
+  }
+});
 
 // Delete Button
 $(document).on("click", ".delete", function () {
-  var DeleteIndex = $(".delete").index(this);
-  $(".table_data").eq(DeleteIndex).remove();
-
+  confirm("Click ok to Delete Data") ? ($(this).closest("tr").remove()) : die();
   $(".before tr").each(function (i) {
     $($(this).find("td")[0]).html(i);
   });
 });
-// Edit Button
-$(document).on("click", ".edit", function () {
-  var EditIndex = $(".edit").index(this);
-  var new_index = $(".new_index").eq(EditIndex).text();
-  var f_name = $(".f_name").eq(EditIndex).text();
-  var l_name = $(".l_name").eq(EditIndex).text();
-  var gender = $(".gender").eq(EditIndex).text();
-  var email = $(".email").eq(EditIndex).text();
-  var contact_no = $(".contact_no").eq(EditIndex).text();
-  var dob = $(".dob").eq(EditIndex).text();
-  var sport = $(".sport").eq(EditIndex).text();
-  var about = $(".about").eq(EditIndex).text();
-  var terms = $(".terms").eq(EditIndex).text();
 
-  $("#index").val(new_index);
-  $("#f_name").val(f_name);
-  $("#l_name").val(l_name);
-  $("#email").val(email);
-  $("#contact_no").val(contact_no);
-  $("#dob").val(dob);
-  $("#sport").val(sport);
-  $("textarea#message").val(about);
-
-  gender != "undefined" ? gender == "male" ? $("#male").prop("checked", true) : $("#female").prop("checked", true) : $("input[type=radio]").prop("checked", false);
-
-  terms == "off" ? $("input[type=checkbox]").prop("checked", false) : $("input[type=checkbox]").prop("checked", true);
-
-  $(".submit").hide();
-  $(".cancel,.update").show();
-  $(".teb").hide().first().show();
-
-});
+function die()
+{
+  alert("Thank you for sticking around");
+  return; 
+}
