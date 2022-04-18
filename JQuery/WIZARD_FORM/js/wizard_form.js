@@ -16,7 +16,7 @@ $(document).ready(function () {
     return index;
   });
 
-  // Save and Next Button Event
+  // Save Button 
   $(".save").click(function () {
     index = index == null ? 0 : index;
     nextIndex = index + 1;
@@ -27,7 +27,7 @@ $(document).ready(function () {
     update_hide();
   });
 
-  // Previous Button Event
+  // Previous Button 
   $(".previous").click(function () {
     prevIndex = index - 1;
     $(".teb").not($(".teb").eq(prevIndex).show()).hide();
