@@ -26,11 +26,11 @@ $(document).ready(function () {
           }
         }
       }
-      $("#seconds").text(s);
-      $("#c_seconds").text(c);
-      $("#minute").text(m);
-      $("#hours").text(h);
-    }, 10);
+      $("#c_seconds").text(c < 10 ? "0" + c : c);
+      $("#seconds").text(s < 10 ? "0" + s : s);
+      $("#minute").text(m < 10 ? "0" + m : m);
+      $("#hours").text(h < 10 ? "0" + h : h);
+    }, 1);
   }
 
   //Start Button
@@ -42,7 +42,7 @@ $(document).ready(function () {
     if ($("#start").text() == "RESTART") {
       $("#start").text("START");
     }
-    var c = (s = m = h = 0);
+    var c = (s = m = h = 00);
     time(h, m, s, c);
   });
 
@@ -60,8 +60,8 @@ $(document).ready(function () {
         s +
         "  :SS<p>"
     );
-    $("#start").hide();
-    $("#resume").show();
+    $("#start").text("RESUME");
+    // $("#resume").show();
     $("#pause").attr("disabled", true);
     clearInterval(timer);
   });
@@ -79,10 +79,10 @@ $(document).ready(function () {
   });
 
   function display() {
-    h = $("#hours").text();
-    m = $("#minute").text();
-    s = $("#seconds").text();
-    c = $("#c_seconds").text();
+    h = parseInt($("#hours").text());
+    m = parseInt($("#minute").text());
+    s = parseInt($("#seconds").text());
+    c = parseInt($("#c_seconds").text());
   }
 
   //Stop Button
@@ -117,7 +117,7 @@ $(document).ready(function () {
     $(".log").empty();
     var h = (m = s = c = 0);
     clearInterval(timer);
-    $("#hours,#minute,#seconds,c_seconds").text(0);
+    $("#hours,#minute,#seconds,#c_seconds").text("00");
     $("#input").val("");
     $("#status").html("<p style='color:red' >Enter Time And Hit Start<p>");
   });
