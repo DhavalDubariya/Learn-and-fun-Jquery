@@ -62,24 +62,44 @@ $(document).ready(function () {
 
   //Empty Value Of Input's
   function EmptyVal() {
-    $("input[type=text],input[type=number],input[type=date],input[type=email],textarea").val("");
-    $("input[type='radio']:checked,input[type=checkbox]").prop("checked",false);
+    $(
+      "input[type=text],input[type=number],input[type=date],input[type=email],textarea"
+    ).val("");
+    $("input[type='radio']:checked,input[type=checkbox]").prop(
+      "checked",
+      false
+    );
     $(".teb").hide().first().show();
   }
 
   // Submit Button
   $(".submit").click(function () {
-    var index = $("tr").length;
-    GetValues();
+    $("#form").validate({
+      ignore: [],
+      rules: {
+        message: "required",
+        firstname: "required",
+        lastname: "required",
+      },
+      messages: {
+        firstname: "Please enter your firstname",
+        lastname: "Please enter your lastname",
+      },
+    });
 
-    $(".before").append(
-      `<tr class="table_data" ><td class="new_index" >${index}</td><td class="f_name" > ${f_name} </td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td></tr>`
-    );
+    if ($("#form").valid() == true) {
+      var index = $("tr").length;
+      GetValues();
 
-    EmptyVal();
-    $(".btn").hide();
-    $(".save").show();
-    return_index();
+      $(".before").append(
+        `<tr class="table_data" ><td class="new_index" >${index}</td><td class="f_name" > ${f_name} </td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="hours">${hours}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td></tr>`
+      );
+
+      EmptyVal();
+      $(".btn").hide();
+      $(".save").show();
+      return_index();
+    }
   });
 
   //Update Button
@@ -90,7 +110,7 @@ $(document).ready(function () {
 
     index = parseInt($("#index").val());
 
-    let html = `<td class="new_index" >${index}</td><td class="f_name" > ${f_name} </td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td>`;
+    let html = `<td class="new_index" >${index}</td><td class="f_name" > ${f_name} </td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="hours">${hours}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td>`;
 
     $(".table_data")
       .eq(parseInt(index - 1))
@@ -113,7 +133,7 @@ $(document).ready(function () {
     sport = $("#sport").val();
     about = $("textarea#message").val();
     terms = $("input[type='checkbox']:checked").val();
-
+    hours = $("#hours").val();
     $("#terms").is(":checked") ? (terms = "set") : (terms = "off");
   }
 
@@ -147,6 +167,7 @@ $(document).ready(function () {
     $("#dob").val(dob);
     $("#sport").val(sport);
     $("textarea#message").val(about);
+    $("#hours").val($(".hours").eq(EditIndex).text());
 
     gender != "undefined"
       ? gender == "male"

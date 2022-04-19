@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./js/script.js"></script>
     <script src="./js/wizard_form.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>      
+    
     <link rel="stylesheet" href="./css/style.css" />
+
     <title>WIZARD_FORM</title>
   </head>
   <body style="text-align: center">
@@ -20,7 +23,7 @@
     </div>
 
     <hr />
-
+    <form id="form">
     <div class="wizard">
       <!-- first STAP_1 -->
       <div class="teb">
@@ -29,6 +32,7 @@
           <input
             type="text"
             id="f_name"
+            name="firstname"
             class="form"
             value=""
             placeholder="Enter First Name"
@@ -41,6 +45,7 @@
           <input
             type="text"
             id="l_name"
+            name="lastname"
             class="form"
             value=""
             placeholder="Enter Last Name"
@@ -65,6 +70,17 @@
             name="gender"
           />
           <label for="male">male</label><br />
+        </div>
+
+        <div class="form_elements">
+          <label for="f_name">For How Many Hours ?:</label>
+          <input
+            type="text"
+            id="hours"
+            class="form"
+            value=""
+            placeholder="hh"
+          />
         </div>
 
         <!-- <button class="next">SAVE & NEXT</button> -->
@@ -146,12 +162,12 @@
 
     <br />
 
-    <button class="previous btn">PREVIOUS</button>
-    <button class="submit btn">SUBMIT</button>
-    <button class="cancel btn">CANCEL</button>
-    <button class="update btn">UPDATE</button>
-    <button class="save btn">SAVE & NEXT</button>
-
+    <button type="button" class="previous btn">PREVIOUS</button>
+    <button class="submit btn" type="button" >SUBMIT</button>
+    <button type="button" class="cancel btn">CANCEL</button>
+    <button type="button" class="update btn" type="submit">UPDATE</button>
+    <button type="button" class="save btn">SAVE & NEXT</button>
+  </form>
     <hr />
     <br />
     <br />
@@ -163,6 +179,7 @@
           <th>First Name</th>
           <th>Last Name</th>
           <th>Gender</th>
+          <th>Hours</th>
           <th>Email ID</th>
           <th>Contact No</th>
           <th>DOB</th>
