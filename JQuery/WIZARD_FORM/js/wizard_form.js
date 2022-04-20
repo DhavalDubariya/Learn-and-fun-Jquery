@@ -1,7 +1,14 @@
 $(document).ready(function () {
   var index;
   var bool = false;
-  $("#dob").datepicker({ maxDate: "-1d" });
+ 
+  $("#dob").datepicker({ maxDate: "-1d" })
+  .on("change",function(){
+    $(this).valid();
+  });
+  $("input[name='date_pic']").keydown(function() {
+    return false;
+  });
   $(".tab").hide().first().show();
   $(".btn").not($(".btn").eq(4)).hide();
   $(".button").eq(0).css("color", "red");
@@ -19,7 +26,8 @@ $(document).ready(function () {
   $("#money").mask("00,00,00,00,00,00,00,000", { reverse: true });
   $("#contact_no").mask("000-000-0000", { placeholder: "___-___-____" });
   $("#dob").mask("00/00/0000", { placeholder: "__/__/_____" });
-  // Tab Button Event
+ 
+  // Tab Button Event On Click hide and show data of wizard
   $(".button").click(function () {
     index = $(this).index();
     $(".tab").not($(".tab").eq(index).show()).hide();
@@ -31,7 +39,7 @@ $(document).ready(function () {
     return index;
   });
 
-  // Save Button
+  // Save Button Used for go to next page in form
   $(".save").click(function () {
     index =
       index == null
@@ -56,7 +64,7 @@ $(document).ready(function () {
     update_hide(index);
   });
 
-  // Previous Button
+  // Previous Button  Used for go to previous page in form
   $(".previous").click(function () {
     prevIndex = index - 1;
     $(".tab").not($(".tab").eq(prevIndex).show()).hide();
@@ -67,19 +75,23 @@ $(document).ready(function () {
     update_hide(index);
   });
 
+  //Change Color of tab
   function tabcolor(index) {
     $(".button").eq(index).css("color", "red");
     $(".button").not($(".button").eq(index)).css("color", "");
   }
 
+  //Hide and show save button
   function savebutton(index) {
     index < $(".tab").length - 1 ? $(".save").show() : $(".save").hide();
   }
 
+  //Hide and show save previous button
   function previousbutton(index) {
     index == 0 ? $(".previous").hide() : $(".previous").show();
   }
 
+  //Hide and show update and next button
   function update_hide(index) {
     index == $(".tab").length - 1
       ? bool == true
@@ -100,7 +112,13 @@ $(document).ready(function () {
     $(".tab").hide().first().show();
   }
 
-  // Submit Button
+  //return index of "Tab"
+  function return_index() {
+    index = 0;
+    return index;
+  }
+
+  // Submit Button:- Submit input data into table
   $(".submit").click(function () {
     GetValues();
     if ($("#form").valid() == true) {
@@ -115,27 +133,36 @@ $(document).ready(function () {
       $(".btn").hide();
       $(".save").show();
       return_index();
-    } else {
-      var new_index = $("input.error").first().parents("div.tab").index();
-      $(".tab").not($(".tab").eq(new_index).show()).hide();
-      savebutton(new_index);
-      previousbutton(new_index);
-      update_hide(new_index);
-      index = new_index;
-      $(".button").eq(index).css("color", "red");
-      $(".button").not($(".button").eq(index)).css("color", "");
-      return index;
+    } else 
+    {
+      display_error_tab();
     }
   });
 
-  //Update Button
+  //Update Button: update data of table
   $(".update").click(function () {
     GetValues();
 
     if ($("#form").valid() == true) {
       index = parseInt($("#index").val());
 
-      let html = `<td class="new_index">${index}</td><td class="f_name" >${f_name}</td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="hours">${hours}</td><td class="zip" >${zip}</td><td class="ip" >${ip}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="money" >${money}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td>`;
+      let html = `
+      <td class="new_index">${index}</td>
+      <td class="f_name" >${f_name}</td>
+      <td class="l_name" >${l_name}</td>
+      <td class="gender">${gender}</td>
+      <td class="hours">${hours}</td>
+      <td class="zip" >${zip}</td>
+      <td class="ip" >${ip}</td>
+      <td class="email">${email}</td>
+      <td class="contact_no" >${contact_no}</td>
+      <td class="dob" >${dob}</td>
+      <td class="money" >${money}</td>
+      <td class="sport" >${sport}</td>
+      <td class="about" >${about}</td>
+      <td class="terms">${terms}</td>
+      <td><button class="edit">Edit</button></td>
+      <td><button class="delete">Delete</button></td>`;
 
       $(".table_data")
         .eq(parseInt(index - 1))
@@ -149,19 +176,23 @@ $(document).ready(function () {
       bool = false;
       return_index();
     } else {
-      var new_index = $("input.error").first().parents("div.tab").index();
-      $(".tab").not($(".tab").eq(new_index).show()).hide();
-      savebutton(new_index);
-      previousbutton(new_index);
-      update_hide(new_index);
-      index = new_index;
-      $(".button").eq(index).css("color", "red");
-      $(".button").not($(".button").eq(index)).css("color", "");
-      return index;
+      display_error_tab();
     }
     $(".delete").attr("disabled", false);
   });
 
+  // Show Teb which is has errors 
+  function display_error_tab() {
+    var new_index = $("input.error").first().parents("div.tab").index();
+    $(".tab").not($(".tab").eq(new_index).show()).hide();
+    savebutton(new_index);
+    previousbutton(new_index);
+    update_hide(new_index);
+    index = new_index;
+    $(".button").eq(index).css("color", "red");
+    $(".button").not($(".button").eq(index)).css("color", "");
+    return index;
+  }
   //Get Value Of Input's
   function GetValues() {
     f_name = $("#f_name").val();
@@ -188,7 +219,7 @@ $(document).ready(function () {
       },
       "Invalid IP address"
     );
-
+    // Validate input field
     $("#form").validate({
       ignore: [],
       rules: {
@@ -258,7 +289,7 @@ $(document).ready(function () {
     });
   }
 
-  //Cancle Button
+  //Cancle Button Clear Form Values
   $(".cancel").click(function () {
     EmptyVal();
     $(".btn").not($(".btn").eq(4).show()).hide();
@@ -267,8 +298,8 @@ $(document).ready(function () {
     $(".delete").attr("disabled", false);
   });
 
-  // Edit Button
-  $(document).on("click", ".edit", function () {
+  // Edit Button : - Give value for update
+  $(document).on("click", ".edit", function () {  
     var EditIndex = $(".edit").index(this);
     var new_index = $(".new_index").eq(EditIndex).text();
     var f_name = $(".f_name").eq(EditIndex).text();
@@ -311,15 +342,12 @@ $(document).ready(function () {
     $(".btn").not($(".btn").eq(4).show()).hide();
     bool = true;
     return_index();
-  });
+  })
 
-  function return_index() {
-    index = 0;
-    return index;
-  }
+
 });
 
-// Delete Button
+// Delete Button : Delete data from table
 $(document).on("click", ".delete", function () {
   confirm("Click ok to Delete Data") ? $(this).closest("tr").remove() : die();
   function die() {
