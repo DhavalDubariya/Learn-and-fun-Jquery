@@ -1,36 +1,41 @@
-<html>
-<head>
-<meta charset="utf-8">
-<title>Sets up validation for a form, then checks if the form is valid when clicking a button.</title>
-<link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
-<style>
- 
-  </style>
-</head>
-<body>
-<form id="myform">
-<form id="myform">
-  <input type="text" name="first_name">
-  <br>
-  <button type="button">Validate!</button>
-</form>
-</form>
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-<script>
-// just for the demos, avoids form submit
-$("#myform").validate({
-    rules: {
-      first_name: "required",
-    },
-    messages: {
-      first_name: "Please enter your firstname",
-    },
-  });
-$( "button" ).click(function() {
-  alert( "Valid: " + form.valid() );
-});
-</script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/script.js"></script>
+  </head>
+  <body>
+    <label id="email-error" class="error" for="email" style=""
+      >Enter Valid Email 1</label
+    >
+    <label id="email-error" class="error" for="email" style=""
+      >Enter Valid Email 2</label
+    >
+    <label id="email-error" class="error" for="email" style=""
+      >Enter Valid Email 3</label
+    >
+    <label id="email-error" class="error" for="email" style=""
+      >Enter Valid Email 4</label
+    >
+    <label id="email-error" class="error" for="email" style=""
+      >Enter Valid Email 5</label
+    >
+    <label id="email-error" class="error" for="email" style=""
+      >Enter Valid Email 6</label
+    >
+    <label id="email-error" class="error" for="email" style=""
+      >Enter Valid Email 7</label
+    >
+    <label id="email-error" class="error" for="email" style=""
+      >Enter Valid Email 8</label
+    >
+    <script>
+      $(document).ready( function() {
+        $(".error").hide();
+        $(".error").eq(0).show();
+      });
+    </script>
+  </body>
 </html>

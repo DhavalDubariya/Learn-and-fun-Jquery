@@ -25,15 +25,28 @@ $(document).ready(function () {
 
   // Save Button
   $(".save").click(function () {
-    index = index == null ? 0 : index;
+    index = (index == null) ? 0 : ((index > $(".teb").length - 2) ? $(".teb").length - 1 : index);
+    if(index === null)
+    {
+      index = 0;
+    }
+    else if($(".teb").length - 2 < index)
+    { 
+      index = 0;
+    }
+    else
+    {
+      index = index;
+    }
     nextIndex = index + 1;
+    console.log(nextIndex, index);
     $(".teb").not($(".teb").eq(nextIndex).show()).hide();
     index++;
     $(".button").eq(nextIndex).css("color", "red");
     $(".button").not($(".button").eq(nextIndex)).css("color", "");
-    savebutton();
-    previousbutton();
-    update_hide();
+    savebutton(index);
+    previousbutton(index);
+    update_hide(index);
   });
 
   // Previous Button
@@ -43,20 +56,20 @@ $(document).ready(function () {
     index--;
     $(".button").eq(prevIndex).css("color", "red");
     $(".button").not($(".button").eq(prevIndex)).css("color", "");
-    savebutton();
-    previousbutton();
-    update_hide();
+    savebutton(index);
+    previousbutton(index);
+    update_hide(index);
   });
 
-  function savebutton() {
+  function savebutton(index) {
     index < $(".teb").length - 1 ? $(".save").show() : $(".save").hide();
   }
 
-  function previousbutton() {
+  function previousbutton(index) {
     index == 0 ? $(".previous").hide() : $(".previous").show();
   }
 
-  function update_hide() {
+  function update_hide(index) {
     index == $(".teb").length - 1
       ? bool == true
         ? $(".update, .cancel").show() | $(".submit").hide()
@@ -79,7 +92,6 @@ $(document).ready(function () {
   // Submit Button
   $(".submit").click(function () {
     GetValues();
-
     if ($("#form").valid() == true) {
       var index = $(".table_data").length + 1;
 
@@ -91,6 +103,14 @@ $(document).ready(function () {
       $(".btn").hide();
       $(".save").show();
       return_index();
+    } else {
+      var new_index = $("input.error").first().parents("div.teb").index();
+      $(".teb").not($(".teb").eq(new_index).show()).hide();
+      savebutton(new_index);
+      previousbutton(new_index);
+      update_hide(new_index);
+      index = new_index;
+      return index;
     }
   });
 
@@ -99,7 +119,6 @@ $(document).ready(function () {
     GetValues();
 
     if ($("#form").valid() == true) {
-
       index = parseInt($("#index").val());
 
       let html = `<td class="new_index" >${index}</td><td class="f_name" > ${f_name} </td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="hours">${hours}</td><td class="zip" >${zip}</td><td class="ip" >${ip}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="money" >${money}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td>`;
@@ -112,8 +131,17 @@ $(document).ready(function () {
       $(".btn").not($(".btn").eq(4).show()).hide();
       bool = false;
       return_index();
-      ".delete".attr("disabled", false);
     }
+    else {
+      var new_index = $("input.error").first().parents("div.teb").index();
+      $(".teb").not($(".teb").eq(new_index).show()).hide();
+      savebutton(new_index);
+      previousbutton(new_index);
+      update_hide(new_index);
+      index = new_index;
+      return index;
+    }
+    $(".delete").attr("disabled", false);
   });
 
   //Get Value Of Input's
@@ -141,7 +169,7 @@ $(document).ready(function () {
           lettersonly: true,
         },
         lastname: {
-          required:true,
+          required: true,
           lettersonly: true,
         },
         gender: {
@@ -252,7 +280,7 @@ $(document).ready(function () {
     $(".btn").not($(".btn").eq(4).show()).hide();
     bool = true;
     return_index();
-    $(".delete").attr("disabled",true);
+    $(".delete").attr("disabled", true);
   });
 
   function return_index() {
