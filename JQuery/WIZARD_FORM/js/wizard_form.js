@@ -1,49 +1,56 @@
 $(document).ready(function () {
   var index;
   var bool = false;
-  $("#dob").datepicker({ maxDate: "-1d", yearRange: "2002:2012" });
+  $("#dob").datepicker({ maxDate: "-1d" });
   $(".teb").hide().first().show();
   $(".btn").not($(".btn").eq(4)).hide();
   $(".button").eq(0).css("color", "red");
   $("#hours").mask("00", { placeholder: "__" });
-  $("#ipa").mask("099.099.099.099", { placeholder: "___.___.___.___" });
+  $("#ipa").mask("0ZZ.0ZZ.0ZZ.0ZZ",{
+    translation: {
+      Z: {
+        pattern: /[0-9]/,
+        optional: true,
+      },
+
+    },
+  });
   $("#zip").mask("000-000", { placeholder: "___-___" });
   $("#money").mask("00,00,00,00,00,00,00,000", { reverse: true });
   $("#contact_no").mask("000-000-0000", { placeholder: "___-___-____" });
+  $("#dob").mask("00/00/0000", { placeholder: "__/__/_____" });
   // Tab Button Event
   $(".button").click(function () {
     index = $(this).index();
     $(".teb").not($(".teb").eq(index).show()).hide();
     $(".save").attr("disabled", false);
-    $(".button").eq(index).css("color", "red");
-    $(".button").not($(".button").eq(index)).css("color", "");
-    savebutton();
-    previousbutton();
-    update_hide();
+    tabcolor(index);
+    savebutton(index);
+    previousbutton(index);
+    update_hide(index);
     return index;
   });
 
   // Save Button
   $(".save").click(function () {
-    index = (index == null) ? 0 : ((index > $(".teb").length - 2) ? $(".teb").length - 1 : index);
-    if(index === null)
-    {
+    index =
+      index == null
+        ? 0
+        : index > $(".teb").length - 2
+        ? $(".teb").length - 1
+        : index;
+    if (index === null) {
       index = 0;
-    }
-    else if($(".teb").length - 2 < index)
-    { 
+    } else if ($(".teb").length - 2 < index) {
       index = 0;
-    }
-    else
-    {
+    } else {
       index = index;
     }
     nextIndex = index + 1;
     console.log(nextIndex, index);
     $(".teb").not($(".teb").eq(nextIndex).show()).hide();
     index++;
-    $(".button").eq(nextIndex).css("color", "red");
-    $(".button").not($(".button").eq(nextIndex)).css("color", "");
+    tabcolor(index);
     savebutton(index);
     previousbutton(index);
     update_hide(index);
@@ -54,12 +61,16 @@ $(document).ready(function () {
     prevIndex = index - 1;
     $(".teb").not($(".teb").eq(prevIndex).show()).hide();
     index--;
-    $(".button").eq(prevIndex).css("color", "red");
-    $(".button").not($(".button").eq(prevIndex)).css("color", "");
+    tabcolor(index);
     savebutton(index);
     previousbutton(index);
     update_hide(index);
   });
+
+  function tabcolor(index) {
+    $(".button").eq(index).css("color", "red");
+    $(".button").not($(".button").eq(index)).css("color", "");
+  }
 
   function savebutton(index) {
     index < $(".teb").length - 1 ? $(".save").show() : $(".save").hide();
@@ -96,9 +107,10 @@ $(document).ready(function () {
       var index = $(".table_data").length + 1;
 
       $(".before").append(
-        `<tr class="table_data" ><td class="new_index" >${index}</td><td class="f_name" > ${f_name} </td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="hours">${hours}</td><td class="zip" >${zip}</td><td class="ip" >${ip}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="money" >${money}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td></tr>`
+        `<tr class="table_data" ><td class="new_index" >${index}</td><td class="f_name" >${f_name}</td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="hours">${hours}</td><td class="zip" >${zip}</td><td class="ip" >${ip}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="money" >${money}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td></tr>`
       );
-
+      $(".button").eq(0).css("color", "red");
+      $(".button").not($(".button").eq(0)).css("color", "");
       EmptyVal();
       $(".btn").hide();
       $(".save").show();
@@ -110,6 +122,8 @@ $(document).ready(function () {
       previousbutton(new_index);
       update_hide(new_index);
       index = new_index;
+      $(".button").eq(index).css("color", "red");
+      $(".button").not($(".button").eq(index)).css("color", "");
       return index;
     }
   });
@@ -121,24 +135,28 @@ $(document).ready(function () {
     if ($("#form").valid() == true) {
       index = parseInt($("#index").val());
 
-      let html = `<td class="new_index" >${index}</td><td class="f_name" > ${f_name} </td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="hours">${hours}</td><td class="zip" >${zip}</td><td class="ip" >${ip}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="money" >${money}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td>`;
+      let html = `<td class="new_index">${index}</td><td class="f_name" >${f_name}</td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="hours">${hours}</td><td class="zip" >${zip}</td><td class="ip" >${ip}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="money" >${money}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td>`;
 
       $(".table_data")
         .eq(parseInt(index - 1))
         .html(html);
-
+      
+      $(".button").eq(0).css("color", "red");
+      $(".button").not($(".button").eq(0)).css("color", "");
+      
       EmptyVal();
       $(".btn").not($(".btn").eq(4).show()).hide();
       bool = false;
       return_index();
-    }
-    else {
+    } else {
       var new_index = $("input.error").first().parents("div.teb").index();
       $(".teb").not($(".teb").eq(new_index).show()).hide();
       savebutton(new_index);
       previousbutton(new_index);
       update_hide(new_index);
       index = new_index;
+      $(".button").eq(index).css("color", "red");
+      $(".button").not($(".button").eq(index)).css("color", "");
       return index;
     }
     $(".delete").attr("disabled", false);
@@ -160,6 +178,16 @@ $(document).ready(function () {
     ip = $("#ipa").val();
     money = $("#money").val();
     $("#terms").is(":checked") ? (terms = "set") : (terms = "off");
+
+    $.validator.addMethod(
+      "IP4Checker",
+      function (value) {
+        return value.match(
+          /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
+        );
+      },
+      "Invalid IP address"
+    );
 
     $("#form").validate({
       ignore: [],
@@ -187,7 +215,7 @@ $(document).ready(function () {
         },
         ipa_vl: {
           required: true,
-          rangelength: [15, 15],
+          IP4Checker: true,
         },
         email: {
           required: true,
@@ -209,7 +237,6 @@ $(document).ready(function () {
         },
         date_pic: {
           required: true,
-          rangelength: [10, 10],
         },
       },
       messages: {
@@ -218,7 +245,10 @@ $(document).ready(function () {
         gender: "Please select gender",
         hours_vl: "Enter Hours From 1 to 24",
         zip_vl: "Enter Zip Code",
-        ipa_vl: "Enter Ip Address",
+        ipa_vl: {
+          required: "Enter Ip Address",
+          IP4Checker: "IP is not valid",
+        },
         email: "Enter Valid Email",
         con_val: "Enter 10 Digit Contact Number ",
         money_vl: "Enter Money",
@@ -234,7 +264,7 @@ $(document).ready(function () {
     $(".btn").not($(".btn").eq(4).show()).hide();
     bool = false;
     return_index();
-    ".delete".attr("disabled", false);
+    $(".delete").attr("disabled", false);
   });
 
   // Edit Button
@@ -267,6 +297,7 @@ $(document).ready(function () {
     $("#money").val(money);
     $("#ipa").val(ip);
     $("#zip").val(zip);
+    $(".delete").eq(EditIndex).attr("disabled", true);
 
     gender != "undefined"
       ? gender == "male"
@@ -280,7 +311,6 @@ $(document).ready(function () {
     $(".btn").not($(".btn").eq(4).show()).hide();
     bool = true;
     return_index();
-    $(".delete").attr("disabled", true);
   });
 
   function return_index() {
