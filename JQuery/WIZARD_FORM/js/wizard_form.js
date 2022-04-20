@@ -2,7 +2,7 @@ $(document).ready(function () {
   var index;
   var bool = false;
   $("#dob").datepicker({ maxDate: "-1d" });
-  $(".teb").hide().first().show();
+  $(".tab").hide().first().show();
   $(".btn").not($(".btn").eq(4)).hide();
   $(".button").eq(0).css("color", "red");
   $("#hours").mask("00", { placeholder: "__" });
@@ -22,7 +22,7 @@ $(document).ready(function () {
   // Tab Button Event
   $(".button").click(function () {
     index = $(this).index();
-    $(".teb").not($(".teb").eq(index).show()).hide();
+    $(".tab").not($(".tab").eq(index).show()).hide();
     $(".save").attr("disabled", false);
     tabcolor(index);
     savebutton(index);
@@ -36,19 +36,19 @@ $(document).ready(function () {
     index =
       index == null
         ? 0
-        : index > $(".teb").length - 2
-        ? $(".teb").length - 1
+        : index > $(".tab").length - 2
+        ? $(".tab").length - 1
         : index;
     if (index === null) {
       index = 0;
-    } else if ($(".teb").length - 2 < index) {
+    } else if ($(".tab").length - 2 < index) {
       index = 0;
     } else {
       index = index;
     }
     nextIndex = index + 1;
     console.log(nextIndex, index);
-    $(".teb").not($(".teb").eq(nextIndex).show()).hide();
+    $(".tab").not($(".tab").eq(nextIndex).show()).hide();
     index++;
     tabcolor(index);
     savebutton(index);
@@ -59,7 +59,7 @@ $(document).ready(function () {
   // Previous Button
   $(".previous").click(function () {
     prevIndex = index - 1;
-    $(".teb").not($(".teb").eq(prevIndex).show()).hide();
+    $(".tab").not($(".tab").eq(prevIndex).show()).hide();
     index--;
     tabcolor(index);
     savebutton(index);
@@ -73,7 +73,7 @@ $(document).ready(function () {
   }
 
   function savebutton(index) {
-    index < $(".teb").length - 1 ? $(".save").show() : $(".save").hide();
+    index < $(".tab").length - 1 ? $(".save").show() : $(".save").hide();
   }
 
   function previousbutton(index) {
@@ -81,7 +81,7 @@ $(document).ready(function () {
   }
 
   function update_hide(index) {
-    index == $(".teb").length - 1
+    index == $(".tab").length - 1
       ? bool == true
         ? $(".update, .cancel").show() | $(".submit").hide()
         : $(".submit").show()
@@ -97,7 +97,7 @@ $(document).ready(function () {
       "checked",
       false
     );
-    $(".teb").hide().first().show();
+    $(".tab").hide().first().show();
   }
 
   // Submit Button
@@ -116,8 +116,8 @@ $(document).ready(function () {
       $(".save").show();
       return_index();
     } else {
-      var new_index = $("input.error").first().parents("div.teb").index();
-      $(".teb").not($(".teb").eq(new_index).show()).hide();
+      var new_index = $("input.error").first().parents("div.tab").index();
+      $(".tab").not($(".tab").eq(new_index).show()).hide();
       savebutton(new_index);
       previousbutton(new_index);
       update_hide(new_index);
@@ -149,8 +149,8 @@ $(document).ready(function () {
       bool = false;
       return_index();
     } else {
-      var new_index = $("input.error").first().parents("div.teb").index();
-      $(".teb").not($(".teb").eq(new_index).show()).hide();
+      var new_index = $("input.error").first().parents("div.tab").index();
+      $(".tab").not($(".tab").eq(new_index).show()).hide();
       savebutton(new_index);
       previousbutton(new_index);
       update_hide(new_index);
