@@ -1,32 +1,33 @@
 $(document).ready(function () {
   var index;
   var bool = false;
- 
-  $("#dob").datepicker({ maxDate: "-1d" })
-  .on("change",function(){
-    $(this).valid();
-  });
-  $("input[name='date_pic']").keydown(function() {
+
+  // Masking For Input fields
+  $("#dob")
+    .datepicker({ maxDate: "-1d" })
+    .on("change", function () {
+      $(this).valid();
+    });
+  $("input[name='date_pic']").keydown(function () {
     return false;
   });
   $(".tab").hide().first().show();
   $(".btn").not($(".btn").eq(4)).hide();
   $(".button").eq(0).css("color", "red");
   $("#hours").mask("00", { placeholder: "__" });
-  $("#ipa").mask("0ZZ.0ZZ.0ZZ.0ZZ",{
+  $("#ipa").mask("0ZZ.0ZZ.0ZZ.0ZZ", {
     translation: {
       Z: {
         pattern: /[0-9]/,
         optional: true,
       },
-
     },
   });
   $("#zip").mask("000-000", { placeholder: "___-___" });
   $("#money").mask("00,00,00,00,00,00,00,000", { reverse: true });
   $("#contact_no").mask("000-000-0000", { placeholder: "___-___-____" });
   $("#dob").mask("00/00/0000", { placeholder: "__/__/_____" });
- 
+
   // Tab Button Event On Click hide and show data of wizard
   $(".button").click(function () {
     index = $(this).index();
@@ -55,7 +56,7 @@ $(document).ready(function () {
       index = index;
     }
     nextIndex = index + 1;
-    console.log(nextIndex, index);
+    // console.log(nextIndex, index);
     $(".tab").not($(".tab").eq(nextIndex).show()).hide();
     index++;
     tabcolor(index);
@@ -124,6 +125,7 @@ $(document).ready(function () {
     if ($("#form").valid() == true) {
       var index = $(".table_data").length + 1;
 
+      // Append Input data on table
       $(".before").append(
         `<tr class="table_data" ><td class="new_index" >${index}</td><td class="f_name" >${f_name}</td><td class="l_name" >${l_name}</td><td class="gender">${gender}</td><td class="hours">${hours}</td><td class="zip" >${zip}</td><td class="ip" >${ip}</td><td class="email">${email}</td><td class="contact_no" >${contact_no}</td><td class="dob" >${dob}</td><td class="money" >${money}</td><td class="sport" >${sport}</td><td class="about" >${about}</td><td class="terms">${terms}</td><td><button class="edit">Edit</button></td><td><button class="delete">Delete</button></td></tr>`
       );
@@ -133,8 +135,7 @@ $(document).ready(function () {
       $(".btn").hide();
       $(".save").show();
       return_index();
-    } else 
-    {
+    } else {
       display_error_tab();
     }
   });
@@ -167,10 +168,10 @@ $(document).ready(function () {
       $(".table_data")
         .eq(parseInt(index - 1))
         .html(html);
-      
+
       $(".button").eq(0).css("color", "red");
       $(".button").not($(".button").eq(0)).css("color", "");
-      
+
       EmptyVal();
       $(".btn").not($(".btn").eq(4).show()).hide();
       bool = false;
@@ -181,7 +182,7 @@ $(document).ready(function () {
     $(".delete").attr("disabled", false);
   });
 
-  // Show Teb which is has errors 
+  // Show Teb which is has errors
   function display_error_tab() {
     var new_index = $("input.error").first().parents("div.tab").index();
     $(".tab").not($(".tab").eq(new_index).show()).hide();
@@ -222,6 +223,14 @@ $(document).ready(function () {
     // Validate input field
     $("#form").validate({
       ignore: [],
+      //Error Placement For Input Field.
+      errorPlacement: function (error, element) {
+        if (element.attr("type") == "radio") {
+          error.insertAfter($(".gen"));
+        } else {
+          error.insertAfter($(element));
+        }
+      },
       rules: {
         firstname: {
           required: true,
@@ -293,13 +302,17 @@ $(document).ready(function () {
   $(".cancel").click(function () {
     EmptyVal();
     $(".btn").not($(".btn").eq(4).show()).hide();
+    $(".button").eq(0).css("color", "red");
+    $(".button").not($(".button").eq(0)).css("color", "");
     bool = false;
     return_index();
     $(".delete").attr("disabled", false);
   });
 
+  var count = 0;
   // Edit Button : - Give value for update
-  $(document).on("click", ".edit", function () {  
+  $(document).on("click", ".edit", function () {
+    //Get Value From selected row
     var EditIndex = $(".edit").index(this);
     var new_index = $(".new_index").eq(EditIndex).text();
     var f_name = $(".f_name").eq(EditIndex).text();
@@ -311,11 +324,11 @@ $(document).ready(function () {
     var sport = $(".sport").eq(EditIndex).text();
     var about = $(".about").eq(EditIndex).text();
     var terms = $(".terms").eq(EditIndex).text();
-
     var zip = $(".zip").eq(EditIndex).text();
     var ip = $(".ip").eq(EditIndex).text();
     var money = $(".money").eq(EditIndex).text();
 
+    //Set Values in form which row is selected
     $("#index").val(new_index);
     $("#f_name").val(f_name);
     $("#l_name").val(l_name);
@@ -328,6 +341,7 @@ $(document).ready(function () {
     $("#money").val(money);
     $("#ipa").val(ip);
     $("#zip").val(zip);
+    $(".delete").attr("disabled", false);
     $(".delete").eq(EditIndex).attr("disabled", true);
 
     gender != "undefined"
@@ -342,9 +356,7 @@ $(document).ready(function () {
     $(".btn").not($(".btn").eq(4).show()).hide();
     bool = true;
     return_index();
-  })
-
-
+  });
 });
 
 // Delete Button : Delete data from table
@@ -354,7 +366,7 @@ $(document).on("click", ".delete", function () {
     alert("Thank you for sticking around");
     return;
   }
-
+  //For Index maintenance
   $(".before tr").each(function (i) {
     $($(this).find("td")[0]).html(i);
   });
