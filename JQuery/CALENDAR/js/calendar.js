@@ -56,7 +56,7 @@ $(document).ready(function () {
     count = 0;  
     count_new = 0;
     for (let i = 0; i < 7; i++) {
-        $(".before").append(`<tr class="remove" >`);
+        $(".before").append(`<tr>`);
         for(let j = 0; j < 7; j++)
         {   
             count++;
@@ -91,8 +91,9 @@ $(document).ready(function () {
   $("#previous").click(function () {
     today_date.setMonth(today_date.getMonth() - 1);
     $(".before").empty();
-    $(".today").re
+    
     calendar();
+    $(".today").removeClass();
 
   });
 
