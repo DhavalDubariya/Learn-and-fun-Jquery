@@ -1,0 +1,52 @@
+body{
+    font-family: arial, sans-serif;
+}
+
+.header {
+    text-align: center;
+    color: brown;
+}
+.title{
+    background-color: brown;
+    padding: 8px;
+    color: white;
+}
+.button {
+    padding: 10px 20px;
+    margin: 0 20px;
+    background-color: white;
+    border: 1px solid;
+}
+
+.width{
+    width: 33%;
+    display: inline-block;
+    text-align: center;
+}
+
+.date_month {
+    display: inline-block;
+    font-size: 25px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.today{
+    background-color: brown;
+    color: white;
+}
