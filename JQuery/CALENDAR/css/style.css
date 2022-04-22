@@ -42,10 +42,10 @@ td, th {
     text-align: center;
     padding: 8px;
 }
-
+/* 
 tr:nth-child(even) {
     background-color: #dddddd;
-}
+} */
 
 .today{
     background-color: brown;
@@ -69,7 +69,7 @@ tr:nth-child(even) {
 
 .month{
     position: absolute;
-    left: 555px;
+    left: 570px;
 }
 
 .days{
@@ -93,4 +93,9 @@ tr:nth-child(even) {
     border: 1px solid brown;
     padding: 10px 20px;
 
+}
+
+.find_clr{
+    background-color: #882525cc ;
+    color: white;
 }
