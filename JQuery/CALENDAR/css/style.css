@@ -1,5 +1,6 @@
 body{
     font-family: arial, sans-serif;
+    position: relative;
 }
 
 .header {
@@ -49,4 +50,22 @@ tr:nth-child(even) {
 .today{
     background-color: brown;
     color: white;
+}
+
+.buttons{
+    position: absolute;
+    top: 435px;
+}
+
+.bottom_button{
+    background-color: white;
+    border: 1px solid brown;
+    padding: 10px 20px;
+}
+
+.select{
+    background-color: white;
+    border: 1px solid brown;
+    padding: 10px 20px;
+
 }

@@ -1,5 +1,6 @@
 $(document).ready(function () {
   var today_date = new Date();
+  
 
   var months = [
     "January",
@@ -26,10 +27,30 @@ $(document).ready(function () {
   ];
 
   function calendar() {
+
     var month = today_date.getMonth();
     var day = today_date.getDay();
     var year = today_date.getFullYear();
     var date = today_date.getDate();
+
+    for(let i=1970;i<=2070;i++)
+    {
+      
+      $(".select_year").append(`<option value="${i}">${i}</option>`);
+
+    }
+
+    for(let j=0;j<12;j++)
+    {
+      $(".select_month").append(`<option value="${j}">${months[j]}</option>`);
+      // console.log(months[j]);
+    }
+
+    for(let k=1;k<32;k++)
+    {
+      $(".select_date").append(`<option value="${k}">${k}</option>`);
+    }
+    // console.log(date,month,year);
     
     var feb;
     if (month === 1) {
@@ -43,11 +64,14 @@ $(document).ready(function () {
     }
 
     var firstday = new Date(year,month,1);
+    firstday_date = firstday.getDay();
+    var lastday = new Date(year,month+1,0);
+    var lastday_date = lastday.getDay();    
+    // console.log(firstday_date,lastday_day);
     // console.log(firstday,lastday);
+    var current_date = new Date();
 
-    firstday_day = firstday.getDay();
-    lastday_day = month;
-    // console.log(firstday_day,lastday_day);
+    
 
     var days_in_month = [31, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     var display = `${months[month]} - ${year} `;
@@ -55,15 +79,16 @@ $(document).ready(function () {
     $(".date_month").text(display);
     count = 0;  
     count_new = 0;
+
     for (let i = 0; i < 7; i++) {
         $(".before").append(`<tr>`);
         for(let j = 0; j < 7; j++)
         {   
             count++;
-            if(firstday_day<count)
+            if(firstday_date<count)
             {   
                 ++count_new;
-                if(count_new == date)
+                if(count_new == date && current_date.getMonth() == month  && current_date.getFullYear() == year)
                 {
                     $(".before").append(`<td class="today" >${count_new}</td>`);
                 }
@@ -91,15 +116,18 @@ $(document).ready(function () {
   $("#previous").click(function () {
     today_date.setMonth(today_date.getMonth() - 1);
     $(".before").empty();
-    
     calendar();
-    $(".today").removeClass();
-
   });
 
 
   $("#next").click(function () {
     today_date.setMonth(today_date.getMonth() + 1);
+    $(".before").empty();
+    calendar();
+  });
+
+  $("#today_button").click(function ()  {
+    today_date = new Date();
     $(".before").empty();
     calendar();
   });
