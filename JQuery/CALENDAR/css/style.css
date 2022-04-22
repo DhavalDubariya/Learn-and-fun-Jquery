@@ -57,6 +57,31 @@ tr:nth-child(even) {
     top: 435px;
 }
 
+.today_btn{
+    position: absolute;
+    left: 200px;
+}
+
+.year{
+    position: absolute;
+    left: 380px;
+}
+
+.month{
+    position: absolute;
+    left: 555px;
+}
+
+.days{
+    position: absolute;
+    left: 770px;
+}
+
+.find{
+    position: absolute;
+    left: 970px;
+}
+
 .bottom_button{
     background-color: white;
     border: 1px solid brown;

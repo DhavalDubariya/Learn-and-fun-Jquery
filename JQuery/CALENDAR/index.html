@@ -21,60 +21,60 @@
     <hr />
     <h2 class="header">CALENDAR</h2>
     <hr />
-    <div class="title" >
-
-    
-    <div class="width" >
-      <button id="previous" class="button previous">
-        <i class="fa-solid fa-square-caret-left"></i>
-      </button>
+    <div class="title">
+      <div class="width">
+        <button id="previous" class="button previous">
+          <i class="fa-solid fa-square-caret-left"></i>
+        </button>
+      </div>
+      <div class="width">
+        <span class="date_month"> </span>
+      </div>
+      <div class="width">
+        <button id="next" class="button next">
+          <i class="fa-solid fa-square-caret-right"></i>
+        </button>
+      </div>
     </div>
-    <div class="width">
-      <span class="date_month"> </span>
-    </div>
-    <div class="width">
-      <button id="next" class="button next">
-        <i class="fa-solid fa-square-caret-right"></i>
-      </button>
-    </div>
-</div>
     <hr />
 
     <table>
-    <thead>
-      <tr class="dhaval" >
-        <th>Sunday</th>
-        <th>Monday</th>
-        <th>Tuesday</th>
-        <th>Wednesday</th>
-        <th>Thursday</th>
-        <th>Friday</th>
-        <th>Saturday</th>
-      </tr>
-    </thead>
-    <tbody class="before">
-    </tbody>
+      <thead>
+        <tr class="dhaval">
+          <th>Sunday</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+        </tr>
+      </thead>
+      <tbody class="before"></tbody>
     </table>
 
-    <div class="buttons" >
+    <div class="buttons">
+      <button id="today_button" class="bottom_button today_btn">TODAY</button>
 
-      <button id="today_button" class="bottom_button" >TODAY</button>
-    
-      <select class="select_year select" name="year" id="select_year">
-        
-      </select>      
+      <select id="select_year" class="select year" name="select_year" >
+        <option value="">Select year</option>
+      </select>
 
-      <select class="select_month select" name="month" id="select_month">
-  
-      </select>      
-      <select class="select_date select" name="date" id="select_date">
-        
-      </select>      
-      
-      <button id="find_button" class="bottom_button" >FIND DATE</button>
+      <select id="select_month" class="select month" name="select_month" >
+        <option value="">Select month</option>
+      </select>
 
+      <select id="days_month" class="select days" name="days_month"  >
+        <option value="">Select Day</option>
+      </select>
+
+      <button id="find_button" class="bottom_button find">FIND</button>
 
     </div>
 
+    <script>
+
+
+    </script>
   </body>
 </html>
