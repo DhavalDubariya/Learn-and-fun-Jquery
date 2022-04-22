@@ -26,7 +26,7 @@ $(document).ready(function () {
   ];
 
 
-  function calendar() {
+  function calendar(flag) {
     var month = today_date.getMonth();
     var day = today_date.getDay();
     var year = today_date.getFullYear();
@@ -42,7 +42,6 @@ $(document).ready(function () {
     count = 0;
     count_new = 0;
 
-    
     for (let i = 0; i < 7; i++) {
       $(".before").append(`<tr>`);
       for (let j = 0; j < 7; j++) {
@@ -55,7 +54,11 @@ $(document).ready(function () {
             current_date.getFullYear() == year
           ) 
           {
-            $("table tbody tr").eq(i).append(`<td class="today" id="${count_new}" >${count_new}</td>`);
+            $("table tbody tr").eq(i).append(`<td class="today" >${count_new}</td>`);
+          }
+          else if(flag == true && count_new == date )
+          {
+            $("table tbody tr").eq(i).append(`<td class="find_clr" >${count_new}</td>`);
           }
           else if (count_new - 1 == days_in_month)
           {
@@ -63,7 +66,7 @@ $(document).ready(function () {
           } 
           else 
           {
-            $("table tbody tr").eq(i).append(`<td id="${count_new}">${count_new}</td>`);
+            $("table tbody tr").eq(i).append(`<td>${count_new}</td>`);
           }
         } 
         else {
@@ -81,14 +84,13 @@ $(document).ready(function () {
     today_date.setMonth(today_date.getMonth() - 1);
     $(".before").empty();
     calendar();
-    $(this).parents().siblings("table").find(`tbody td#${date}`).css("background-color","green");
-
   });
 
   $("#next").click(function () {
     today_date.setMonth(today_date.getMonth() + 1);
     $(".before").empty();
     calendar();
+
   });
 
   $("#today_button").click(function () {
@@ -111,31 +113,39 @@ $(document).ready(function () {
   for (var i = 1; i <= 31; i++) {
     $("#days_month").append(`<option value="${i}" >${i}</option>`);
   }
-
+  $("#days_month").attr("disabled",true)
   $("#select_year, #select_month").change(function () {
-    $("#days_month").find("option").remove();
-    var days_in_month = new Date(
-      $("#select_year").val(),
-      $("#select_month").val(),
-      0
-    ).getDate();
-    for (var i = 1; i <= days_in_month; i++) {
-      $("#days_month").append(`<option value="${i}" >${i}</option>`);
+
+    if($("#select_year").val() != "null" && $("#select_month").val() != "null" )
+    { 
+      $("#days_month").attr("disabled",false)
+      $("#days_month").find("option").remove();
+      var days_in_month = new Date(
+        $("#select_year").val(),
+        $("#select_month").val(),
+        0
+      ).getDate();
+      for (var i = 1; i <= days_in_month; i++) {
+        $("#days_month").append(`<option value="${i}" >${i}</option>`);
+      }
     }
+
   });
 
   $("#find_button").click(function () {
-    year = $("#select_year").val();
-    month = $("#select_month").val();
-    date = $("#days_month").val();
+    if($("#select_year").val() != "null" && $("#select_month").val() != "null" )
+    {  
+      year = $("#select_year").val();
+      month = $("#select_month").val();
+      date = $("#days_month").val();
 
-    today_date.setMonth(month - 1);
-    today_date.setFullYear(year);
-    today_date.setDate(date);
+      today_date.setMonth(month - 1);
+      today_date.setFullYear(year);
+      today_date.setDate(date);
+      bool = true;
 
-
-    $(".before").empty();
-    calendar();
-    $(this).parents().siblings("table").find(`tbody td#${date}`).css("background-color","green");
+      $(".before").empty();
+      calendar(bool);
+    }
   });
 });
