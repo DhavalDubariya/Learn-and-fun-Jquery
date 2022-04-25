@@ -43,8 +43,8 @@ $(document).ready(function () {
       var squre = division.replace(/²/gi, "**2 ");
   
       value_of_input_btn = squre.replace(/√/gi,"**0.5 ");
-  
-      // console.log(value_of_input_btn);
+        
+      console.log(value_of_input_btn);
       if(ans == "Infinity") {throw "Division by zero is undefined";}
       var ans = eval(value_of_input_btn);
       $("#input_cal").val(ans);
