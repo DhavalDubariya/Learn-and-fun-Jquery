@@ -21,3 +21,14 @@
     width: 154px;
     height: 32px;
 }
+
+.oneplus{
+    background-color: red;
+    color: white;
+}
+
+/* 
+if(text=="1+")
+    {
+      $(".input_cal").val("Never Settle").addClass("oneplus")
+    } */
