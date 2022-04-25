@@ -1,0 +1,23 @@
+.cal{
+    text-align: center;
+}
+
+.input_cal{
+    width: 47%;
+    padding: 12px 0;
+}
+
+.input_btn{
+    width: 76px;
+    height: 32px;
+    font-style: bold;
+}
+
+.table{
+    margin: 0 auto;
+}
+
+.btn_eq{
+    width: 154px;
+    height: 32px;
+}
