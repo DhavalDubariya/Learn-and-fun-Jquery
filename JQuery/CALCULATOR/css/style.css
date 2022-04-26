@@ -2,9 +2,13 @@
     text-align: center;
 }
 
-.input_cal{
+.input_cal,.error{
     width: 47%;
     padding: 12px 0;
+}
+
+.error{
+    border: none;
 }
 
 .input_btn{
