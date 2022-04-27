@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./js/script.js"></script>
-    <script src="./js/calendar.js"></script>
+    <!-- <script src="./js/calendar.js"></script> -->
+    <script src="./js/calendar_2.js"></script>
+
 
     <link rel="stylesheet" href="./css/style.css" />
     <link
@@ -28,7 +30,8 @@
         </button>
       </div>
       <div class="width">
-        <span class="date_month"> </span>
+        <span class="month_d" ></span>
+        <span class="year_d"> </span>
       </div>
       <div class="width">
         <button id="next" class="button next">
@@ -57,11 +60,10 @@
       <button id="today_button" class="bottom_button today_btn">TODAY</button>
 
       <select id="select_year" class="select year" name="select_year" >
-        <option value="null">YEAR</option>
       </select>
 
       <select id="select_month" class="select month" name="select_month" >
-        <option value="null">MONTH</option>
+        
       </select>
 
       <select id="days_month" class="select days" name="days_month"  >

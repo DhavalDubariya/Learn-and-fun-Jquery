@@ -2,14 +2,10 @@ $(document).ready(function () {
 
   var string_index;
 
-  // $(".input_cal").keydown(function (event) {
-  //   string_index = event.target.selectionStart;
-  //   // console.log(string_index)
-  // });
-
-  $(".input_cal").click(function (event) {
+  $(".input_cal").on('keyup click' ,function (event) {
     string_index = event.target.selectionStart;
   });
+
 
   $(".input_cal").keypress(function (event) {
     event.preventDefault();
@@ -54,9 +50,8 @@ $(document).ready(function () {
     else if (event.keyCode == 8)
     {
       event.preventDefault();
-      var backspace = $(".input_cal").val();
-      new_string = backspace.substr(0, backspace.length - 1);
-      $(".input_cal").val(new_string);
+      backspace();
+      return;
     } 
     else if (event.keyCode == 27)
     {
@@ -73,28 +68,20 @@ $(document).ready(function () {
     $("#input_cal").val(new_string);
   });
 
-  function backspace() {
-    var backspace = $(".input_cal").val();
-    // index = backspace.substr(0, backspace.length - 1);
-    console.log(string_index);
-    var one = backspace.substring(0,string_index-1);
-    var two = backspace.substring(string_index,backspace.length);
+ 
 
-    console.log("One",one,"two",two);
-    // console.log(one + two);
-    $(".input_cal").val(one + two);
-  }
-
-  $(".input_btn").click(function () {
+  $(".input_btn").click(function (e) {
     var index = $(".input_btn").index(this);
     var value_of_btn = $(".input_btn").eq(index).val();
 
     var value_of_input_btn = $("#input_cal").val();
     if (value_of_btn == "esc") {
       $("#input_cal").val("");
-    } else if (value_of_btn == "back") {
+    }
+    else if (value_of_btn == "back") {
       backspace();
-    }else if(value_of_btn == "ans"){
+    }
+    else if(value_of_btn == "ans"){
       calculator();
       return;
     }
@@ -112,12 +99,9 @@ $(document).ready(function () {
       calculator();
     }
   });
-  
-  $(".btn_eq").click(function (){
-    calculator();
-  });
 
 
+  //
   function calculator() {
     try {
       var text = $("#input_cal").val();
@@ -150,5 +134,18 @@ $(document).ready(function () {
         $("#input_cal").val(e);
       }
     }
+  }
+
+  //BackSpace Function
+  function backspace() {    
+    console.log("On function called : ",string_index);
+    var backspace = $(".input_cal").val();
+    
+    var one = backspace.substring(0,string_index-1);
+    var two = backspace.substring(string_index,backspace.length);  
+    $(".input_cal").val(one + two);
+    
+    var new_stringindex = event.target.selectionStart;
+    console.log(new_stringindex)
   }
 });

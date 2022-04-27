@@ -1,12 +1,9 @@
 var array = [
-  "Dhaval",
   "Raj",
   "Jeel",
-  "Riya",
   "Chirag",
   "Manav",
   "Aakash",
-  "Mihir",
   "Dhruvi",
   "Aksh",
   "Tilak",

@@ -72,3 +72,4 @@
     =>Every time a user hits the PAUSE / STOP button, append the timestamp.
 
     =>Clear all timestamps when a user hits RESET Button.
+
