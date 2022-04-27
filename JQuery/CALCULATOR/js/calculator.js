@@ -2,13 +2,13 @@ $(document).ready(function () {
 
   var string_index;
 
-  $(".input_cal").keydown(function (event) {
-    string_index = event.target.selectionStart;
-    console.log(string_index)
-  });
+  // $(".input_cal").keydown(function (event) {
+  //   string_index = event.target.selectionStart;
+  //   // console.log(string_index)
+  // });
 
   $(".input_cal").click(function (event) {
-    console.log(event.target.selectionStart)
+    string_index = event.target.selectionStart;
   });
 
   $(".input_cal").keypress(function (event) {
@@ -75,10 +75,14 @@ $(document).ready(function () {
 
   function backspace() {
     var backspace = $(".input_cal").val();
-    var back = backspace[string_index];
-    console.log(back)
-    index = backspace.substr(0, backspace.length - 1);
-    $(".input_cal").val(index);
+    // index = backspace.substr(0, backspace.length - 1);
+    console.log(string_index);
+    var one = backspace.substring(0,string_index-1);
+    var two = backspace.substring(string_index,backspace.length);
+
+    console.log("One",one,"two",two);
+    // console.log(one + two);
+    $(".input_cal").val(one + two);
   }
 
   $(".input_btn").click(function () {
@@ -119,20 +123,17 @@ $(document).ready(function () {
       var text = $("#input_cal").val();
       // text =  text.replace(/^0+/,'')
       var multiply = text.replace(/x/g, "*");
-     
-      for(let i=0;i<multiply.length;i++)
-      {
-        if(multiply[i]=="÷" && multiply[i+1]=="÷")
-        {
-          throw "Malformed expression";
-        }
-      }
-
       var division = multiply.replace(/÷/g, "/");
       var squre = division.replace(/²/g, "**2 ");
       value_of_input_btn = squre.replace(/√/g, "**0.5 ");
 
-      
+      for(let i=0;i<value_of_input_btn.length;i++)
+      {
+        if(value_of_input_btn[i]=="/" && value_of_input_btn[i+1]=="/")
+        {
+          throw "Malformed expression";
+        }
+      }
       // console.log(value_of_input_btn);
       var ans = eval(value_of_input_btn);
       if (text == "NaN") {
