@@ -43,40 +43,56 @@ $(document).on("click", ".add_child", function () {
 //Submit
 
 $(document).on("click", ".submit_btn", function () {
-
   var index_submit_btn = $(".submit_btn").index(this);
-  
-  $(".test").eq(index_submit_btn).remove();
 
   console.log(index_submit_btn);
 
-  var length_child = $(this).parents(".addmore_data").find(".child_addmore").length;
+  var length_child = $(this)
+    .parents(".addmore_data")
+    .find(".child_addmore").length;
 
   console.log(length_child);
-  
 
   var title = $(".title_input").eq(index_submit_btn).val();
 
-  $(".add_table").append(`<div class="table">
-  <table class="test" >
-    <tr>
-      <th colspan="2">${title}</th>
-    </tr>
-  <tbody class="table_data" >
-    
-  <tbody>
+  if ($(`table#${index_submit_btn}`).length == 0) {
+    $(".add_table").append(`<div class="table" id="${index_submit_btn}" >
+  <table id="${index_submit_btn}" class="test" >
+    <thead>
+      <tr>
+        
+      </tr>
+    </thead>
+    <tbody></tbody>
   </table>
 </div>`);
-  for (let i = 0; i < length_child; i++) {
-    var table_index = $(this).index();
-    var sub_ti = $(this).parents(".addmore_data").find(".child_addmore_in_sub").eq(i).val();
-    var sub_val = $(this).parents(".addmore_data").find(".child_addmore_in").eq(i).val();
+  }
 
-    console.log(sub_ti, sub_val,i);
+  $(this).parents().find(`.table table#${index_submit_btn}`).find("th").remove();
+  $(this).parents().find(`.table table#${index_submit_btn}`).find("tbody").empty();
+  $(this).parents().find(`.table table#${index_submit_btn} thead tr`).append(`<th colspan="2">${title}</th>`);
+
+  // $(`.table table#${index_submit_btn}`).find("tbody").empty();
+
+  for (let i = 0; i < length_child; i++) {
+    
+    var sub_ti = $(this)
+      .parents(".addmore_data")
+      .find(".child_addmore_in_sub")
+      .eq(i)
+      .val();
+    var sub_val = $(this)
+      .parents(".addmore_data")
+      .find(".child_addmore_in")
+      .eq(i)
+      .val();
+
+    console.log(sub_ti, sub_val, i);
     console.log(index_submit_btn);
-    $(".table_data").eq(index_submit_btn).append(`<tr>
-           <td>${sub_ti}</td>
-           <td>${sub_val}</td>
+
+    $(this).parents().find(`.table table#${index_submit_btn}`).find("tbody").append(`<tr>
+           <td>${sub_ti} ${i}</td>
+           <td>${sub_val} ${i}</td>
     </tr>`);
   }
 });
@@ -91,4 +107,7 @@ $(document).on("click", ".child_delete_btn", function () {
 $(document).on("click", ".delete_btn", function () {
   var index_child_delete = $(".delete_btn").index(this);
   $(".addmore_data").eq(index_child_delete).remove();
+  $(`.add_table div#${index_child_delete}`).remove();
 });
+
+
