@@ -97,3 +97,10 @@ td, th {
 .test{
     display: none;
 }
+
+.child_addmore{
+    border: 1px solid;
+    border-color: yellow;
+    text-align: center;
+    margin: 5px;
+}

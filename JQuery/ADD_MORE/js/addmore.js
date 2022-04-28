@@ -1,6 +1,4 @@
 $(document).ready(function () {
-
-
   $(".add_table").append(`
   <table id="0" class="test" >
     <thead>
@@ -11,17 +9,12 @@ $(document).ready(function () {
     <tbody></tbody>
   </table>`);
 
-
-  $(".addmore_btn").click(function () {    
-    bootbox.confirm("This is the default confirm!", function(result){ 
-      console.log('This was logged in the callback: ' + result); 
-  });
-  
-  
-    var index = $(".addmore_data").length;
-
-    $(".append").append(` 
-        <div class="addmore_data" id="${index}" >
+  // Add Fields with Table
+  $(".addmore_btn").click(function () {
+    bootbox.confirm("Click On Ok Button To Add More Fields", (result) => {
+      if (result == true) {
+        $(".append").append(` 
+        <div class="addmore_data">
         <div class="parent_addmore">
           <input
             type="text"
@@ -34,10 +27,10 @@ $(document).ready(function () {
           <button class="delete_btn" id="delete">Delete</button>
         </div>
       </div>
-      `);    
-    
-    $(".add_table").append(`
-  <table id="${index}" class="test" >
+      `);
+
+        $(".add_table").append(`
+  <table class="test" >
     <thead>
       <tr>
         
@@ -46,13 +39,18 @@ $(document).ready(function () {
     <tbody></tbody>
   </table>
 `);
+      }
+    });
   });
 });
 
+
+//Add Child to Field
 $(document).on("click", ".add_child", function () {
-  var index_addmore_data = $(".add_child").index(this);
-  // console.log(index_addmore_data);
-  $(".addmore_data").eq(index_addmore_data).append(`
+  bootbox.confirm("Click On Ok Button To Add Child Fields", (result) => {
+    if (result == true) {
+      var index_addmore_data = $(this).closest(".addmore_data").index();
+      $(".addmore_data").eq(index_addmore_data).append(`
   <div class="child_addmore">
   <input
     type="text"
@@ -69,14 +67,14 @@ $(document).on("click", ".add_child", function () {
   <button class="child_delete_btn" id="delete_child">Delete</button>
 </div>
   `);
+    }
+  });
 });
 
-//Submit
-
+//Submit Button
 $(document).on("click", ".submit_btn", function () {
-
   var index_submit_btn = $(".submit_btn").index(this);
-
+  console.log(index_submit_btn);
   $("table").eq(index_submit_btn).removeClass("test");
 
   console.log(index_submit_btn);
@@ -89,15 +87,14 @@ $(document).on("click", ".submit_btn", function () {
 
   var title = $(".title_input").eq(index_submit_btn).val();
 
-
   $("table").eq(index_submit_btn).find("tr th").remove();
   $("table").eq(index_submit_btn).find("tbody tr").remove();
   $(this)
     .parents()
-    .find("table").eq(index_submit_btn).find("thead tr").append(`<th colspan="2">${title}</th>`);
-    
-
-  // $(`table table#${index_submit_btn}`).find("tbody").empty();
+    .find("table")
+    .eq(index_submit_btn)
+    .find("thead tr")
+    .append(`<th colspan="2">${title}</th>`);
 
   for (let i = 0; i < length_child; i++) {
     var sub_ti = $(this)
@@ -121,21 +118,52 @@ $(document).on("click", ".submit_btn", function () {
     </tr>`);
   }
 
-  //For Index maintenance
-  // $("thead").each(function (i) {
-  //   $($(this).find("tr")[0]).html(i);
-  // });
+
 });
 
-//Child Delete
+//Child Fields Delete
 $(document).on("click", ".child_delete_btn", function () {
   var index_child_delete = $(".child_delete_btn").index(this);
-  $(".child_addmore").eq(index_child_delete).remove();
+  bootbox.confirm({
+    message: "Are You Sure You Want to Delete This Child ?",
+    buttons: {
+      confirm: {
+        label: "Yes",
+        className: "btn-success",
+      },
+      cancel: {
+        label: "No",
+        className: "btn-danger",
+      },
+    },
+    callback: (result) => {
+      if (result == true) {
+        $(".child_addmore").eq(index_child_delete).remove();
+      }
+    },
+  });
 });
 
-//Prent Delete
+//Prent Delete On Click
 $(document).on("click", ".delete_btn", function () {
-  var index_child_delete = $(".delete_btn").index(this);
-  $(`.addmore_data`).eq(index_child_delete).remove();
-  $(`table`).eq(index_child_delete).remove();
+  bootbox.confirm({
+    message: "Are You Sure You Want to Delete This Field ?",
+    buttons: {
+      confirm: {
+        label: "Yes",
+        className: "btn-success",
+      },
+      cancel: {
+        label: "No",
+        className: "btn-danger",
+      },
+    },
+    callback: (result) => {
+      if (result == true) {
+        var index_child_delete = $(".delete_btn").index(this);
+        $(`.addmore_data`).eq(index_child_delete).remove();
+        $(`table`).eq(index_child_delete).remove();
+      }
+    },
+  });
 });
