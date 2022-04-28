@@ -56,7 +56,7 @@ $(document).on("click", ".submit_btn", function () {
   var title = $(".title_input").eq(index_submit_btn).val();
 
   if ($(`table#${index_submit_btn}`).length == 0) {
-    $(".add_table").append(`<div class="table" id="${index_submit_btn}" >
+    $(".add_table").append(`<div class="table">
   <table id="${index_submit_btn}" class="test" >
     <thead>
       <tr>
@@ -95,6 +95,12 @@ $(document).on("click", ".submit_btn", function () {
            <td>${sub_val} ${i}</td>
     </tr>`);
   }
+
+  //For Index maintenance
+  // $("thead").each(function (i) {
+  //   $($(this).find("tr")[0]).html(i);
+  // });
+
 });
 
 //Child Delete
@@ -107,7 +113,7 @@ $(document).on("click", ".child_delete_btn", function () {
 $(document).on("click", ".delete_btn", function () {
   var index_child_delete = $(".delete_btn").index(this);
   $(".addmore_data").eq(index_child_delete).remove();
-  $(`.add_table div#${index_child_delete}`).remove();
+  $(`.table table#${index_child_delete}`).remove();
 });
 
 
