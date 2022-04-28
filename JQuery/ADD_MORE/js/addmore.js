@@ -12,8 +12,12 @@ $(document).ready(function () {
   </table>`);
 
 
-  $(".addmore_btn").click(function () {
-
+  $(".addmore_btn").click(function () {    
+    bootbox.confirm("This is the default confirm!", function(result){ 
+      console.log('This was logged in the callback: ' + result); 
+  });
+  
+  
     var index = $(".addmore_data").length;
 
     $(".append").append(` 
@@ -70,7 +74,10 @@ $(document).on("click", ".add_child", function () {
 //Submit
 
 $(document).on("click", ".submit_btn", function () {
+
   var index_submit_btn = $(".submit_btn").index(this);
+
+  $("table").eq(index_submit_btn).removeClass("test");
 
   console.log(index_submit_btn);
 
@@ -82,20 +89,13 @@ $(document).on("click", ".submit_btn", function () {
 
   var title = $(".title_input").eq(index_submit_btn).val();
 
+
+  $("table").eq(index_submit_btn).find("tr th").remove();
+  $("table").eq(index_submit_btn).find("tbody tr").remove();
   $(this)
     .parents()
-    .find(`table#${index_submit_btn}`)
-    .find("th")
-    .remove();
-  $(this)
-    .parents()
-    .find(`table#${index_submit_btn}`)
-    .find("tbody")
-    .empty();
-  $(this)
-    .parents()
-    .find(`table#${index_submit_btn} thead tr`)
-    .append(`<th colspan="2">${title}</th>`);
+    .find("table").eq(index_submit_btn).find("thead tr").append(`<th colspan="2">${title}</th>`);
+    
 
   // $(`table table#${index_submit_btn}`).find("tbody").empty();
 
@@ -114,10 +114,10 @@ $(document).on("click", ".submit_btn", function () {
     console.log(sub_ti, sub_val, i);
     console.log(index_submit_btn);
 
-    $(this).parents().find(`table#${index_submit_btn}`).find("tbody")
+    $(this).parents().find(`table`).eq(index_submit_btn).find("tbody")
       .append(`<tr>
-           <td>${sub_ti} ${i}</td>
-           <td>${sub_val} ${i}</td>
+           <td>${sub_ti}</td>
+           <td>${sub_val}</td>
     </tr>`);
   }
 

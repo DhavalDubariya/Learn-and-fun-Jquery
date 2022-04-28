@@ -83,7 +83,8 @@
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 80%;
+    margin:0 30px 30px 30px;
 }
 
 td, th {
@@ -92,6 +93,7 @@ td, th {
     padding: 8px;
 }
 
-.table{
-    margin:0 30px 30px 30px;
+
+.test{
+    display: none;
 }
