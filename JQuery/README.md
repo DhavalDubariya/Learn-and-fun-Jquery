@@ -73,6 +73,37 @@
 
     =>Clear all timestamps when a user hits RESET Button.
 
+# JQuery Task 4: STOPWATCH
+
+## Features:
+
+    => Develop a webpage that working like stopwatch
+
+    => That contains start button which start the timer
+
+    => Pause button to pause the timer after that Resume time with Resume button
+
+    => Stop button to stop the timer after that Restart time with restart button
+
+    => Reset button to reset the time 
+
+    => All history are show in that
+
+# JQuery Task 5: WIZARD FORM
+
+## Features:
+
+    => Develop a webpage that contain form of basic informations.
+
+    => There are three tab which contain that information.
+
+    => All information fill with validation plugin and masking.
+
+    => In last Tab form will submit and show in the table.
+    
+    => Table contain CRUD opertaions.
+
+
 # JQuery Task 6: CALCULATOR
 
     =>Create calculator design exact similar to attached screenshot
