@@ -73,3 +73,40 @@
 
     =>Clear all timestamps when a user hits RESET Button.
 
+# JQuery Task 6: CALCULATOR
+
+    =>Create calculator design exact similar to attached screenshot
+
+## Features:
+
+    =>Buttons: 0 to 9, Plus, Minus, Division, Multiplication and Modulo, Decimal point, Equal, Backspace, Clear All, Parenthesis, Square Root, Square.
+
+    =>All calculations must be similar as Ubuntu calculator.
+
+    =>Bind the keyboard with your calculator, So the user can use the calculator without using mouse.
+
+    =>Display error like: Malformed expression, For unusual inputs like: 5656/0 or 54*5145/*-+
+
+# Jquery Task 7: Add More
+
+## Features:
+
+    =>  Initially, two things will appear on the page:
+             1. ADD MORE Button
+             2. One box with the Title field and two buttons (ADD CHILD, SUBMIT and DELETE PARENT)
+
+    =>  The "ADD MORE" button will add such boxes.
+
+    =>  The "ADD CHILD" button will add a child box to the respective parent.
+
+    =>  The Child box contains two text fields (Subtitle and Values) and a delete button
+
+    =>  The "SUBMIT" button will copy all input details and append them to the right side table
+
+    =>  The main "DELETE PARENT" button will delete the entire box with all child boxes and remove that box from "Right Side Table" too.
+
+    =>  The order of the left side boxes and right side table will remain the same. Doesn't matter user submits which table first.
+
+    =>  If you Add/Delete a child after submitting that table then it will affect the right side when you submit that table a second time.
+
+    =>  Add an alert box from the bootbox plugin to confirm every time before adding or deleting anything.
