@@ -17,7 +17,7 @@ $(document).ready(function () {
     var index = $(".addmore_data").length;
 
     $(".append").append(` 
-        <div class="addmore_data" >
+        <div class="addmore_data" id="${index}" >
         <div class="parent_addmore">
           <input
             type="text"
@@ -33,7 +33,7 @@ $(document).ready(function () {
       `);    
     
     $(".add_table").append(`
-  <table class="test" >
+  <table id="${index}" class="test" >
     <thead>
       <tr>
         
