@@ -141,3 +141,17 @@
     =>  If you Add/Delete a child after submitting that table then it will affect the right side when you submit that table a second time.
 
     =>  Add an alert box from the bootbox plugin to confirm every time before adding or deleting anything.
+
+# Jquery Task 8: Add More Phase-2
+
+## Features:
+   => Remove the submit button from the previous task.
+
+   => When the user write anything in the text box at the same time that character will be added to the right side table.
+
+   => Display "Delete button" for parent, only if it have zero child.
+
+   => You can not delete any parent without deleting their all children.
+
+   => Do not allow to delete last remaining parent box.  
+   

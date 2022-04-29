@@ -175,7 +175,6 @@ $(document).on("click", ".delete_btn", function () {
       if (result == true) {
         var addmore_date = $(".addmore_data").length;
         
-
         var length_child = $(this).parents(".addmore_data").find(".child_addmore").length;
 
         if(length_child>0)
