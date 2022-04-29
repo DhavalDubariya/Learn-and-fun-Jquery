@@ -81,9 +81,9 @@ $(document).on("keyup",".child_addmore_in_sub,.title_input,.child_addmore_in", f
 $(document).on("click",".submit_btn", function () {
   var index_submit_btn = $(".submit_btn").index(this);
   
-  console.log(index_submit_btn);
+  // console.log(index_submit_btn);
   $("table").eq(index_submit_btn).find("thead tr").removeClass("test");
-
+  $("table").eq(index_submit_btn).find("tbody tr").removeClass("td_test");
   // console.log(index_submit_btn);
 
   var length_child = $(this)
@@ -98,6 +98,8 @@ $(document).on("click",".submit_btn", function () {
   {
     $("table").eq(index_submit_btn).find("thead tr").addClass("test");
   }
+
+  
 
   $("table").eq(index_submit_btn).find("tr th").remove();
   $("table").eq(index_submit_btn).find("tbody tr").remove();
@@ -120,8 +122,8 @@ $(document).on("click",".submit_btn", function () {
       .eq(i)
       .val();
 
-    console.log(sub_ti, sub_val, i);
-    console.log(index_submit_btn);
+    // console.log(sub_ti, sub_val, i);
+    // console.log(index_submit_btn);
 
     $(this).parents().find(`table`).eq(index_submit_btn).find("tbody")
       .append(`<tr>
