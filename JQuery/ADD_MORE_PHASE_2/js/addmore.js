@@ -83,7 +83,7 @@ $(document).on("click",".submit_btn", function () {
   
   // console.log(index_submit_btn);
   $("table").eq(index_submit_btn).find("thead tr").removeClass("test");
-  $("table").eq(index_submit_btn).find("tbody tr").removeClass("td_test");
+  $("table").eq(index_submit_btn).find("tbody tr").removeClass("test");
   // console.log(index_submit_btn);
 
   var length_child = $(this)
@@ -98,8 +98,6 @@ $(document).on("click",".submit_btn", function () {
   {
     $("table").eq(index_submit_btn).find("thead tr").addClass("test");
   }
-
-  
 
   $("table").eq(index_submit_btn).find("tr th").remove();
   $("table").eq(index_submit_btn).find("tbody tr").remove();
@@ -125,11 +123,18 @@ $(document).on("click",".submit_btn", function () {
     // console.log(sub_ti, sub_val, i);
     // console.log(index_submit_btn);
 
+    if(sub_ti==0 && sub_val==0)
+    {
+      $("table").eq(index_submit_btn).find("thead tr").addClass("test");
+    }
+    else
+    {
     $(this).parents().find(`table`).eq(index_submit_btn).find("tbody")
       .append(`<tr>
            <td>${sub_ti}</td>
            <td>${sub_val}</td>
     </tr>`);
+    }
   }
 
 
