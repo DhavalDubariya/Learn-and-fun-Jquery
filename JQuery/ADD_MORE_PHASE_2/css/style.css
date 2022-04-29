@@ -1,0 +1,114 @@
+.clearfix:before, .clearfix:after {
+    width: 100%;
+    display: table;
+    content: "";
+}
+
+.left {
+    width: 60%;
+    float: left;
+}
+
+.right {
+    width: 40%;
+    float: left;
+}
+
+.addmore_btn {
+    background-color: green;
+    color: white;
+    padding: 10px 30px;
+    border: 1px solid green;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.addmore_data {
+    border: 1px solid;
+    padding: 25px;
+    border-radius: 6px;
+    margin: 20px 0;
+}
+
+.add_child {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 30px;
+    border: 1px solid #6c757d;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.title_input {
+    padding: 10px;
+    width: 325px;
+}
+
+.submit_btn {
+    background-color: #198754;
+    color: white;
+    padding: 10px 30px;
+    border: 1px solid #198754;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.delete_btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 30px;
+    border: 1px solid #dc3545;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.child_addmore_in,.child_addmore_in_sub{
+    padding: 10px;
+    width: 271px;
+    margin: 10px 0;
+}
+
+.child_delete_btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 30px;
+    border: 1px solid #dc3545;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+
+/* table */
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin:0 30px 30px 30px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+
+.test{
+    display: none;
+}
+
+.test_body{
+    display: none;
+}
+
+.child_addmore{
+    border: 1px solid;
+    border-color: yellow;
+    text-align: center;
+    margin: 5px;
+}
+
+.add_table{
+    overflow-x:auto;
+}
