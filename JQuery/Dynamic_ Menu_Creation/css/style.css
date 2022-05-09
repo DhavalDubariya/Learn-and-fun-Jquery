@@ -1,36 +1,42 @@
-h1{
-    text-align: center;
+h1 {
+  text-align: center;
 }
 
-.clearfix:before, .clearfix:after {
-    width: 100%;
-    display: table;
-    content: "";
+.clearfix:before,
+.clearfix:after {
+  width: 100%;
+  display: table;
+  content: "";
 }
 
-
-.left{
-    width: 50%;
-    float: left;
+.left {
+  width: 50%;
+  float: left;
+}
+    
+.right {
+  width: 50%;
+  float: left;
 }
 
-.right{
-    width: 50%;
-    float: left;
+.add_btn,
+.remove_btn,
+.edit_btn,.remove_btn_menu {
+  padding: 10px 30px;
+  font-size: 15px;
 }
 
-.add_btn,.remove_btn,.edit_btn{
-    padding: 10px 30px;
-    font-size: 15px;
+.input_menu {
+  padding: 10px;
+  width: 350px;
 }
 
-.input_menu{
-    padding: 10px;
-    width: 350px;
+.select_menu {
+  padding: 10px;
+  width: 350px;
 }
 
-.select_menu{
-    padding: 10px;
-    width: 350px;
+#select_menu_child{
+  padding: 10px;
+  width: 350px;
 }
-
