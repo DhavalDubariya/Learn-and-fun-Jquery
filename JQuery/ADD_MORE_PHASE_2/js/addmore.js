@@ -30,8 +30,7 @@ $(document).ready(function () {
         </div>
       </div>
       `);
-
-        $(".add_table").append(`
+$(".add_table").append(`
   <table>
     <thead>
       <tr class="test" >
@@ -73,6 +72,8 @@ $(document).on("click", ".add_child", function () {
   });
 });
 
+
+//key press
 $(document).on("keyup",".child_addmore_in_sub,.title_input,.child_addmore_in", function () {
   $(".submit_btn").click();
 });
@@ -81,10 +82,7 @@ $(document).on("keyup",".child_addmore_in_sub,.title_input,.child_addmore_in", f
 $(document).on("click",".submit_btn", function () {
   var index_submit_btn = $(".submit_btn").index(this);
   
-  // console.log(index_submit_btn);
   $("table").eq(index_submit_btn).find("thead tr").removeClass("test");
-  $("table").eq(index_submit_btn).find("tbody tr").removeClass("test");
-  // console.log(index_submit_btn);
 
   var length_child = $(this)
     .parents(".addmore_data")
@@ -109,23 +107,12 @@ $(document).on("click",".submit_btn", function () {
     .append(`<th colspan="2">${title}</th>`);
 
   for (let i = 0; i < length_child; i++) {
-    var sub_ti = $(this)
-      .parents(".addmore_data")
-      .find(".child_addmore_in_sub")
-      .eq(i)
-      .val();
-    var sub_val = $(this)
-      .parents(".addmore_data")
-      .find(".child_addmore_in")
-      .eq(i)
-      .val();
+    var sub_ti = $(this).parents(".addmore_data").find(".child_addmore_in_sub").eq(i).val();
+    var sub_val = $(this).parents(".addmore_data").find(".child_addmore_in").eq(i).val();
 
-    // console.log(sub_ti, sub_val, i);
-    // console.log(index_submit_btn);
-
-    if(sub_ti==0 && sub_val==0)
+    if(sub_ti == 0 && sub_val == 0)
     {
-      $("table").eq(index_submit_btn).find("thead tr").addClass("test");
+      continue;
     }
     else
     {

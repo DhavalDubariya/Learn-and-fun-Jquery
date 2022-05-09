@@ -1,4 +1,4 @@
-var n = 8;
+var n = 4;
 var e="";
 
 for(let i=-n+1;i<n;i++)
@@ -13,13 +13,13 @@ for(let i=-n+1;i<n;i++)
         {
             e+=Math.abs(j)+1+" ";;
         }
-        else if(j==-n+1 && j==n && i==n && i==-n+1 )
+        else if(j==-n+1 || j==n-1 || i==n-1 || i==-n+1)
         {
-            e+=n;
+            e+=n+" ";
         }
         else
         {
-            e+=Math.abs(j)+ 1 +" ";
+            e+=Math.abs(j)+1+" ";
         }
     }
     e+="\n";

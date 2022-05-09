@@ -112,7 +112,7 @@ $(document).on("click", ".submit_btn", function () {
     console.log(index_submit_btn);
 
     $(this).parents().find(`table`).eq(index_submit_btn).find("tbody")
-      .append(`<tr>
+      .append(`<tr class="delete_row" >
            <td>${sub_ti}</td>
            <td>${sub_val}</td>
     </tr>`);

@@ -1,0 +1,171 @@
+.clearfix:before, .clearfix:after {
+    width: 100%;
+    display: table;
+    content: "";
+}
+
+.left {
+    width: 59%;
+    float: left;
+    border: 1px solid;
+    border-radius: 6px;
+    height: 500px;
+}
+
+.right {
+    width: 40%;
+    float: left;
+}
+
+.tab_button {
+    text-align: center;
+}
+
+.tab_btn {
+    background-color: white;
+    color: black;
+    padding: 10px 30px;
+    border: 1px solid;
+    border-radius: 6px;
+    font-size: 15px;
+    margin: 0 auto;
+    width: 30%;
+    margin-top: 25px;
+
+}
+
+.tab_content {
+    margin-left: 50px;
+}
+
+.form_input {
+    padding: 10px;
+    width: 250px;
+}
+
+.input_fields {
+    margin: 15px;
+}
+
+
+.color_picker {
+    padding: 10px;
+    border: 1px solid;
+}
+
+.reset {
+    background-color: white;
+    color: black;
+    padding: 10px 30px;
+    border: 1px solid;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+
+.front_clean_card {
+    width: 100%;
+    border: 1px solid;
+    padding: 10px 0px;
+    height: 200px;
+    background-color: white;
+
+}
+
+/* table */
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+}
+
+
+
+.test {
+    display: none;
+}
+.standard_card{
+    background-color: white;
+}
+
+.child_addmore {
+    border: 1px solid;
+    border-color: yellow;
+    text-align: center;
+    margin: 5px;
+}
+
+.clean_left {
+    width: 50%;
+    float: left;
+    text-align: center;
+    padding-top: 20px;
+}
+
+
+.clean_right {
+    width: 50%;
+    float: left;
+}
+
+.front_logo {
+    font-size: 50px;
+    color: #f44336;
+}
+
+.set_company_name,.set_name{
+    color: #276cb8;
+}
+
+.front_icons,.set_designation,.scanme{
+    color: #8fce00;
+}
+
+.back_clean_card {
+    height: 200px;
+    border: 1px solid;
+    background-color: #f44336;
+}
+
+.back_clean_card {
+    text-align: center;
+
+}
+
+.bottom_button {
+    text-align: center;
+    margin-top: 430px;
+}
+
+.front_standard {
+    padding: 10px 0px;
+    height: 200px;
+    border: 1px solid;
+    text-align: center;
+}
+
+.back_standard {
+    height: 200px;
+    border: 1px solid;
+    padding: 0 10px;
+}
+
+.qr-code{
+    background-color: transparent;
+    height: 120px;
+    width: 120px;
+}
+
+.botom{
+    height: 15px;
+}
+
+h1{
+    line-height: 0px;
+}
+
+.botom_2{
+    height: 25px;
+    font-size: 35px;
+    text-align: right;
+}
