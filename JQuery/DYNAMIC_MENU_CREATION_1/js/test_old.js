@@ -38,24 +38,5 @@
         });
         
 
-    $(document).on("click",".remove_btn",function(){
-        var remove_btn = $(".remove_btn").index(this);
-        console.log(remove_btn);
-        $("li.parent").eq(remove_btn).remove();
-        $(".select_menu").find("option.parent").eq(remove_btn).remove();
-    });
-
-    $(document).on("click",".remove_btn_menu",function(){
-        var remove_btn_menu_p = $(this).parents("li.parent").index();
-        var remove_btn_menu = $(".remove_btn_menu").index(this);
-        console.log(remove_btn_menu);
-        $("li.parent").eq(remove_btn_menu_p).find("li.child").eq(remove_btn_menu).remove();
-
-        $(".select_menu_child").eq(remove_btn_menu_p).find("option.parent_child").eq(remove_btn_menu).remove();
-        if(remove_btn_menu==0)
-        {
-            $(".select_menu_child").eq(remove_btn_menu_p).find("option.parent_child").eq(remove_btn_menu).remove();
-        }
-    }); 
 
 
