@@ -1,4 +1,4 @@
-// alert("Jay Shree Ram...")
+
 $(document).ready(function()
 {
 
@@ -36,7 +36,7 @@ $(document).ready(function()
 
                 $(".childe_select").append(`
                     <div class="delete_rm" >    
-                        <select data="${select_menu}_child ${select_menu_st}" class="${select_menu}_child select_menu_child">
+                        <select data="${select_menu}_child" class="${select_menu}_child select_menu_child">
                             <option class="parent_child" value="none">none</option>
                         </select>
                     </div>
@@ -69,20 +69,19 @@ $(document).ready(function()
 });
 
    
-    $(document).on('change', 'select', function () {
+$(document).on('change', 'select', function () {
         var select_index = $("select").index(this);
         var select_index_val = $("select").eq(select_index).val();
 
         if (select_index_val == 'none') {
              $("select").hide();
-             $("select").val("none")
+             $("select").val("none");
             for(let i = 0; i <= select_index; i++) 
             {
-                $("select").eq(i).val($("select").eq(i).find("option").eq(0).val())
                 $("select").eq(i).show();
             }
         } 
-        else
+        else 
         {   
             $("select").hide();
             for(let i = 0; i <= select_index; i++) {
@@ -97,4 +96,4 @@ $(document).ready(function()
             }
         }
         console.log("index : ", select_index_val+"_child");
-    });
+});
