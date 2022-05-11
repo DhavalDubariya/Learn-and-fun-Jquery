@@ -99,21 +99,17 @@ $(document).ready(function(){
         }
     });
 
+
+    var edit_index;
+    var edit_data;
+    var edit_text;
+    
     $(document).on('click','.edit_btn',function(){
-        var edit_index = $('.edit_btn').index(this);
-        var edit_data = $('.edit_btn').eq(edit_index).parent("li").attr('data-id');
-        var edit_text = $('.edit_btn').eq(edit_index).parent("li").attr('data-text');        
+         edit_index = $('.edit_btn').index(this);
+         edit_data = $('.edit_btn').eq(edit_index).parent("li").attr('data-id');
+         edit_text = $('.edit_btn').eq(edit_index).parent("li").attr('data-text');        
         $("#inputValue").val(edit_text);
         
-        
-        $("#update").click(function(){
-            var inputVal = $('#inputValue').val();
-            $(`#menu-list`).find(`li[data-id=${edit_data}]`).find("p").text(inputVal);
-            $(`#menu-list`).find(`li[data-id=${edit_data}]`).attr("data-text",inputVal);
-
-            $("#all-dropdown").find('select').find(`option[data-id=${edit_data}]`).text(inputVal);            
-            $(".edit_btn,.remove_btn").attr("disabled",false);
-        });
 
         $("#add").hide();
         $("#update").show();
@@ -121,7 +117,15 @@ $(document).ready(function(){
         console.log(edit_data,edit_text)
     });
 
-
+    
+        
+    $("#update").click(function(){
+        var inputVal = $('#inputValue').val();
+        $(`#menu-list`).find(`li[data-id=${edit_data}]`).find(">p").text(inputVal);
+        $(`#menu-list`).find(`li[data-id=${edit_data}]`).attr("data-text",inputVal);
+        $("#all-dropdown").find('select').find(`option[data-id=${edit_data}]`).text(inputVal);            
+        $(".edit_btn,.remove_btn").attr("disabled",false);
+    });
 
     $(document).on('click','.remove_btn',function(){
         var remove_index = $('.remove_btn').index(this);
@@ -147,11 +151,7 @@ $(document).ready(function(){
             $(this).closest("li").remove()
             $("#all-dropdown").find('select').find(`option[data-id=${remove_data}]`).remove();
         }
-
         $("select").trigger('change');
-        
-        
-        
     });
 
 });
