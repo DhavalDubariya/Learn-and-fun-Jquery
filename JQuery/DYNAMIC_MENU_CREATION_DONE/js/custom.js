@@ -108,7 +108,6 @@ $(document).ready(function(){
         }
     });
 
-
     var edit_index;
     var edit_data;
     var edit_text;
@@ -137,20 +136,18 @@ $(document).ready(function(){
     });
 
     $(document).on('click','.remove_btn',function(){
-
-       var remove_index = $(this).closest("li").attr("data-id")
+        var remove_index = $(this).closest("li").attr("data-id")
         $("#all-dropdown select").find(`option[data-id=${remove_index}]`).remove()
         if ($(this).closest('ul').children().length == 1) 
         {
             $(this).closest('ul').remove();
         }
-        else {
+        else 
+        {
             $(this).closest('li').remove();
         }
         $("select").eq(0).val("none");
-        $("select").trigger("change")
-
-
+        $("select").trigger("change");
     });
 
     
