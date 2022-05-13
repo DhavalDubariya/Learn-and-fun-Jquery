@@ -118,7 +118,7 @@ $(document).ready(function () {
     var h = (m = s = c = 0);
     clearInterval(timer);
     $("#hours,#minute,#seconds,#c_seconds").text("00");
-    $("#input").val("");
+    $("#input").val("");  
     $("#status").html("<p style='color:red' >Enter Time And Hit Start<p>");
   });
 });

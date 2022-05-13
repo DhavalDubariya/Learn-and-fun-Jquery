@@ -15,7 +15,7 @@
         {
           select_menu = $("select").eq(0).val();
           break;
-        } 
+        }   
         else if ($("select").eq(i).val() == "none") 
         {
           select_menu = $("select")

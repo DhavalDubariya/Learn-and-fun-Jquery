@@ -1,0 +1,29 @@
+button{
+    width: 64px;
+    height: 64px;
+    font-style: bold;
+    font-size: 30px;
+    background-color: darkcyan;
+}
+
+.center{
+    padding:50px 0 0 420px;
+}
+
+.btn_bg{
+    background-color: palevioletred;
+}
+
+#time_log{
+    text-align: center;
+}
+
+
+.timer{
+    display: none;
+}
+
+#refresh{
+    width: 176px;
+    height: 64px;
+}

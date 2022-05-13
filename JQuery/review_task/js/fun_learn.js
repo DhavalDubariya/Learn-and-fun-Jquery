@@ -131,7 +131,7 @@ $(document).ready(function()
              else
              {
                 if(data_id == data_id_2)
-                {
+                {   
                     $(".box_btn").eq(array_btn_dataid[0]).removeClass("open_btn")
                     $(".box_btn").eq(array_btn_dataid[1]).removeClass("open_btn")
                     $(".box_btn").eq(array_btn_dataid[1]).attr("disabled",true)
@@ -145,6 +145,7 @@ $(document).ready(function()
                     setTimeout(() => 
                     {   
                         $(".box_btn").attr("disabled",false)
+                        $(".btn_bg").attr("disabled",true);
                         $(".box_btn").eq(one).removeClass("open_btn")
                         $(".box_btn").eq(two).removeClass("open_btn")
                         $(".box_btn").eq(two).find("i").hide()
