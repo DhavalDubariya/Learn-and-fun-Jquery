@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FILE_EXPLORER</title>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FILE EXPLORER</title>
+    <script src="./js/script.js"></script>
+    <script src="./js/file_explorer.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <h1 class="title" >FILE EXPLORER</h1>
+    <div class="container-fluid body_back" >
+        <div class="row">
+            <div class="col-md-12 button_group ">
+                <button id="back" class="btn btn-outline-warning"><i class="fa-solid fa-circle-left"></i> BACK</button>
+                <button id="home" class="btn btn-outline-secondary"><i class="fa-solid fa-house-chimney"></i> HOME</button>
+                <button id="create" class="btn btn-outline-primary"><i class="fa-solid fa-folder-plus"></i> CREATE</button>
+                <button id="addfile" class="btn btn-outline-success"><i class="fa-solid fa-circle-plus"></i> ADD FILE</button>
+                <button id="delete" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i> DELETE</button>
+                <button id="cut" class="btn btn-outline-dark"><i class="fa-solid fa-scissors"></i> CUT</button>
+                <button id="copy" class="btn btn-outline-dark"><i class="fa-solid fa-copy"></i> COPY</button>
+                <button id="paste" class="btn btn-outline-dark"><i class="fa-solid fa-paste"></i> PASTE</button>
+                <button id="rename" class="btn btn-outline-info"><i class="fa-solid fa-pen-to-square"></i> RENAME</button>
+            </div>
+            <div class="col-md-3 left body_part" >
 
-</body>
+            </div>
+            <div class="col-md-9 right body_part" >
+                <div class="row" id="file_folder" data-back="" >
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+  
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+
+  </body>
 </html>
